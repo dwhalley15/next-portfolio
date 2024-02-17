@@ -13,9 +13,9 @@ const Header = () => {
             <Image className="main-image" src={mainImage} fill alt="" objectFit="cover"/>
         </div>
         <div className="text-container">
-          <h1>Hi, It&apos;s <span>David</span></h1>
-          <h3 className="typing-text">I&apos;m a <span></span></h3>
-          <p>A hard working and high-achieving student, currently reading a Bachelor of Science Degree in Software Engineering. A growing interest and competency in web and software development.</p>
+          <h1>{"Hi, It's"} <span>David</span></h1>
+          <h3 className="typing-text">{"I'm a "}<span></span></h3>
+          <p>{ "A hard working and high-achieving student, currently reading a Bachelor of Science Degree in Software Engineering. A growing interest and competency in web and software development."}</p>
           <div className="icons">
             <Link href="https://www.linkedin.com/in/davidwhalleyprofile" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} size="1x"/></Link>
             <Link href="https://github.com/dwhalley15" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} size="1x"/></Link>
