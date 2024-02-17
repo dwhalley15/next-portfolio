@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
       <header>
         <nav>
           <h1>Ortheyus</h1>
-          <FontAwesomeIcon className="nav-btn" icon={faBars} size="2x"/>
+          <FontAwesomeIcon className="nav-btn" icon={faBars} size="3x"/>
           <ul>
           {navLinks.map((link: QueryResultRow) => (
               <li key={link.id}>

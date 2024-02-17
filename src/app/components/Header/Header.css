@@ -1,0 +1,202 @@
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+    background: var(--bg-color);
+  }
+  
+  .text-container{
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  
+  .text-container h3{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .text-container p {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  
+  .icons{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+  
+  .icons a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: 0.2rem solid var(--main-color);
+    font-size: 2rem;
+    border-radius: 50%;
+    color: var(--main-color);
+    margin: 3rem 1.5rem 3rem 0;
+    transition: 0.3s ease;
+  }
+  
+  .icons a:hover{
+    color: black;
+    transform: scale(1.3)translateY(-5px);
+    background: var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+  }
+  
+  span{
+    color: var(--main-color);
+  }
+  
+  .image-container{
+    border-radius: 50%;
+    position: relative !important;
+    width: 32vw;
+    height: 32vw;
+    max-width: 400px;
+    max-height: 400px;
+  }
+  
+  .main-image{
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--main-color);
+    cursor: pointer;
+    object-fit: cover;
+  }
+  
+  .main-image:hover{
+    transform: scale(1.01);
+    filter: drop-shadow(0 0 25px var(--main-color));
+  }
+  
+  .btn{
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--bg-color);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: var(--main-color) !important;
+    border: 2px solid var(--main-color);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .btn:hover{
+    transform: scale(1.03);
+    background-color: var(--main-color);
+    color: black !important;
+    box-shadow: 0 0 25px var(--main-color);
+  }
+  
+  .typing-text{
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+  }
+  
+  .typing-text span{
+    position: relative;
+  }
+  
+  .typing-text span::before{
+    content: "Software Developer";
+    color: var(--main-color);
+    animation: words 20s infinite;
+  }
+  
+  .typing-text span::after{
+    content: "";
+    background: var(--bg-color);
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 3px solid var(--bg-color);
+    right: -8px;
+    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+  }
+  
+  @keyframes cursor {
+    to{
+      border-left: 3px solid var(--main-color);
+    }
+  }
+  
+  @keyframes words{
+    0%, 20%{
+      content: "Web Developer";
+    }
+    21%, 40%{
+      content: "Software Engineer";
+    }
+    41%, 60%{
+      content: "Programmer";
+    }
+    61%, 80%{
+      content: "Painter";
+    }
+    81%, 100%{
+      content: "Gamer";
+    } 
+  }
+  
+  @keyframes typing{
+    10%, 15%,
+    30%, 35%,
+    50%, 55%,
+    70%, 75%,
+    90%, 95% {
+      width: 0;
+    }
+    5%, 20%,
+    25%, 40%,
+    45%, 60%,
+    65%, 80%, 85% {
+      width: calc(100% + 8px);
+    }
+  }
+  
+  @media (max-width: 995px) {
+    .header {
+      flex-direction: column;
+    }
+  
+    .text-container {
+      font-size: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .text-container h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .text-container p {
+      font-size: 1.6rem;
+    }
+  
+    .icons {
+      justify-content: center;
+    }
+  
+    .image-container {
+      margin-top: 2rem;
+      width: 70vw;
+      height: 70vw;
+    }
+  
+    .btn{
+      text-align: center;
+    }
+  }
+  
