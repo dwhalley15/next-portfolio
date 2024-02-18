@@ -24,7 +24,7 @@
     padding: 10px;
     border-radius: 1rem;
     background: var(--bg-color);
-    transition: 0.3 ease;
+    transition: 0.3s ease;
     cursor: pointer;
 }
 

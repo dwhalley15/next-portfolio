@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faGithub, faLinkedin, faDiscord, faInstagram, faJs} from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faDiscord, faInstagram, faJs, faYoutube} from "@fortawesome/free-brands-svg-icons";
 import mainImage from "../../assets/images/main-image.jpg";
 
 export interface HeaderItem {
@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({headerInfo, socialLinks}) => {
     <>
       <section className="header" id="home">
         <div className="image-container">
-            <Image className="main-image" src={mainImage} fill alt={firstItem.image_alt} objectFit="cover"/>
+            <Image className="main-image" src={mainImage} fill alt={firstItem.image_alt} object-fit="cover"/>
         </div>
         <div className="text-container">
           <h1>{firstItem.intro_text} <span>{firstItem.name.charAt(0).toUpperCase() + firstItem.name.slice(1)}</span></h1>
@@ -68,6 +68,8 @@ function getFontAwesomeIcon(socialName: string): IconProp {
       return faDiscord;
     case 'instagram':
       return faInstagram;
+    case 'youtube':
+      return faYoutube;
     default:
       return faJs;
   }
