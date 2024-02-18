@@ -74,5 +74,5 @@ function getFontAwesomeIcon(socialName: string): IconProp {
 }
 
 //https://www.youtube.com/watch?v=DkrfsFB_nms
-//13:32
+
 

@@ -14,3 +14,8 @@ export async function getNavLinks()  {
     const { rows } = await sql`SELECT * FROM social_links`;
     return rows;
   };
+
+  export async function getServicesInfo() {
+    const { rows } = await sql`SELECT * FROM services_info`;
+    return rows;
+  };

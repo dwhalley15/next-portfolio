@@ -144,7 +144,7 @@
       content: "Painter";
     }
     81%, 100%{
-      content: "Gamer";
+      content: "Software Developer";
     } 
   }
   
@@ -167,6 +167,7 @@
   @media (max-width: 995px) {
     .header {
       flex-direction: column;
+      padding-bottom: 7rem;
     }
   
     .text-container {
