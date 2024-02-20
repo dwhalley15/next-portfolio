@@ -52,11 +52,9 @@
     text-align: center;
     position: absolute;
     top: 20px;
-    font-size: 1.5rem;
-    font-weight: 600;
+    z-index: 101;
     width: 25px;
     height: 25px;
-    z-index: 101;
     right: -12px;
     color: rgb(90, 64, 64);
 }
