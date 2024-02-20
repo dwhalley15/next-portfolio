@@ -24,3 +24,8 @@ export async function getNavLinks()  {
     const { rows } = await sql`SELECT * FROM skills_info`;
     return rows;
   };
+
+  export async function getEducationInfo() {
+    const { rows } = await sql`SELECT * FROM education_info`;
+    return rows;
+  };
