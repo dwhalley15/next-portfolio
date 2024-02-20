@@ -20,7 +20,7 @@ const Education: React.FC<EducationProps> = ({ educationInfo }) => {
         <div className="timeline">
             {educationInfo.map((item: EducationItem, index: number) => (
                 <div key={item.id} className={`education-container ${index % 2 === 0 ? "left" : "right"}`}>
-                    <FontAwesomeIcon className="education-icon" icon={faUserGraduate} />
+                    <FontAwesomeIcon className="education-icon" icon={faUserGraduate} size="xl" />
                     <div className="education-text">
                         <div className="education-title">
                             <h4>{item.title}</h4>
