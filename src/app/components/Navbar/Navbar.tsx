@@ -18,9 +18,15 @@ export interface NavbarItem {
 const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
 
   const [menuActive, setMenuActive] = useState(false);
+  const [activeLink, setActiveLink] = useState<number | null>(null);
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
+  };
+
+  const handleLinkClick = (id: number) => {
+    setActiveLink(id);
+    setMenuActive(false);
   };
 
   return(
@@ -32,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
           <ul className={menuActive ? 'active' : ''}>
           {navLinks.map((link: NavbarItem) => (
               <li key={link.id}>
-                <Link href={`#${link.link_name}`}>{link.link_name.charAt(0).toUpperCase() + link.link_name.slice(1)}</Link>
+                <Link onClick={() => handleLinkClick(link.id)} className={link.id === activeLink ? 'active' : ''}  href={`#${link.link_name}`}>{link.link_name.charAt(0).toUpperCase() + link.link_name.slice(1)}</Link>
               </li>
             ))}
           </ul>

@@ -34,7 +34,7 @@ nav{
   }
   
   nav a:hover,
-  nav a:active{
+  nav a.active{
     color: var(--main-color);
     border-bottom: 3px solid var(--main-color);
   }
@@ -65,7 +65,7 @@ nav{
 
   @keyframes rotateIn {
     from {
-      transform: rotate(90deg);
+      transform: rotate(180deg);
     }
     to {
       transform: rotate(0deg);
@@ -77,7 +77,7 @@ nav{
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(90deg);
+      transform: rotate(180deg);
     }
   }
   
@@ -88,11 +88,11 @@ nav{
     }
 
     nav .fa-bars {
-      animation: rotateIn 0.3s ease-in-out;
+      animation: rotateIn 0.1s ease;
     }
 
     nav .fa-x {
-      animation: rotateOut 0.3s ease-in-out;
+      animation: rotateOut 0.1s ease;
     }
     
     nav ul{
