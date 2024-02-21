@@ -3,8 +3,10 @@ import Header, {HeaderItem, SocialLinkItem} from "./components/Header/Header";
 import Services, { ServicesItem } from "./components/Services/Services";
 import Skills, { SkillsItem } from "./components/Skills/Skills";
 import Education, { EducationItem }  from "./components/Education/Education";
+import Footer from "./components/Footer/Footer";
+import Contact from "./components/Contact/Contact";
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import { getNavLinks, getHeaderInfo, getSocialLinks, getServicesInfo, getSkillsInfo, getEducationInfo } from "./services/dbService";
+import { getNavLinks, getHeaderInfo, getSocialLinks, getServicesInfo, getSkillsInfo, getEducationInfo } from "./services/dbServices/dbService";
 
 
 export default async function Home() {
@@ -29,7 +31,9 @@ export default async function Home() {
       <Services servicesInfo={ servicesInfo as ServicesItem[] }/>
       <Skills skillsInfo={ skillsInto as SkillsItem[] }/>
       <Education educationInfo={ educationInfo as EducationItem[] }/>
+      <Contact />
     </main>
+    <Footer socialLinks={ socialLinks as SocialLinkItem[]} navLinks={navLinks as NavbarItem[]} />
    </>
   );
 }
