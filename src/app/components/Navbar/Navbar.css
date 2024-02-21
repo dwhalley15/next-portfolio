@@ -39,7 +39,7 @@ nav{
     border-bottom: 3px solid var(--main-color);
   }
   
-  nav .fa-bars{
+  nav .fa-bars, nav .fa-x{
     color: var(--text-color);
     cursor: pointer;
     display: none !important;
@@ -51,11 +51,48 @@ nav{
     justify-content: space-between;
     align-items: center;
   }
+
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes rotateIn {
+    from {
+      transform: rotate(90deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes rotateOut {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(90deg);
+    }
+  }
   
   @media (max-width: 995px){
     
-    nav .fa-bars{
+    nav .fa-bars, nav .fa-x{
       display: block !important;  
+    }
+
+    nav .fa-bars {
+      animation: rotateIn 0.3s ease-in-out;
+    }
+
+    nav .fa-x {
+      animation: rotateOut 0.3s ease-in-out;
     }
     
     nav ul{
@@ -70,10 +107,16 @@ nav{
       background-color: var(--second-bg-color);
       border-top: 0.1rem solid rgba(0, 0, 0, 0.4);
       display: none;
+      transition: display 0.5s ease-in-out;
+      opacity: 0;
+      visibility: hidden;
     }
   
     nav ul.active{
       display: block;
+      opacity: 1;
+      visibility: visible;
+      animation: slideDown 0.3s ease;
     }
   
     nav a{
