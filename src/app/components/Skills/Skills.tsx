@@ -1,7 +1,6 @@
 import  "./Skills.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faReact, faJava, faUmbraco, faJs, faHtml5, faCss3Alt, faPhp, faGit, faSass, faPython} from "@fortawesome/free-brands-svg-icons";
+import getFontAwesomeIcon from "../../services/iconService/iconService";
 
 export interface SkillsItem{
     id: number;
@@ -35,30 +34,3 @@ const Skills: React.FC<SkillsProps> = ({ skillsInfo }) => {
 };
 
 export default Skills;
-
-function getFontAwesomeIcon(socialName: string): IconProp {
-    switch (socialName.toLowerCase()) {
-        case 'react':
-            return faReact;
-        case 'javascript':
-            return faJs;
-        case 'java':
-            return faJava;
-        case 'umbraco':
-            return faUmbraco;
-        case 'html':
-            return faHtml5;
-        case 'css':
-            return faCss3Alt;
-        case 'php':
-            return faPhp;
-        case 'git':
-            return faGit;
-        case 'sass':
-            return faSass;
-        case 'python':
-            return faPython; 
-        default:
-            return faJs;
-    }
-}

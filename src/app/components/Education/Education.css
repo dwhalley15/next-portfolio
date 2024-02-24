@@ -42,7 +42,7 @@
     line-height: 25px;
     right: -12px;
     background-color: rgb(252, 252, 252);
-    border: 4px solid var(--main-color);
+    border: 3px solid var(--main-color);
     top: 15px;
     border-radius: 50%;
     z-index: 100;
@@ -51,12 +51,18 @@
 .education-icon{
     text-align: center;
     position: absolute;
-    top: 20px;
+    top: 19.5px;
     z-index: 101;
     width: 25px;
     height: 25px;
     right: -12px;
-    color: rgb(90, 64, 64);
+    color: var(--second-bg-color);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.education-icon:hover{
+    transform: scale(1.25) rotate(360deg);
 }
 
 .right .education-icon{
@@ -106,22 +112,33 @@
     background: var(--main-color);
     position: relative;
     border-radius: 6px;
+    color: black;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.education-text:hover{
+    background: var(--second-bg-color);
+    color: var(--main-color);
+    border-color: var(--main-color);
 }
 
 .education-title {
     font-size: 2.5rem;
     padding-top: 1.5rem;
     padding-left: 1.5rem;
+    padding-right: 1.5rem;
     font-weight: 600;
-    color: black;
 }
 
 .education-description {
     margin-left: 1.5rem;
+    margin-right: 1.5rem;
     padding-bottom: 1rem;
+    padding-top: 1rem;
     font-size: 1.3rem;
     font-weight: 500;
-    color: black;
 }
 
 @media (max-width: 995px) {
@@ -146,12 +163,17 @@
         border-color: transparent var(--main-color) transparent transparent;
     }
 
+    .education-description {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
     .left::after {
         left: 19px;
     }
 
     .education-icon{
-        left: 19px;
+        left: 19.2px;
     }
 
     .right .education-icon{
@@ -167,6 +189,7 @@
     }
 
     .education-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        padding-top: 1rem;
     }
 }

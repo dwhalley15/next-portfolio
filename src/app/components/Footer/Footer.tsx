@@ -1,8 +1,7 @@
 import "./Footer.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faGithub, faLinkedin, faDiscord, faInstagram, faJs, faYoutube} from "@fortawesome/free-brands-svg-icons";
+import getFontAwesomeIcon from "@/app/services/iconService/iconService";
 
 export interface SocialLinkItem{
     id: number;
@@ -50,23 +49,4 @@ const Footer: React.FC<FooterProps> = ({ socialLinks,  navLinks}) => {
   );
 };
 
-function getFontAwesomeIcon(socialName: string): IconProp {
-    switch (socialName.toLowerCase()) {
-      case 'github':
-        return faGithub;
-      case 'linkedin':
-        return faLinkedin;
-      case 'discord':
-        return faDiscord;
-      case 'instagram':
-        return faInstagram;
-      case 'youtube':
-        return faYoutube;
-      default:
-        return faJs;
-    }
-  }
-
 export default Footer;
-
-
