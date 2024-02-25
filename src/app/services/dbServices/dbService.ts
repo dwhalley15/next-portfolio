@@ -1,31 +1,19 @@
 import { sql } from "@vercel/postgres";
 
-export async function getNavLinks()  {
-    const { rows } = await sql`SELECT * FROM nav_links`;
-    return rows;
-  };
-  
-  export async function getHeaderInfo() {
-    const { rows } = await sql`SELECT * FROM header_info`;
-    return rows;
-  };
+export async function getAllData() {
+  const navLinks = await sql`SELECT * FROM nav_links`;
+  const headerInfo = await sql`SELECT * FROM header_info`;
+  const socialLinks = await sql`SELECT * FROM social_links`;
+  const servicesInfo = await sql`SELECT * FROM services_info`;
+  const skillsInfo = await sql`SELECT * FROM skills_info`;
+  const educationInfo = await sql`SELECT * FROM education_info`;
 
-  export async function getSocialLinks(){
-    const { rows } = await sql`SELECT * FROM social_links`;
-    return rows;
+  return {
+    navLinks: navLinks.rows,
+    headerInfo: headerInfo.rows,
+    socialLinks: socialLinks.rows,
+    servicesInfo: servicesInfo.rows,
+    skillsInfo: skillsInfo.rows,
+    educationInfo: educationInfo.rows,
   };
-
-  export async function getServicesInfo() {
-    const { rows } = await sql`SELECT * FROM services_info`;
-    return rows;
-  };
-
-  export async function getSkillsInfo() {
-    const { rows } = await sql`SELECT * FROM skills_info`;
-    return rows;
-  };
-
-  export async function getEducationInfo() {
-    const { rows } = await sql`SELECT * FROM education_info`;
-    return rows;
-  };
+}

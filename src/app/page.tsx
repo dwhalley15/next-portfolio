@@ -1,39 +1,30 @@
-import  Navbar, {NavbarItem}  from "./components/Navbar/Navbar"; 
-import Header, {HeaderItem, SocialLinkItem} from "./components/Header/Header";
-import Services, { ServicesItem } from "./components/Services/Services";
-import Skills, { SkillsItem } from "./components/Skills/Skills";
-import Education, { EducationItem }  from "./components/Education/Education";
-import Footer from "./components/Footer/Footer";
-import Contact from "./components/Contact/Contact";
+import * as components from "./services/importService/importService"; 
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import { getNavLinks, getHeaderInfo, getSocialLinks, getServicesInfo, getSkillsInfo, getEducationInfo } from "./services/dbServices/dbService";
+import { getAllData } from "./services/dbServices/dbService";
 
 
 export default async function Home() {
 
-  const navLinks = await getNavLinks();
-
-  const headerInfo = await getHeaderInfo();
-
-  const socialLinks = await getSocialLinks();
-
-  const servicesInfo = await getServicesInfo();
-
-  const skillsInto = await getSkillsInfo();
-
-  const educationInfo = await getEducationInfo();
+  const {
+    navLinks,
+    headerInfo,
+    socialLinks,
+    servicesInfo,
+    skillsInfo,
+    educationInfo,
+  } = await getAllData();
 
   return (
    <>
-    <Navbar navLinks={navLinks as NavbarItem[]} />
+    <components.Navbar navLinks={navLinks as components.NavbarItem[]} />
     <main>
-      <Header headerInfo={ headerInfo as HeaderItem[]} socialLinks={socialLinks as SocialLinkItem[]} />
-      <Services servicesInfo={ servicesInfo as ServicesItem[] }/>
-      <Skills skillsInfo={ skillsInto as SkillsItem[] }/>
-      <Education educationInfo={ educationInfo as EducationItem[] }/>
-      <Contact />
+      <components.Header headerInfo={ headerInfo as components.HeaderItem[]} socialLinks={socialLinks as components.SocialLinkItem[]} />
+      <components.Services servicesInfo={ servicesInfo as components.ServicesItem[] }/>
+      <components.Skills skillsInfo={ skillsInfo as components.SkillsItem[] }/>
+      <components.Education educationInfo={ educationInfo as components.EducationItem[] }/>
+      <components.Contact />
     </main>
-    <Footer socialLinks={ socialLinks as SocialLinkItem[]} navLinks={navLinks as NavbarItem[]} />
+    <components.Footer socialLinks={ socialLinks as components.SocialLinkItem[]} navLinks={navLinks as components.NavbarItem[]} />
    </>
   );
 }
