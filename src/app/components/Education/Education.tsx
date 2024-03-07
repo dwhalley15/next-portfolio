@@ -20,7 +20,7 @@ const Education: React.FC<EducationProps> = ({ educationInfo }) => {
     const yearA = a.start_date ? a.start_date.getFullYear() : 0;
     const yearB = b.start_date ? b.start_date.getFullYear() : 0;
   
-    return yearA - yearB;
+    return yearB - yearA;
   });
 
   return(
