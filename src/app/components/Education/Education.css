@@ -24,7 +24,7 @@
     bottom: 0;
     left: 50%;
     margin-left: -3px;
-    z-index: -2px;
+    z-index: 1;
 }
 
 .education-container {

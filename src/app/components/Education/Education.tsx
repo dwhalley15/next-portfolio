@@ -6,6 +6,8 @@ export interface EducationItem{
     id: number;
     title: string;
     description: string;
+    start_date: Date;
+    end_date: Date | null;
 }
 
 export interface EducationProps {
@@ -13,12 +15,20 @@ export interface EducationProps {
   }
 
 const Education: React.FC<EducationProps> = ({ educationInfo }) => {
+
+  const sortedEducationInfo = [...educationInfo].sort((a, b) => {
+    const yearA = a.start_date ? a.start_date.getFullYear() : 0;
+    const yearB = b.start_date ? b.start_date.getFullYear() : 0;
+  
+    return yearA - yearB;
+  });
+
   return(
     <>
       <section className="education" id="education">
         <h2>Education</h2>
         <div className="timeline">
-            {educationInfo.map((item: EducationItem, index: number) => (
+            {sortedEducationInfo.map((item: EducationItem, index: number) => (
                 <div key={item.id} className={`education-container ${index % 2 === 0 ? "left" : "right"}`}>
                     <div className="education-icon">
                         <FontAwesomeIcon icon={faUserGraduate} size="xl" />
@@ -26,6 +36,12 @@ const Education: React.FC<EducationProps> = ({ educationInfo }) => {
                     <div className="education-text">
                         <div className="education-title">
                             <h4>{item.title}</h4>
+                        </div>
+                        <div className="education-dates">
+                          <h5>
+                            {item.start_date && new Date(item.start_date).getFullYear()} -{' '}
+                            {item.end_date ? new Date(item.end_date).getFullYear() : 'Present'}
+                          </h5>
                         </div>
                         <div className="education-description">
                             <p>{item.description}</p>
