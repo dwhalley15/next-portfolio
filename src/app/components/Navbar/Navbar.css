@@ -12,16 +12,19 @@ nav{
     z-index: 100;
   }
   
-  nav h1{
+.header_logo{
     font-size: 3rem;
-    color: var(--main-color);
+    color: var(--main-color) !important;
     font-weight: 800;
     cursor: pointer;
     transition: 0.5s ease;
+    margin: 0;
+    border-bottom: none !important;
   }
   
-  nav h1:hover{
+.header_logo:hover{
     transform: scale(1.1);
+    border-bottom: none !important;
   }
   
   nav a{

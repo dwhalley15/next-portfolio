@@ -22,6 +22,7 @@
     border-radius: 3rem;
     cursor: pointer;
     transition: 0.3s ease;
+    padding: 2rem;
 }
 
 .service-container:hover{
@@ -31,27 +32,26 @@
     border: 1px solid var(--main-color);
 }
 
-.service-container .service-text{
+.service-text{
     display: flex;
     flex-direction: column;
     text-align: left;
-    max-height: 200px;
-    justify-content: center;
-    align-items: baseline;
-    padding: 5rem;
+    max-height: 300px;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: flex-end;
+    gap: 1.5rem;
 }
 
 .service-text h4{
     font-size: 2.5rem;
     font-weight: 500;
-    margin-bottom: 1rem;
 }
 
 .service-text p{
     font-size: 1.6rem;
     font-weight: 400;
     max-height: 100px;
-    margin: auto;
 }
 
 @media (max-width: 995px) {
