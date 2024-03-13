@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 import  "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons"
-import { useRouter } from 'next/router';
 
 export interface NavbarItem {
     id: number;
@@ -21,20 +20,13 @@ const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
   const [menuActive, setMenuActive] = useState(false);
   const [activeLink, setActiveLink] = useState<number | null>(null);
 
-  const router = useRouter();
-
-  useEffect(() => {
-    const hash = router.asPath.split('#')[1];
-    const link = navLinks.find(item => item.link_name === hash);
-    if (link) {
-        setActiveLink(link.id);
-    } else {
-        setActiveLink(null);
-    }
-}, [navLinks, router.asPath]);
-
   const toggleMenu = () => {
     setMenuActive(!menuActive);
+  };
+
+  const handleLinkClick = (id: number) => {
+    setActiveLink(id);
+    setMenuActive(false);
   };
 
   return(
@@ -46,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
           <ul className={menuActive ? 'active' : ''}>
           {navLinks.map((link: NavbarItem) => (
               <li key={link.id}>
-                <Link className={link.id === activeLink ? 'active' : ''}  href={`#${link.link_name}`}>{link.link_name.charAt(0).toUpperCase() + link.link_name.slice(1)}</Link>
+                <Link onClick={() => handleLinkClick(link.id)} className={link.id === activeLink ? 'active' : ''}  href={`#${link.link_name}`}>{link.link_name.charAt(0).toUpperCase() + link.link_name.slice(1)}</Link>
               </li>
             ))}
           </ul>
