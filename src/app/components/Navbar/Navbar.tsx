@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 import  "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBars, faX} from "@fortawesome/free-solid-svg-icons"
+import { useRouter } from 'next/router';
+
 export interface NavbarItem {
     id: number;
     link_name: string;
@@ -19,15 +21,17 @@ const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
   const [menuActive, setMenuActive] = useState(false);
   const [activeLink, setActiveLink] = useState<number | null>(null);
 
+  const router = useRouter();
+
   useEffect(() => {
-    const hash = window.location.hash;
-    const link = navLinks.find(item => `#${item.link_name}` === hash);
+    const hash = router.asPath.split('#')[1];
+    const link = navLinks.find(item => item.link_name === hash);
     if (link) {
         setActiveLink(link.id);
-    } else{
-      setActiveLink(null);
+    } else {
+        setActiveLink(null);
     }
-}, [navLinks, window.location.hash]);
+}, [navLinks, router.asPath]);
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
