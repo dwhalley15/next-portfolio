@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
     } else{
       setActiveLink(null);
     }
-}, [navLinks]);
+}, [navLinks, window.location.hash]);
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
