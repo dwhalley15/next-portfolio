@@ -25,10 +25,10 @@ const Contact = ({}) => {
         <h2>Contact <span>Me</span></h2>
         <form onSubmit={handleSubmit}>
             <div className="input-box">
-                <input type="text" name="name" placeholder="Name" required/>
-                <input type="email" name="email" placeholder="Email" required />
-                <input type="number" name="Number" placeholder="Phone Number" required/>
-                <input type="text" name="Subject" placeholder="Subject" required/>
+                <input type="text" name="senderName" placeholder="Name" required/>
+                <input type="email" name="senderEmail" placeholder="Email" required />
+                <input type="number" name="senderNumber" placeholder="Phone Number" required/>
+                <input type="text" name="subject" placeholder="Subject" required/>
                 <textarea name="message" cols={30} rows={10} placeholder="Your Message" required></textarea>
             </div>    
             <input type="submit" value="Send Message" className="btn" />

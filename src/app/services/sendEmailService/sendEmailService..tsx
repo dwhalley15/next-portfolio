@@ -6,9 +6,9 @@ const resend = new Resend(API_KEY);
 
 export const sendEmail = async (formData: FormData) => {
     try{
-        const senderName = formData.get('name') as string;
-        const senderEmail = formData.get('email') as string;
-        const senderNumber = formData.get('number') as string;
+        const senderName = formData.get('senderName') as string;
+        const senderEmail = formData.get('senderEmail') as string;
+        const senderNumber = formData.get('senderNumber') as string;
         const subject = formData.get('subject') as string;
         const message = formData.get('message') as string;
 
@@ -35,7 +35,7 @@ export const sendEmail = async (formData: FormData) => {
     `;
 
     await resend.emails.send({
-        from: 'Contact Form <onboarding@resend.dev>',
+        from: 'onboarding@resend.dev',
         to: 'one_winged@hotmail.com',
         subject: "Message from Contact Form",
         reply_to: senderEmail,
