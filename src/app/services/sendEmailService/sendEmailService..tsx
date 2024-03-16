@@ -1,6 +1,8 @@
 import { Resend } from 'resend';
 
-const resend = new Resend('re_WzNP5iDZ_JKo7AapXzUEMRTTyBX4hncUm');
+const API_KEY = 're_WzNP5iDZ_JKo7AapXzUEMRTTyBX4hncUm'
+
+const resend = new Resend(API_KEY);
 
 export const sendEmail = async (formData: FormData) => {
     try{
@@ -39,7 +41,7 @@ export const sendEmail = async (formData: FormData) => {
         reply_to: senderEmail,
         text: emailBody,
         headers: {
-            Authorization: `Bearer re_WzNP5iDZ_JKo7AapXzUEMRTTyBX4hncUm`
+            Authorization: `Bearer ${API_KEY}`
         }
     });
         return { success: true};
