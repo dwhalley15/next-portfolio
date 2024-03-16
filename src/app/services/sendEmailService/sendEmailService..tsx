@@ -38,6 +38,9 @@ export const sendEmail = async (formData: FormData) => {
         subject: "Message from Contact Form",
         reply_to: senderEmail,
         text: emailBody,
+        headers: {
+            Authorization: `Bearer re_WzNP5iDZ_JKo7AapXzUEMRTTyBX4hncUm`
+        }
     });
         return { success: true};
     } catch(error){
