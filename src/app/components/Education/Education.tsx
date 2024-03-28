@@ -9,12 +9,11 @@ export interface EducationItem{
     start_date: Date;
     end_date: Date | null;
 }
-
 export interface EducationProps {
     educationInfo: EducationItem[];
   }
 
-const Education: React.FC<EducationProps> = ({ educationInfo }) => {
+export default function Education({ educationInfo }: EducationProps){
 
   const sortedEducationInfo = [...educationInfo].sort((a, b) => {
     const yearA = a.start_date ? a.start_date.getFullYear() : 0;
@@ -54,5 +53,3 @@ const Education: React.FC<EducationProps> = ({ educationInfo }) => {
     </>
   );
 };
-
-export default Education;

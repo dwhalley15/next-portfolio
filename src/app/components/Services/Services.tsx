@@ -12,7 +12,7 @@ export interface ServicesProps {
     servicesInfo: ServicesItem[];
   }
 
-const Services: React.FC<ServicesProps> = ({ servicesInfo }) => {
+export default function Services({ servicesInfo }: ServicesProps){
   return(
     <>
       <section className="services" id="services">
@@ -32,5 +32,3 @@ const Services: React.FC<ServicesProps> = ({ servicesInfo }) => {
     </>
   );
 };
-
-export default Services;

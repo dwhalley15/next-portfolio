@@ -15,7 +15,7 @@ export interface NavbarItem {
     navLinks: NavbarItem[];
   }
 
-const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
+export default function Navbar({navLinks}: NavbarProps) {
 
   const [menuActive, setMenuActive] = useState(false);
   const [activeLink, setActiveLink] = useState<number | null>(null);
@@ -47,5 +47,3 @@ const Navbar: React.FC<NavbarProps> = ({navLinks}) => {
     </>
   );
 };
-
-export default Navbar;

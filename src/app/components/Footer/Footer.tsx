@@ -17,10 +17,9 @@ export interface SocialLinkItem{
 export interface FooterProps {
     socialLinks: SocialLinkItem[];
     navLinks: NavbarItem[];
-
 }
 
-const Footer: React.FC<FooterProps> = ({ socialLinks,  navLinks}) => {
+export default function Footer({ socialLinks,  navLinks}: FooterProps){
 
     const currentYear = new Date().getFullYear();
 
@@ -48,5 +47,3 @@ const Footer: React.FC<FooterProps> = ({ socialLinks,  navLinks}) => {
     </>
   );
 };
-
-export default Footer;

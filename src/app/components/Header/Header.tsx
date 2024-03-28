@@ -26,8 +26,7 @@ export interface HeaderProps {
   socialLinks: SocialLinkItem[];
 }
 
-
-const Header: React.FC<HeaderProps> = ({headerInfo, socialLinks}) => {
+export default function Header({headerInfo, socialLinks}: HeaderProps) {
 
   const firstItem = headerInfo[0];
 
@@ -54,5 +53,3 @@ const Header: React.FC<HeaderProps> = ({headerInfo, socialLinks}) => {
     </>
   );
 };
-
-export default Header;

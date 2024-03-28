@@ -11,7 +11,7 @@ export interface SkillsProps {
     skillsInfo: SkillsItem[];
   }
 
-const Skills: React.FC<SkillsProps> = ({ skillsInfo }) => {
+export default function Skills({ skillsInfo }: SkillsProps){
     return (
         <>
             <section className="skills" id="skills">
@@ -32,5 +32,3 @@ const Skills: React.FC<SkillsProps> = ({ skillsInfo }) => {
         </>
     );
 };
-
-export default Skills;
