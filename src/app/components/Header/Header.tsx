@@ -2,7 +2,7 @@ import "./Header.css";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import mainImage from "../../assets/images/main-image.jpg";
+import mainImage from "../../../../public/main-image.jpg";
 import getFontAwesomeIcon from "@/app/services/iconService/iconService";
 
 export interface HeaderItem {
