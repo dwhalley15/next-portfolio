@@ -20,7 +20,14 @@ export const metadata: Metadata = {
     url: "https://next-portfolio-delta-snowy.vercel.app/",
     title: "Ortheyus | Software Developer | Web Enthusiast",
     description: "Explore the portfolio of Ortheyus, a software developer passionate about creating innovative solutions. Discover projects, skills, and expertise in web development and programming.",
-    ...openGraphImage,
+    images: [
+      {
+        url: openGraphImage.src,
+        width: 800,
+        height: 600,
+        alt: "Ortheyus | Software Developer | Web Enthusiast",
+      },
+    ]
   },
 };
 
