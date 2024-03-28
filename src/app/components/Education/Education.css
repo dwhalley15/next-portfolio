@@ -79,7 +79,7 @@
     top: 18px;
     width: 0;
     z-index: 1;
-    right: 30px;
+    right: 31px;
     border: medium solid var(--main-color);
     border-width: 10px 0 10px 10px;
     border-color: transparent transparent transparent var(--main-color);
@@ -110,6 +110,7 @@
     border: 1px solid transparent;
     cursor: pointer;
     transition: 0.3s ease;
+    padding : 2rem;
 }
 
 .education-text:hover{
@@ -198,5 +199,9 @@
     .education-title {
         font-size: 1.6rem;
         padding-top: 1rem;
+    }
+
+    .education-text{
+        padding: 1rem;
     }
 }
