@@ -1,10 +1,11 @@
+import { revalidatePath } from 'next/cache';
 import { Resend } from 'resend';
 
 const API_KEY = 're_WzNP5iDZ_JKo7AapXzUEMRTTyBX4hncUm'
 
 const resend = new Resend(API_KEY);
 
-export const sendEmail = async (formData: FormData) => {
+export async function SendEmail(prevState: any, formData: FormData) {
     try{
         const senderName = formData.get('senderName') as string;
         const senderEmail = formData.get('senderEmail') as string;
@@ -14,13 +15,13 @@ export const sendEmail = async (formData: FormData) => {
 
     if(!senderEmail || typeof senderEmail !== "string"){
         return{
-            error: "Invalid Email Address",
+            message: "Invalid Email Address",
         };
     }
 
     if(!message || typeof message !== "string"){
         return{
-            error: "Invalid Message",
+            message: "Invalid Message",
         };
     }
 
@@ -44,10 +45,11 @@ export const sendEmail = async (formData: FormData) => {
             Authorization: `Bearer ${API_KEY}`
         }
     });
-        return { success: true};
+        revalidatePath('/');
+        return { message: `Message Sent`};
     } catch(error){
         console.error("Error sending email", error);
-        return {error: 'Failed to send email'};
+        return {message: 'Failed to send message'};
     }
     
 };

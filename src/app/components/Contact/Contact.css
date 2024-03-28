@@ -54,6 +54,13 @@ input[type=number] {
     outline: none;
 }
 
+.contact-message{
+    font-size: 1.6rem;
+    max-width: 70rem;
+    margin: 1rem auto;
+    text-align: center;
+}
+
 @media (max-width: 995px) {
     .contact h2{
         margin-bottom: 3rem;
