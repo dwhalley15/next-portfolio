@@ -9,7 +9,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 102;
   }
   
 .header_logo{
