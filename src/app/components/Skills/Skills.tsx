@@ -36,7 +36,7 @@ export default function Skills({ skillsInfo }: SkillsProps){
                 <h2>Skills</h2>
                 <div className="skills-container">
                     <div className="skills-row">
-                    {skillsInfo.map((item: SkillsItem) => (
+                    {skillsInfo.slice().sort((a, b) => a.id - b.id).map((item: SkillsItem) => (
                         <div key={item.id} 
                         className={`skills-bar ${selectedSkill && selectedSkill.id === item.id && showDesc ? 'active' : ''}`}
                         onClick={() => handleClick(item)}
