@@ -83,6 +83,11 @@ input[type=number] {
     font-weight: 500;
 }
 
+.disabled{
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+}
+
 @media (max-width: 995px) {
     .contact h2{
         margin-bottom: 3rem;

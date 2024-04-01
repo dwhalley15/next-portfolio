@@ -21,6 +21,8 @@ export default function Contact({ contactInfo }:ContactProps ) {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
+  const [formLoading, setFormLoading] = useState(false);
+
   const firstItem = contactInfo[0];
 
   return (
@@ -34,6 +36,7 @@ export default function Contact({ contactInfo }:ContactProps ) {
           </div>
         ) : (
           <form ref={ref} action={async (formData) => {
+            setFormLoading(true);
             await sendEmail(formData);
             ref.current?.reset();
             setFormSubmitted(true);
@@ -47,7 +50,7 @@ export default function Contact({ contactInfo }:ContactProps ) {
               <textarea name="message" cols={30} rows={10} placeholder="Your Message" required></textarea>
             </div>
             <input type="hidden" name="receiverEmail" value={firstItem.email}/>
-            <input type="submit" className="btn" value={firstItem.button_text} />
+            <input type="submit" className={`btn ${formLoading ? "disabled" : ""}`} value={firstItem.button_text} disabled={formLoading}/>
           </form>
         )}
       </section>
