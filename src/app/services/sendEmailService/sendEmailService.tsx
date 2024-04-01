@@ -15,18 +15,7 @@ export async function sendEmail(formData: FormData) {
         const senderNumber = formData.get('senderNumber') as string;
         const subject = formData.get('subject') as string;
         const message = formData.get('message') as string;
-
-        if (!senderEmail || typeof senderEmail !== "string") {
-            return {
-                message: "Invalid Email Address",
-            };
-        }
-
-        if (!message || typeof message !== "string") {
-            return {
-                message: "Invalid Message",
-            };
-        }
+        const receiverEmail = formData.get('receiverEmail') as string;
 
         const emailBody = `
           Name: ${senderName || 'N/A'}
@@ -40,7 +29,7 @@ export async function sendEmail(formData: FormData) {
 
         const { data } = await resend.emails.send({
             from: 'onboarding@resend.dev',
-            to: 'one_winged@hotmail.com',
+            to: receiverEmail,
             subject: "Message from Contact Form",
             reply_to: senderEmail,
             text: emailBody,
@@ -49,14 +38,9 @@ export async function sendEmail(formData: FormData) {
         console.log(data);
 
         revalidatePath('/');
-
-        return { message: `Message Sent` };
     }
     catch (error) {
-
         console.log(error);
-
-        return { message: '$Failed to send message' };
     }
 }
 

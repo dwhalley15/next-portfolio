@@ -7,6 +7,7 @@ export async function getAllData() {
   const servicesInfo = await sql`SELECT * FROM services_info`;
   const skillsInfo = await sql`SELECT * FROM skills_info`;
   const educationInfo = await sql`SELECT * FROM education_info`;
+  const contactInfo = await sql`SELECT * FROM contact_info`;
 
   return {
     navLinks: navLinks.rows,
@@ -15,5 +16,6 @@ export async function getAllData() {
     servicesInfo: servicesInfo.rows,
     skillsInfo: skillsInfo.rows,
     educationInfo: educationInfo.rows,
+    contactInfo: contactInfo.rows,
   };
 }

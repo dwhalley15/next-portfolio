@@ -12,3 +12,4 @@ export type { HeaderItem, SocialLinkItem } from "../../components/Header/Header"
 export type { ServicesItem } from "../../components/Services/Services";
 export type { SkillsItem } from "../../components/Skills/Skills";
 export type { EducationItem } from "../../components/Education/Education";
+export type { ContactItem } from "../../components/Contact/Contact";
