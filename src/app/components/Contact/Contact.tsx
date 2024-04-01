@@ -3,6 +3,7 @@
 import "./Contact.css";
 import { sendEmail } from "../../services/sendEmailService/sendEmailService";
 import { useRef, useState } from 'react';
+import { useFormStatus } from "react-dom";
 
 export interface ContactItem{
   id: number;
@@ -15,13 +16,20 @@ export interface ContactProps{
   contactInfo: ContactItem[];
 }
 
+const SubmitButton = ({label}: {label: string}) => {
+  
+  const { pending } = useFormStatus();
+
+  return (
+    <input type="submit" className={`btn ${pending ? "disabled" : ""}`} value={label} disabled={pending}/>
+  );
+}
+
 export default function Contact({ contactInfo }:ContactProps ) {
 
   const ref = useRef<HTMLFormElement>(null);
 
   const [formSubmitted, setFormSubmitted] = useState(false);
-
-  const [formLoading, setFormLoading] = useState(false);
 
   const firstItem = contactInfo[0];
 
@@ -36,7 +44,6 @@ export default function Contact({ contactInfo }:ContactProps ) {
           </div>
         ) : (
           <form ref={ref} action={async (formData) => {
-            setFormLoading(true);
             await sendEmail(formData);
             ref.current?.reset();
             setFormSubmitted(true);
@@ -50,7 +57,7 @@ export default function Contact({ contactInfo }:ContactProps ) {
               <textarea name="message" cols={30} rows={10} placeholder="Your Message" required></textarea>
             </div>
             <input type="hidden" name="receiverEmail" value={firstItem.email}/>
-            <input type="submit" className={`btn ${formLoading ? "disabled" : ""}`} value={firstItem.button_text} disabled={formLoading}/>
+            <SubmitButton label={firstItem.button_text}/>
           </form>
         )}
       </section>
