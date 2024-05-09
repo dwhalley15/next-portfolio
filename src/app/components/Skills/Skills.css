@@ -7,7 +7,7 @@
     color: var(--text-color);
     border-radius: 1rem;
     padding: 2rem;
-    width: 70%;
+    width: 100%;
     margin: auto;
     margin-top: 2rem;
 }
@@ -39,12 +39,19 @@
     align-items: center;
     gap: 1rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .skill span{
     font-size: 2rem;
     font-weight: 500;
     margin-left: 0.5rem;
+}
+
+.skill-description{
+    font-size: 1.4rem !important;
+    font-weight: 400 !important;
+    color: white;
 }
 
 .skills h2{
@@ -69,5 +76,8 @@
     .skills h2{
         margin-bottom: 3rem;
         font-size: 2.5rem;
+    }
+    .skill-description{
+        font-size: 1rem;
     }
 }

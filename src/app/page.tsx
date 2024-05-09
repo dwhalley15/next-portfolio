@@ -12,6 +12,7 @@ export default async function Home() {
     servicesInfo,
     skillsInfo,
     educationInfo,
+    contactInfo,
   } = await getAllData();
 
   return (
@@ -22,7 +23,7 @@ export default async function Home() {
       <components.Services servicesInfo={ servicesInfo as components.ServicesItem[] }/>
       <components.Skills skillsInfo={ skillsInfo as components.SkillsItem[] }/>
       <components.Education educationInfo={ educationInfo as components.EducationItem[] }/>
-      <components.Contact />
+      <components.Contact contactInfo={ contactInfo as components.ContactItem[] }/>
     </main>
     <components.Footer socialLinks={ socialLinks as components.SocialLinkItem[]} navLinks={navLinks as components.NavbarItem[]} />
    </>
