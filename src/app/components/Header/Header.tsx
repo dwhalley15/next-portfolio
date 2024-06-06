@@ -34,7 +34,7 @@ export default function Header({headerInfo, socialLinks}: HeaderProps) {
     <>
       <section className="header" id="home">
         <div className="image-container">
-            <Image className="main-image" src={mainImage} fill alt={firstItem.image_alt} object-fit="cover"/>
+            <Image className="main-image" src={mainImage} alt={firstItem.image_alt} width={400} height={400}/>
         </div>
         <div className="text-container">
           <h1>{firstItem.intro_text} <span>{firstItem.name.charAt(0).toUpperCase() + firstItem.name.slice(1)}</span></h1>
