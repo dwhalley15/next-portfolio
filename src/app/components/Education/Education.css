@@ -40,7 +40,7 @@
     width: 25px;
     height: 25px;
     line-height: 25px;
-    right: -12px;
+    right: -15px;
     background-color: rgb(252, 252, 252);
     border: 3px solid var(--main-color);
     top: 15px;
@@ -51,16 +51,17 @@
 .education-icon{
     text-align: center;
     position: absolute;
-    top: 19.5px;
+    top: 21.5px;
     z-index: 101;
     width: 25px;
     height: 25px;
-    right: -12px;
+    right: -13px;
     color: var(--second-bg-color);
 }
 
 .right .education-icon{
     left: -12px;
+    right: 0;
 }
 
 
@@ -99,7 +100,7 @@
 }
 
 .right::after {
-    left: -12px;
+    left: -15px;
 }
 
 .education-text {
@@ -173,7 +174,7 @@
     }
 
     .left::after {
-        left: 19px;
+        left: 17px;
     }
 
     .education-icon{
@@ -185,7 +186,7 @@
     }
 
     .right::after{
-        left: 19px;
+        left: 17px;
     }
     .education h2{
         margin-bottom: 3rem;
