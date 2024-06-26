@@ -1,6 +1,6 @@
 import "./about.css";
 import Link from "next/link";
-import mainImage from "../../../../public/main-image.jpg";
+import mainImage from "../../../public/main-image.jpg";
 
 export default async function About() {
 
