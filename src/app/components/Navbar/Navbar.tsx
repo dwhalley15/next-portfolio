@@ -33,7 +33,7 @@ export default function Navbar({navLinks}: NavbarProps) {
     <>
       <header>
         <nav>
-          <Link className="header_logo" href={`#${navLinks[0].link_name}`}><h1>Ortheyus</h1></Link>
+          <Link className="header_logo" href={`#${navLinks[0].link_name}`}><span>Ortheyus</span></Link>
           <FontAwesomeIcon icon={ menuActive ? faX : faBars} size="3x" onClick={toggleMenu}/>
           <ul className={menuActive ? 'active' : ''}>
           {navLinks.map((link: NavbarItem) => (

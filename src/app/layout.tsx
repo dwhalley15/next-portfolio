@@ -13,15 +13,24 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://next-portfolio-delta-snowy.vercel.app/'),
   title: "Ortheyus | Software Developer | Web Enthusiast",
-  description: "Explore the portfolio of Ortheyus, a software developer passionate about creating innovative solutions. Discover projects, skills, and expertise in web development and programming.",
+  description: "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise.",
   keywords: "ortheyus, software developer, web developer, web enthusiast, portfolio, skills, web development, programming, software development, web design, html, css, javascript, react, nextjs",
+  authors: [{name: "Ortheyus"}],
+  generator: "Next.js",
+  referrer: 'origin-when-cross-origin',
+  creator: 'Ortheyus',
+  publisher: 'Ortheyus',
+  applicationName: "Ortheyus Portfolio",
+  alternates: {
+    canonical: "https://next-portfolio-delta-snowy.vercel.app/",
+  },
   openGraph: {
     type: "website",
     siteName: "Ortheyus | Software Developer | Web Enthusiast",
     locale: "en_UK",
     url: "https://next-portfolio-delta-snowy.vercel.app/",
     title: "Ortheyus | Software Developer | Web Enthusiast",
-    description: "Explore the portfolio of Ortheyus, a software developer passionate about creating innovative solutions. Discover projects, skills, and expertise in web development and programming.",
+    description: "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise.",
     images: [
       {
         url: openGraphImage.src,
@@ -34,7 +43,7 @@ export const metadata: Metadata = {
   robots: {
     follow: true,
     index: true,
-    nocache: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -47,7 +56,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Ortheyus | Software Developer | Web Enthusiast',
-    description: 'Explore the portfolio of Ortheyus, a software developer passionate about creating innovative solutions. Discover projects, skills, and expertise in web development and programming.',
+    description: "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise.",
     images: [openGraphImage.src],
   },
 };

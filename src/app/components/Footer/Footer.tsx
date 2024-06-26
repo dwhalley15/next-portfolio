@@ -39,6 +39,9 @@ export default function Footer({ socialLinks,  navLinks}: FooterProps){
                 <Link href={`#${link.link_name}`}>{link.link_name.charAt(0).toUpperCase() + link.link_name.slice(1)}</Link>
               </li>
             ))}
+            <li>
+              <Link href="/about">About this Portfolio</Link>
+            </li>
         </ul>
         <p className="copyright">
             {`Copyright ${currentYear} \u00A9 Ortheyus | All Rights Reserved`}
