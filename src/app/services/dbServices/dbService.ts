@@ -19,3 +19,11 @@ export async function getAllData() {
     contactInfo: contactInfo.rows,
   };
 }
+
+export async function getProjectData() {
+  const projects = await sql`SELECT * FROM projects`;
+
+  return {
+    projects: projects.rows,
+  };
+}

@@ -40,7 +40,7 @@ export default function Footer({ socialLinks,  navLinks}: FooterProps){
               </li>
             ))}
             <li>
-              <Link href="/about">About this Portfolio</Link>
+              <Link href="/about">About</Link>
             </li>
         </ul>
         <p className="copyright">
