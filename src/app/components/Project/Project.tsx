@@ -1,6 +1,5 @@
 import "./Project.css";
 import Link from "next/link";
-import Image from "next/image";
 import ImageService from "../../services/imageService/imageService";
 
 export interface ProjectProps {
@@ -8,7 +7,7 @@ export interface ProjectProps {
     description: string;
     image: any;
     technologies: string[];
-    video: string;
+    video?: string;
     url: string;
 }
 
@@ -22,14 +21,15 @@ export default function Project({ title, description, image, technologies, video
             <p>{description}</p>
             <div className="project-media">
                 {renderredImage}
-                <iframe 
-                    src={`https://www.youtube.com/embed/${video}`}
-                    title="Youtube Video Player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    >
-                </iframe>
+                {video && (
+                    <iframe 
+                        src={`https://www.youtube.com/embed/${video}`}
+                        title="Youtube Video Player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        referrerPolicy="strict-origin-when-cross-origin"
+                    ></iframe>
+                )}
             </div>
             <h3>Technologies Used:</h3>
             <ul>
