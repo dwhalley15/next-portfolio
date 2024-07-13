@@ -185,7 +185,7 @@
     }
 
     .btn-container{
-      flex-direction: column;
+      justify-content: center;
     }
   
     .text-container {

@@ -56,7 +56,7 @@ export default function Skills({ skillsInfo }: SkillsProps){
                         ))}
                     </div>
                 </div>
-                <Link className="skills-btn" href="/projects">Projects Worked On</Link>
+                <Link className="skills-btn" href="/projects">Projects</Link>
             </section>
         </>
     );

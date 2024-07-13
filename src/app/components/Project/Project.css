@@ -37,9 +37,10 @@
 }
 
 .project-media{
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 3rem;
     margin-bottom: 1rem;
@@ -50,7 +51,7 @@
     width: 426px;
     height: 240px;
     border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
     transition: 0.3s ease;
     cursor: pointer;
     object-fit: cover;
@@ -59,7 +60,13 @@
 .project-media img:hover, 
 .project-media iframe:hover {
     transform: scale(1.03);
-    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    filter: drop-shadow(0 0 25px rgba(0,0,0,0.4));
+}
+
+.project-media img:hover{
+    transform: scale(2);
+    object-fit: contain;
+    background-color: black;
 }
 
 .project ul{

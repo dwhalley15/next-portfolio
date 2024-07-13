@@ -29,7 +29,7 @@ export default function Services({ servicesInfo }: ServicesProps){
                 </div>
             ))}
         </div>
-        <Link className="services-btn" href="/projects">Projects Worked On</Link>
+        <Link className="services-btn" href="/projects">Projects</Link>
       </section>
     </>
   );
