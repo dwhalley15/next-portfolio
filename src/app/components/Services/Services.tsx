@@ -1,6 +1,7 @@
 import  "./Services.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import getFontAwesomeIcon from "@/app/services/iconService/iconService";
+import Link from "next/link";
 
 export interface ServicesItem{
     id: number;
@@ -28,6 +29,7 @@ export default function Services({ servicesInfo }: ServicesProps){
                 </div>
             ))}
         </div>
+        <Link className="services-btn" href="/projects">Projects Worked On</Link>
       </section>
     </>
   );

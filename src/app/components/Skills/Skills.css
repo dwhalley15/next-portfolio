@@ -60,6 +60,30 @@
     font-weight: 700;
 }
 
+.skills-btn{
+    margin-top: 2rem;
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--bg-color);
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: var(--main-color) !important;
+    border: 2px solid var(--main-color);
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+  
+  .skills-btn:hover{
+    transform: scale(1.03);
+    background-color: var(--main-color);
+    color: black !important;
+    box-shadow: 0 0 25px var(--main-color);
+  }
+
 @media (max-width: 995px) {
     .skills-container{
         margin: 0;
@@ -79,5 +103,10 @@
     }
     .skill-description{
         font-size: 1rem;
+    }
+
+    .skills-btn{
+        width: 100%;
+        text-align: center;
     }
 }

@@ -15,7 +15,7 @@ export interface HeaderItem {
   button_text: string;
 }
 
-export interface SocialLinkItem{
+export interface SocialLinkItem {
   id: number;
   social_name: string;
   social_url: string;
@@ -26,15 +26,15 @@ export interface HeaderProps {
   socialLinks: SocialLinkItem[];
 }
 
-export default function Header({headerInfo, socialLinks}: HeaderProps) {
+export default function Header({ headerInfo, socialLinks }: HeaderProps) {
 
   const firstItem = headerInfo[0];
 
-  return(
+  return (
     <>
       <section className="header" id="home">
         <div className="image-container">
-            <Image className="main-image" src={mainImage} alt={firstItem.image_alt} width={400} height={400}/>
+          <Image className="main-image" src={mainImage} alt={firstItem.image_alt} width={400} height={400} />
         </div>
         <div className="text-container">
           <h1>{firstItem.intro_text} <span>{firstItem.name.charAt(0).toUpperCase() + firstItem.name.slice(1)}</span></h1>
@@ -43,11 +43,14 @@ export default function Header({headerInfo, socialLinks}: HeaderProps) {
           <div className="icons">
             {socialLinks.map((link: SocialLinkItem) => (
               <Link key={link.id} href={link.social_url} target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={getFontAwesomeIcon(link.social_name)} size="1x"/>
+                <FontAwesomeIcon icon={getFontAwesomeIcon(link.social_name)} size="1x" />
               </Link>
             ))}
           </div>
-          <Link href="#contact" className="btn">{firstItem.button_text}</Link>
+          <div className="btn-container">
+            <Link href="#contact" className="btn">{firstItem.button_text}</Link>
+            <Link className="btn" href="/projects">Projects Worked On</Link>
+          </div>
         </div>
       </section>
     </>

@@ -4,6 +4,7 @@ import  "./Skills.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import getFontAwesomeIcon from "../../services/iconService/iconService";
 import {useState} from "react";
+import Link from "next/link";
 
 export interface SkillsItem{
     id: number;
@@ -55,6 +56,7 @@ export default function Skills({ skillsInfo }: SkillsProps){
                         ))}
                     </div>
                 </div>
+                <Link className="skills-btn" href="/projects">Projects Worked On</Link>
             </section>
         </>
     );

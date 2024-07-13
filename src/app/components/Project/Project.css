@@ -24,12 +24,6 @@
     font-weight: 500;
 }
 
-.project p{
-    font-size: 1.6rem;
-    font-weight: 400;
-    max-height: 100px;
-}
-
 .project a{
     font-size: 1.6rem;
     font-weight: 400;
@@ -87,6 +81,14 @@
 
     .project-media{
         flex-direction: column;
+    }
+
+    .project h2{
+        font-size: 3rem;
+    }
+
+    .project h3{
+        font-size: 2.5rem;
     }
 
 }

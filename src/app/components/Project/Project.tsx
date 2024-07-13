@@ -1,6 +1,7 @@
 import "./Project.css";
 import Link from "next/link";
 import Image from "next/image";
+import ImageService from "../../services/imageService/imageService";
 
 export interface ProjectProps {
     title: string;
@@ -12,12 +13,15 @@ export interface ProjectProps {
 }
 
 export default function Project({ title, description, image, technologies, video, url }: ProjectProps) {
+
+    const renderredImage = ImageService(image, title);
+
     return(
         <section className="project">
             <h2>{title}</h2>
             <p>{description}</p>
             <div className="project-media">
-                <Image src={image} alt={title} width={426} height={240} />
+                {renderredImage}
                 <iframe 
                     src={`https://www.youtube.com/embed/${video}`}
                     title="Youtube Video Player"
