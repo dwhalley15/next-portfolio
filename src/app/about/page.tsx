@@ -1,6 +1,38 @@
 import "./about.css";
 import Link from "next/link";
 import mainImage from "../../../public/main-image.jpg";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    metadataBase: new URL('https://next-portfolio-delta-snowy.vercel.app/about'),
+    title: "Ortheyus | Software Developer | About",
+    description: "Discover Ortheyus' about page: dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio.",
+    alternates: {
+        canonical: "https://next-portfolio-delta-snowy.vercel.app/about/",
+      },
+      openGraph: {
+        type: "website",
+        siteName: "Ortheyus | Software Developer | Web Enthusiast",
+        locale: "en_UK",
+        url: "https://next-portfolio-delta-snowy.vercel.app/about",
+        title: "Ortheyus | Software Developer | About",
+        description: "Discover Ortheyus' about page: dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio.",
+        images: [
+            {
+              url: mainImage.src,
+              width: 800,
+              height: 600,
+              alt: "Ortheyus | Software Developer | Web Enthusiast",
+            },
+          ]
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: 'Ortheyus | Software Developer | About',
+        description: "Discover Ortheyus' about page: dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio.",
+        images: [mainImage.src],
+      },
+}
 
 export default async function About() {
 
@@ -26,7 +58,7 @@ export default async function About() {
             "width": 800,
             "height": 600
         },
-        "description": "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise."
+        "description": "Discover Ortheyus' about page: dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio."
     };
 
     return (
