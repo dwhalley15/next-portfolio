@@ -75,6 +75,7 @@ export default async function About() {
                     <li><strong>Developer Experience</strong>{": Next.js offers a smooth development experience with built-in features like routing, image optimization, and API routes."}</li>
                     <li><strong>Flexibility</strong>{": Whether I need static pages, dynamic content, or API endpoints, Next.js handles it all seamlessly."}</li>
                 </ul>
+                <Link href="https://nextjs.org/" className="btn">Find out more</Link>
                 <h2>Why use TypeScript?</h2>
                 <p>{"TypeScript is a superset of JavaScript that adds static types. Here’s why I opted for TypeScript:"}</p>
                 <ul>
@@ -82,6 +83,7 @@ export default async function About() {
                     <li><strong>Improved Developer Experience</strong>{": By rendering pages on the server, Next.js improves the SEO performance of the site, making it easier for search engines to index the content."}</li>
                     <li><strong>Scalability</strong>{": TypeScript's strong type system makes it easier to maintain and scale large codebases."}</li>
                 </ul>
+                <Link href="https://www.typescriptlang.org/" className="btn">Find out more</Link>
                 <h2>Why use Vercel?</h2>
                 <p>{"Vercel is a cloud platform for static sites and Serverless Functions that makes deployment simple and efficient. Here’s why I chose Vercel:"}</p>
                 <ul>
@@ -90,6 +92,7 @@ export default async function About() {
                     <li><strong>Built for Next.js</strong>{": As the creators of Next.js, Vercel offers first-class support and optimizations for Next.js applications."}</li>
                     <li><strong>Developer Experience</strong>{": Vercel’s dashboard and CLI provide an intuitive interface for managing deployments and viewing logs."}</li>
                 </ul>
+                <Link href="https://vercel.com/" className="btn">Find out more</Link>
                 <h2>Why use PostgreSQL?</h2>
                 <p>{"PostgreSQL is a powerful, open-source relational database system. Here’s why I chose PostgreSQL:"}</p>
                 <ul>
@@ -98,9 +101,11 @@ export default async function About() {
                     <li><strong>Performance</strong>{": PostgreSQL delivers strong performance for both read and write operations, ensuring the site can handle data efficiently."}</li>
                     <li><strong>Extensibility</strong>{": With support for extensions, PostgreSQL can be customized to fit the specific needs of the application."}</li>
                 </ul>
+                <Link href="https://www.postgresql.org/" className="btn">Find out more</Link>
                 <h2>Conclusion</h2>
                 <p>{"By leveraging Next.js, TypeScript, Vercel, and PostgreSQL, this site is built to be performant, scalable, and developer-friendly. Each technology was chosen to provide the best possible user and developer experience."}</p>
                 <p>{"Thank you for visiting my portfolio! If you have any questions or would like to know more, feel free to reach out."}</p>
+                <Link href="/projects" className="btn">Projects</Link>
             </section>
             <script
                 type="application/ld+json"
