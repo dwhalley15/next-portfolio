@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     metadataBase: new URL('https://next-portfolio-delta-snowy.vercel.app/about'),
     title: "Ortheyus | Software Developer | About",
-    description: "Discover Ortheyus' about page: dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio.",
+    description: "Discover Ortheyus' about page: which explains the technology stack and choices for this site. Learn why each component was chosen for this portfolio.",
     alternates: {
         canonical: "https://next-portfolio-delta-snowy.vercel.app/about/",
       },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         locale: "en_UK",
         url: "https://next-portfolio-delta-snowy.vercel.app/about",
         title: "Ortheyus | Software Developer | About",
-        description: "Discover Ortheyus' about page: dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio.",
+        description: "Discover Ortheyus' about page: which explains the technology stack and choices for this site. Learn why each component was chosen for this portfolio.",
         images: [
             {
               url: mainImage.src,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       twitter: {
         card: 'summary_large_image',
         title: 'Ortheyus | Software Developer | About',
-        description: "Discover Ortheyus' about page: dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio.",
+        description: "Discover Ortheyus' about page: which explains the technology stack and choices for this site. Learn why each component was chosen for this portfolio.",
         images: [mainImage.src],
       },
 }
@@ -58,7 +58,7 @@ export default async function About() {
             "width": 800,
             "height": 600
         },
-        "description": "Discover Ortheyus' about page: dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio."
+        "description": "Discover Ortheyus' about page: which explains the technology stack and choices for this site. Learn why each component was chosen for this portfolio."
     };
 
     return (
