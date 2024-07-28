@@ -21,9 +21,14 @@ export async function getAllData() {
 }
 
 export async function getProjectData() {
-  const projects = await sql`SELECT * FROM projects`;
+  const projects = await sql`SELECT * FROM projects ORDER BY id DESC`;
 
   return {
     projects: projects.rows,
   };
+}
+
+export async function getProjectByName( projectName: string ) {
+  const row = await sql`SELECT * FROM projects WHERE url = ${projectName}`;
+  return row;
 }

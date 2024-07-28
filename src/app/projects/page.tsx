@@ -70,14 +70,11 @@ export default async function Projects() {
 
     return(
         <>
-            <div className="project-container">
+            <section className="project-container">
             <Link href="/" className="sticky-link">Back to Portfolio</Link>
                 <h1>Projects</h1>
                 {projects.length > 0 ? (
                     <>
-                        <p>
-                            Below are some of the projects I have worked on.
-                        </p>
                         {projects.map((project, index) => (
                             <Project key={index} {...project} />
                         ))}
@@ -85,7 +82,7 @@ export default async function Projects() {
                 ) : (
                     <p>No projects currently available. Check back soon!</p>
                 )}
-            </div>
+            </section>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
