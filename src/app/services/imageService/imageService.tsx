@@ -4,20 +4,25 @@ import rightTrackImage from "../../../../public/right-track-image.png";
 import dailyGrindImage from "../../../../public/daily-grind-account.png";
 import battleshipsImage from "../../../../public/battleships-home.png";
 import imageNotFound from "../../../../public/image-not-found.jpg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
-export default function ImageService(imageName: string, altText: string){
-    switch(imageName.toLowerCase()){
-        case 'theguitarshop':
-            return <Image src={theGuitarShopImage} alt={altText} width={426} height={240}/>;
-        case 'inspirationqutoes':
-            return <Image src={inspirationalQuotesImage} alt={altText} width={426} height={240}/>;
-        case 'righttrack':
-            return <Image src={rightTrackImage} alt={altText} width={426} height={240}/>;
-        case 'dailygrind':
-            return <Image src={dailyGrindImage} alt={altText} width={426} height={240}/>;
-        case 'battleships':
-            return <Image src={battleshipsImage} alt={altText} width={426} height={240}/>;
-        default: <Image src={imageNotFound} alt={altText} width={426} height={240}/>;
-    }
-}
+type ImageMap = Record<string, StaticImageData>;
+
+const imageMap: ImageMap = {
+    theguitarshop: theGuitarShopImage,
+    inspirationqutoes: inspirationalQuotesImage,
+    righttrack: rightTrackImage,
+    dailygrind: dailyGrindImage,
+    battleships: battleshipsImage,
+    default: imageNotFound,
+  };
+
+  function getImageSource(imageName: string): StaticImageData {
+    return imageMap[imageName.toLowerCase()] || imageMap["default"];
+  }
+
+  export default function ImageService(imageName: string, altText: string): JSX.Element {
+    const imageSrc = getImageSource(imageName);
+  
+    return <Image src={imageSrc.src} alt={altText} width={426} height={240} />;
+  }
