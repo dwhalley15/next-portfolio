@@ -20,6 +20,26 @@ export async function getAllData() {
   };
 }
 
+export async function getNavLinks() {
+  const navLinks = await sql`SELECT * FROM nav_links`;
+  return navLinks.rows;
+}
+
+export async function getHeaderInfo() {
+  const headerInfo = await sql`SELECT * FROM header_info`;
+  return headerInfo.rows;
+}
+
+export async function getSocialLinks() {
+  const socialLinks = await sql`SELECT * FROM social_links`;
+  return socialLinks.rows;
+}
+
+export async function getPageDescriptions(){
+  const pageDescriptions = await sql`SELECT * FROM page_descriptions`;
+  return pageDescriptions.rows;
+}
+
 export async function getProjectData() {
   const projects = await sql`SELECT * FROM projects ORDER BY id DESC`;
 

@@ -14,9 +14,10 @@ export interface SkillsItem{
 
 export interface SkillsProps {
     skillsInfo: SkillsItem[];
+    skillsDescription: string;
   }
 
-export default function Skills({ skillsInfo }: SkillsProps){
+export default function Skills({ skillsInfo, skillsDescription }: SkillsProps){
 
     const [showDesc, setShowDesc] = useState(false);
     const [selectedSkill, setSelectedSkill] = useState<SkillsItem | null>(null);
@@ -35,6 +36,7 @@ export default function Skills({ skillsInfo }: SkillsProps){
         <>
             <section className="skills" id="skills">
                 <h2>Skills</h2>
+                <p>{skillsDescription}</p>
                 <div className="skills-container">
                     <div className="skills-row">
                     {skillsInfo.slice().sort((a, b) => a.id - b.id).map((item: SkillsItem) => (
@@ -56,7 +58,6 @@ export default function Skills({ skillsInfo }: SkillsProps){
                         ))}
                     </div>
                 </div>
-                <Link className="skills-btn" href="/projects">Projects</Link>
             </section>
         </>
     );

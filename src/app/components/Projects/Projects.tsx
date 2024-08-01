@@ -1,9 +1,8 @@
-import Project from '../components/Project/Project';
-import {ProjectProps} from "../components/Project/Project";
+import Project from '../Project/Project';
+import {ProjectProps} from "../Project/Project";
 import "./Projects.css";
-import Link from "next/link";
-import mainImage from "../../../public/main-image.jpg";
-import {getProjectData} from "../services/dbServices/dbService";
+import mainImage from "../../../../public/main-image.jpg";
+import {getProjectData} from "../../services/dbServices/dbService";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
       },
       openGraph: {
         type: "website",
-        siteName: "Ortheyus | Software Developer | Web Enthusiast",
+        siteName: "Ortheyus | Software Developer | Projects",
         locale: "en_UK",
         url: "https://next-portfolio-delta-snowy.vercel.app/projects",
         title: "Ortheyus | Software Developer | Projects",
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
               url: mainImage.src,
               width: 800,
               height: 600,
-              alt: "Ortheyus | Software Developer | Web Enthusiast",
+              alt: "Ortheyus | Software Developer | Projects",
             },
           ]
       },
@@ -71,8 +70,8 @@ export default async function Projects() {
     return(
         <>
             <section className="project-container">
-            <Link href="/" className="sticky-link">Back to Portfolio</Link>
                 <h1>Projects</h1>
+                <p>{"Discover Ortheyus' projects page: listing just some of the projects worked on in this software engineering journey."}</p>
                 {projects.length > 0 ? (
                     <>
                         {projects.map((project, index) => (

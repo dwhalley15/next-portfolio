@@ -1,21 +1,16 @@
 import * as components from "./services/importService/importService"; 
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import { getAllData } from "./services/dbServices/dbService";
+import { getNavLinks, getHeaderInfo, getSocialLinks, getProjectData } from "./services/dbServices/dbService";
 
 
 export default async function Home() {
 
 
-  const {
-    navLinks,
-    headerInfo,
-    socialLinks,
-    servicesInfo,
-    skillsInfo,
-    educationInfo,
-    contactInfo,
-  } = await getAllData();
-
+  const navLinks = await getNavLinks();
+  const headerInfo = await getHeaderInfo();
+  const socialLinks = await getSocialLinks();
+  const { projects } = await getProjectData();
+ 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -43,13 +38,9 @@ export default async function Home() {
 
   return (
    <>
-    <components.Navbar navLinks={navLinks as components.NavbarItem[]} />
+    <components.Navbar navLinks={navLinks as components.NavbarItem[]} projects={projects as components.ProjectProps[]} />
     <main>
       <components.Header headerInfo={ headerInfo as components.HeaderItem[]} socialLinks={socialLinks as components.SocialLinkItem[]} />
-      <components.Services servicesInfo={ servicesInfo as components.ServicesItem[] }/>
-      <components.Skills skillsInfo={ skillsInfo as components.SkillsItem[] }/>
-      <components.Education educationInfo={ educationInfo as components.EducationItem[] }/>
-      <components.Contact contactInfo={ contactInfo as components.ContactItem[] }/>
     </main>
     <components.Footer socialLinks={ socialLinks as components.SocialLinkItem[]} navLinks={navLinks as components.NavbarItem[]} />
     <script

@@ -14,6 +14,7 @@ export interface ContactItem{
 
 export interface ContactProps{
   contactInfo: ContactItem[];
+  contactDescription: string;
 }
 
 const SubmitButton = ({label}: {label: string}) => {
@@ -25,7 +26,7 @@ const SubmitButton = ({label}: {label: string}) => {
   );
 }
 
-export default function Contact({ contactInfo }:ContactProps ) {
+export default function Contact({ contactInfo, contactDescription }:ContactProps ) {
 
   const ref = useRef<HTMLFormElement>(null);
 
@@ -37,6 +38,7 @@ export default function Contact({ contactInfo }:ContactProps ) {
     <>
       <section className="contact" id="contact">
         <h2>Contact <span>Me</span></h2>
+        <p>{contactDescription}</p>
         {formSubmitted ? (
           <div className="contact-form-submission">
             <h3>Thank You!</h3>

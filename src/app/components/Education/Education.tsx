@@ -11,9 +11,10 @@ export interface EducationItem{
 }
 export interface EducationProps {
     educationInfo: EducationItem[];
+    educationDescription: string;
   }
 
-export default function Education({ educationInfo }: EducationProps){
+export default function Education({ educationInfo, educationDescription }: EducationProps){
 
   const sortedEducationInfo = [...educationInfo].sort((a, b) => {
     const yearA = a.start_date ? a.start_date.getFullYear() : 0;
@@ -26,6 +27,7 @@ export default function Education({ educationInfo }: EducationProps){
     <>
       <section className="education" id="education">
         <h2>Education</h2>
+        <p>{educationDescription}</p>
         <div className="timeline">
             {sortedEducationInfo.map((item: EducationItem, index: number) => (
                 <div key={item.id} className={`education-container ${index % 2 === 0 ? "left" : "right"}`}>

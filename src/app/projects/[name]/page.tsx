@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { getProjectByName } from "../../services/dbServices/dbService";
+import { getProjectByName, getNavLinks, getSocialLinks, getProjectData } from "../../services/dbServices/dbService";
+import { Navbar, NavbarItem, SocialLinkItem, Footer, ProjectProps } from "../../services/importService/importService";
 import NotFound from "../../not-found";
 import { QueryResult, QueryResultRow } from '@vercel/postgres';
 import Link from "next/link";
@@ -18,7 +19,7 @@ export interface ProjectData {
     link: string;
 }
 
-export async function generateMetadata({params}:  {params: {name: string} }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { name: string } }): Promise<Metadata> {
 
     const mapProjectData = (row: QueryResultRow): ProjectData => {
         return {
@@ -33,43 +34,43 @@ export async function generateMetadata({params}:  {params: {name: string} }): Pr
         };
     };
 
-        const projectData: QueryResult<QueryResultRow> = await getProjectByName(params.name);
+    const projectData: QueryResult<QueryResultRow> = await getProjectByName(params.name);
 
-        const mappedProjectData: ProjectData = mapProjectData(projectData.rows[0]);
+    const mappedProjectData: ProjectData = mapProjectData(projectData.rows[0]);
 
-        const renderredImage = ImageService(mappedProjectData.image, mappedProjectData.title);
+    const renderredImage = ImageService(mappedProjectData.image, mappedProjectData.title);
 
-        const imageSrc = (renderredImage.props as any).src as string;
+    const imageSrc = (renderredImage.props as any).src as string;
 
-        return {
+    return {
+        title: `Ortheyus | Projects | ${mappedProjectData.title}`,
+        description: mappedProjectData.description,
+        alternates: {
+            canonical: "https://next-portfolio-delta-snowy.vercel.app/projects/" + mappedProjectData.url,
+        },
+        openGraph: {
+            type: "website",
+            siteName: `Ortheyus | Projects | ${mappedProjectData.title}`,
+            locale: "en_UK",
+            url: "https://next-portfolio-delta-snowy.vercel.app/projects/" + mappedProjectData.url,
             title: `Ortheyus | Projects | ${mappedProjectData.title}`,
             description: mappedProjectData.description,
-            alternates: {
-                canonical: "https://next-portfolio-delta-snowy.vercel.app/projects/" + mappedProjectData.url,
-              },
-              openGraph: {
-                type: "website",
-                siteName: `Ortheyus | Projects | ${mappedProjectData.title}`,
-                locale: "en_UK",
-                url: "https://next-portfolio-delta-snowy.vercel.app/projects/" + mappedProjectData.url,
-                title: `Ortheyus | Projects | ${mappedProjectData.title}`,
-                description: mappedProjectData.description,
-                images: [
-                  {
+            images: [
+                {
                     url: imageSrc,
                     width: 800,
                     height: 600,
                     alt: `Ortheyus | Projects | ${mappedProjectData.title}`,
-                  },
-                ]
-              },
-              twitter: {
-                card: 'summary_large_image',
-                title: `Ortheyus | Projects | ${mappedProjectData.title}`,
-                description: mappedProjectData.description,
-                images: [imageSrc],
-              },
-        };
+                },
+            ]
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `Ortheyus | Projects | ${mappedProjectData.title}`,
+            description: mappedProjectData.description,
+            images: [imageSrc],
+        },
+    };
 };
 
 export default async function Project({ params }: { params: { name: string } }) {
@@ -95,6 +96,12 @@ export default async function Project({ params }: { params: { name: string } }) 
         }
 
         const mappedProjectData: ProjectData = mapProjectData(projectData.rows[0]);
+
+        const navLinks = await getNavLinks();
+
+        const socialLinks = await getSocialLinks();
+
+        const { projects } = await getProjectData();
 
         const jsonLd = {
             "@context": "https://schema.org",
@@ -125,39 +132,41 @@ export default async function Project({ params }: { params: { name: string } }) 
 
         return (
             <>
-                <section className='project-page'>
-                    <Link href="/projects" className="sticky-link">Back to Projects</Link>
-                    <h1>{mappedProjectData.title}</h1>
-                    <div className='project-page-container'>
-                        <div className='project-page-columns'>
-                            <div className='project-page-text'>
-                                <h2>Description</h2>
-                                <p>{mappedProjectData.descriptionLong}</p>
-                                <h2>Technologies</h2>
-                                <ul>
-                                    {mappedProjectData.technologies.map((tech: string) => (
-                                        <li key={tech}><Link href={getTechLink(tech)} target="_blank" rel="noopener noreferrer">{tech}</Link></li>
-                                    ))}
-                                </ul>
-                                <Link className='project-btn' href={mappedProjectData.link} target="_blank" rel="noopener noreferrer">View Repository</Link>
-                            </div>
-                            <div className='project-page-media'>
-                                <h2>Media</h2>
-                                {mappedProjectData.video && (
-                                    <iframe
-                                        src={`https://www.youtube.com/embed/${mappedProjectData.video}`}
-                                        title="Youtube Video Player"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        referrerPolicy="strict-origin-when-cross-origin"
-                                    ></iframe>
-                                )}
-                                {renderredImage}
+                <Navbar navLinks={navLinks as NavbarItem[]} projects={projects as ProjectProps[]} />
+                <main>
+                    <section className='project-page'>
+                        <h1>{mappedProjectData.title}</h1>
+                        <div className='project-page-container'>
+                            <div className='project-page-columns'>
+                                <div className='project-page-text'>
+                                    <h2>Description</h2>
+                                    <p>{mappedProjectData.descriptionLong}</p>
+                                    <h2>Technologies</h2>
+                                    <ul>
+                                        {mappedProjectData.technologies.map((tech: string) => (
+                                            <li key={tech}><Link href={getTechLink(tech)} target="_blank" rel="noopener noreferrer">{tech}</Link></li>
+                                        ))}
+                                    </ul>
+                                    <Link className='project-btn' href={mappedProjectData.link} target="_blank" rel="noopener noreferrer">View Repository</Link>
+                                </div>
+                                <div className='project-page-media'>
+                                    <h2>Media</h2>
+                                    {mappedProjectData.video && (
+                                        <iframe
+                                            src={`https://www.youtube.com/embed/${mappedProjectData.video}`}
+                                            title="Youtube Video Player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            referrerPolicy="strict-origin-when-cross-origin"
+                                        ></iframe>
+                                    )}
+                                    {renderredImage}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <Link className='profile-btn' href="/about">About this Portfolio</Link>
-                </section>
+                    </section>
+                </main>
+                <Footer socialLinks={socialLinks as SocialLinkItem[]} navLinks={navLinks as NavbarItem[]} />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

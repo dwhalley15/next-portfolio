@@ -1,6 +1,6 @@
-import "./about.css";
+import "./About.css";
 import Link from "next/link";
-import mainImage from "../../../public/main-image.jpg";
+import mainImage from "../../../../public/main-image.jpg";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -64,7 +64,6 @@ export default async function About() {
     return (
         <>
             <section className="about-site-section">
-                <Link href="/" className="sticky-link">Back to Portfolio</Link>
                 <h1>About this Portfolio</h1>
                 <p>{"Welcome to my portfolio! This page is dedicated to explaining the technology stack and choices behind this site. Here, you'll find insights into why I chose each component for building this portfolio."}</p>
                 <h2>Why use Next.js?</h2>

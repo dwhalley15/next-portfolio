@@ -48,7 +48,7 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
             ))}
           </div>
           <div className="btn-container">
-            <Link href="#contact" className="btn">{firstItem.button_text}</Link>
+            <Link href="/contact" className="btn">{firstItem.button_text}</Link>
             <Link className="btn" href="/projects">Projects</Link>
           </div>
         </div>

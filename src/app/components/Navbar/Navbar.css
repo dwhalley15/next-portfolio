@@ -1,141 +1,195 @@
-nav{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 3rem 9%;
-    background: rgba(0, 0, 0, 0.7);
-    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7));
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 102;
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 9%;
+  background: rgba(0, 0, 0, 0.7);
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 102;
+}
+
+.nav-dropdown {
+  position: absolute;
+  width: auto;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  border-left: 3px solid var(--main-color);
+  border-bottom: 3px solid var(--main-color);
+  border-right: 3px solid var(--main-color);
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  padding: 2rem;
+  background-color: var(--second-bg-color);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  z-index: 10;
+  display: none;
+  transition: display 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav-dropdown a {
+  display: block;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link:hover .nav-dropdown,
+.nav-dropdown {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  animation: slideDown 0.3s ease;
+}
+
+.nav-dropdown a {
+  margin: 0;
+}
+
+.header_logo {
+  font-size: 3rem;
+  color: var(--main-color) !important;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.5s ease;
+  margin: 0;
+  border-bottom: none !important;
+}
+
+.header_logo:hover {
+  transform: scale(1.1);
+  border-bottom: none !important;
+}
+
+nav a {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  margin-left: 4rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--main-color);
+  border-bottom: 3px solid var(--main-color);
+}
+
+nav .fa-bars,
+nav .fa-x {
+  color: var(--text-color);
+  cursor: pointer;
+  display: none !important;
+  padding: 0 3rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
   }
-  
-.header_logo{
-    font-size: 3rem;
-    color: var(--main-color) !important;
-    font-weight: 800;
-    cursor: pointer;
-    transition: 0.5s ease;
-    margin: 0;
-    border-bottom: none !important;
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-.header_logo:hover{
-    transform: scale(1.1);
-    border-bottom: none !important;
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(180deg);
   }
-  
-  nav a{
-    font-size: 1.8rem;
-    color: var(--text-color);
-    margin-left: 4rem;
-    font-weight: 500;
-    transition: 0.3s ease;
-    border-bottom: 3px solid transparent;
+
+  to {
+    transform: rotate(0deg);
   }
-  
-  nav a:hover,
-  nav a.active{
-    color: var(--main-color);
+}
+
+@keyframes rotateOut {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 995px) {
+
+  nav .fa-bars,
+  nav .fa-x {
+    display: block !important;
+  }
+
+  nav .fa-bars {
+    animation: rotateIn 0.1s ease;
+  }
+
+  nav .fa-x {
+    animation: rotateOut 0.1s ease;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 40%;
+    border-left: 3px solid var(--main-color);
     border-bottom: 3px solid var(--main-color);
-  }
-  
-  nav .fa-bars, nav .fa-x{
-    color: var(--text-color);
-    cursor: pointer;
-    display: none !important;
-    padding: 0 3rem;
-  }
-  
-  nav ul{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border-bottom-left-radius: 2rem;
+    padding: 1rem 3%;
+    background-color: var(--second-bg-color);
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.4);
+    display: none;
+    transition: display 0.5s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
   }
 
-  @keyframes slideDown {
-    0% {
-      opacity: 0;
-      transform: translateY(-100px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  nav ul.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    animation: slideDown 0.3s ease;
   }
 
-  @keyframes rotateIn {
-    from {
-      transform: rotate(180deg);
-    }
-    to {
-      transform: rotate(0deg);
-    }
+  nav a {
+    display: block;
+    font-size: 2rem;
+    margin: 3rem 0;
   }
 
-  @keyframes rotateOut {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(180deg);
-    }
+  nav a:hover,
+  nav a:active {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-bottom: 0.5rem solid var(--main-color);
   }
-  
-  @media (max-width: 995px){
-    
-    nav .fa-bars, nav .fa-x{
-      display: block !important;  
-    }
 
-    nav .fa-bars {
-      animation: rotateIn 0.1s ease;
-    }
-
-    nav .fa-x {
-      animation: rotateOut 0.1s ease;
-    }
-    
-    nav ul{
-      position: absolute;
-      top: 100%;
-      right: 0;
-      width: 40%;
-      border-left: 3px solid var(--main-color);
-      border-bottom: 3px solid var(--main-color);
-      border-bottom-left-radius: 2rem;
-      padding: 1rem 3%;
-      background-color: var(--second-bg-color);
-      border-top: 0.1rem solid rgba(0, 0, 0, 0.4);
-      display: none;
-      transition: display 0.5s ease-in-out;
-      opacity: 0;
-      visibility: hidden;
-    }
-  
-    nav ul.active{
-      display: block;
-      opacity: 1;
-      visibility: visible;
-      animation: slideDown 0.3s ease;
-    }
-  
-    nav a{
-      display: block;
-      font-size: 2rem;
-      margin: 3rem 0;
-    }
-  
-    nav a:hover,
-    nav a:active{
-      padding: 1rem;
-      border-radius: 0.5rem;
-      border-bottom: 0.5rem solid var(--main-color);
-    }
-  
-    nav h1{
-      font-size: 2.5rem;
-    }
+  nav h1 {
+    font-size: 2.5rem;
   }
+}

@@ -11,13 +11,15 @@ export interface ServicesItem{
 
 export interface ServicesProps {
     servicesInfo: ServicesItem[];
+    servicesDescription: string;
   }
 
-export default function Services({ servicesInfo }: ServicesProps){
+export default function Services({ servicesInfo, servicesDescription }: ServicesProps){
   return(
     <>
       <section className="services" id="services">
         <h2>Services</h2>
+        <p>{servicesDescription}</p>
         <div className="services-container">
             {servicesInfo.map((item: ServicesItem) => (
                 <div key={item.id} className="service-container">
@@ -29,7 +31,6 @@ export default function Services({ servicesInfo }: ServicesProps){
                 </div>
             ))}
         </div>
-        <Link className="services-btn" href="/projects">Projects</Link>
       </section>
     </>
   );
