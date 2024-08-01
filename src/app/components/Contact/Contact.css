@@ -113,6 +113,12 @@ input[type=number] {
         font-size: 2.5rem;
     }
 
+    .contact h2{
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--main-color)
+    }
+
     .contact p{
         font-size: 1.5rem;
     }
