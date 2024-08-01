@@ -18,14 +18,14 @@ export default function Services({ servicesInfo, servicesDescription }: Services
   return(
     <>
       <section className="services" id="services">
-        <h2>Services</h2>
+        <h1>Services</h1>
         <p>{servicesDescription}</p>
         <div className="services-container">
             {servicesInfo.map((item: ServicesItem) => (
                 <div key={item.id} className="service-container">
                     <div className="service-text">
                         <FontAwesomeIcon icon={getFontAwesomeIcon(item.title.toLowerCase().replace(/\s+/g, ''))} size="8x"/>
-                        <h4>{item.title}</h4>
+                        <h2>{item.title}</h2>
                         <p>{item.description}</p>
                     </div>
                 </div>

@@ -18,9 +18,15 @@ input[type=number] {
     appearance: textfield;
   }
 
-.contact h2{
+.contact h1{
     font-size: 4rem;
     font-weight: 700;
+}
+
+.contact h2{
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--main-color)
 }
 
 .contact p{
@@ -103,7 +109,7 @@ input[type=number] {
 }
 
 @media (max-width: 995px) {
-    .contact h2{
+    .contact h1{
         font-size: 2.5rem;
     }
 

@@ -35,7 +35,7 @@ export default function Skills({ skillsInfo, skillsDescription }: SkillsProps){
     return (
         <>
             <section className="skills" id="skills">
-                <h2>Skills</h2>
+                <h1>Skills</h1>
                 <p>{skillsDescription}</p>
                 <div className="skills-container">
                     <div className="skills-row">
@@ -50,7 +50,7 @@ export default function Skills({ skillsInfo, skillsDescription }: SkillsProps){
                             ) : (
                                 <>
                                 <FontAwesomeIcon icon={getFontAwesomeIcon(item.name)} size="5x" />
-                                <span>{item.name}</span>
+                                <h2>{item.name}</h2>
                                 </>
                             )}
                             </div>

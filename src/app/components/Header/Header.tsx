@@ -38,7 +38,7 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
         </div>
         <div className="text-container">
           <h1>{firstItem.intro_text} <span>{firstItem.name.charAt(0).toUpperCase() + firstItem.name.slice(1)}</span></h1>
-          <h3 className="typing-text">{firstItem.typing_text} <span></span></h3>
+          <h2 className="typing-text">{firstItem.typing_text} <span></span></h2>
           <p>{firstItem.description}</p>
           <div className="icons">
             {socialLinks.map((link: SocialLinkItem) => (

@@ -26,7 +26,7 @@ export default function Education({ educationInfo, educationDescription }: Educa
   return(
     <>
       <section className="education" id="education">
-        <h2>Education</h2>
+        <h1>Education</h1>
         <p>{educationDescription}</p>
         <div className="timeline">
             {sortedEducationInfo.map((item: EducationItem, index: number) => (
@@ -36,13 +36,13 @@ export default function Education({ educationInfo, educationDescription }: Educa
                     </div>
                     <div className="education-text">
                         <div className="education-title">
-                            <h4>{item.title}</h4>
+                            <h2>{item.title}</h2>
                         </div>
                         <div className="education-dates">
-                          <h5>
+                          <h3>
                             {item.start_date && new Date(item.start_date).getFullYear()} -{' '}
                             {item.end_date ? new Date(item.end_date).getFullYear() : 'Present'}
-                          </h5>
+                          </h3>
                         </div>
                         <div className="education-description">
                             <p>{item.description}</p>

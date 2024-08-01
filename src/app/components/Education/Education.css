@@ -7,9 +7,18 @@
     gap: 4rem;
 }
 
-.education h2 {
+.education h1 {
     font-size: 4rem;
     font-weight: 700;
+}
+
+.education h2{
+    font-size: 2.5rem;
+}
+
+.education h3{
+    font-size: 1.8rem;
+    font-weight: 500;
 }
 
 .education p{
@@ -202,7 +211,7 @@
     .right::after{
         left: 17px;
     }
-    .education h2{
+    .education h1{
         font-size: 2.5rem;
     }
 
@@ -222,4 +231,13 @@
     .education-text{
         padding: 1rem;
     }
+
+    .education h2{
+        font-size: 1.6rem;
+    }
+    
+    .education h3{
+        font-size: 1.4rem;
+    }
+    
 }

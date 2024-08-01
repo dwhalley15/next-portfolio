@@ -37,11 +37,11 @@ export default function Contact({ contactInfo, contactDescription }:ContactProps
   return (
     <>
       <section className="contact" id="contact">
-        <h2>Contact <span>Me</span></h2>
+        <h1>Contact <span>Me</span></h1>
         <p>{contactDescription}</p>
         {formSubmitted ? (
           <div className="contact-form-submission">
-            <h3>Thank You!</h3>
+            <h2>Thank You!</h2>
             <p>{firstItem.submission_text}</p>
           </div>
         ) : (
