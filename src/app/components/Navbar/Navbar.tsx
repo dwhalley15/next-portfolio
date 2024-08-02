@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
@@ -23,14 +23,26 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
   const [menuActive, setMenuActive] = useState(false);
   const [projectsDropdownActive, setProjectsDropdownActive] = useState(false);
   const timeoutRef = useRef<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false); 
 
   const pathname = usePathname(); 
+
+  const updateIsMobile = () => {
+    setIsMobile(window.matchMedia("(max-width: 995px)").matches);
+  };
+
+  useEffect(() => {
+    updateIsMobile();
+    window.addEventListener('resize', updateIsMobile); 
+    return () => window.removeEventListener('resize', updateIsMobile);
+  }, []);
 
   const toggleMenu = () => {
     setMenuActive(!menuActive);
   };
 
   const handleMouseEnter = () => {
+    if (isMobile) return;
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
@@ -39,6 +51,7 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     timeoutRef.current = window.setTimeout(() => {
       setProjectsDropdownActive(false);
     }, 300);

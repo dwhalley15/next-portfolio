@@ -84,7 +84,7 @@ export default async function DynamicPage({ params }: { params: { name: string }
           "width": 800,
           "height": 600
         },
-        "description": "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise."
+        "description": description
       };
 
     let componentToRender: JSX.Element | null = null;
@@ -139,7 +139,7 @@ export default async function DynamicPage({ params }: { params: { name: string }
             <main>
                 {componentToRender}
             </main>
-            <components.Footer socialLinks={socialLinks as components.SocialLinkItem[]} navLinks={navLinks as components.NavbarItem[]} />
+            <components.Footer socialLinks={socialLinks as components.SocialLinkItem[]} navLinks={navLinks as components.NavbarItem[]} projects={projects as components.ProjectProps[]}/>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

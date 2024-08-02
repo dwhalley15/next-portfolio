@@ -166,7 +166,7 @@ export default async function Project({ params }: { params: { name: string } }) 
                         </div>
                     </section>
                 </main>
-                <Footer socialLinks={socialLinks as SocialLinkItem[]} navLinks={navLinks as NavbarItem[]} />
+                <Footer socialLinks={socialLinks as SocialLinkItem[]} navLinks={navLinks as NavbarItem[]} projects={projects as ProjectProps[]}/>
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

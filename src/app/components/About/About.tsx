@@ -1,65 +1,7 @@
 import "./About.css";
 import Link from "next/link";
-import mainImage from "../../../../public/main-image.jpg";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-    metadataBase: new URL('https://next-portfolio-delta-snowy.vercel.app/about'),
-    title: "Ortheyus | Software Developer | About",
-    description: "Discover Ortheyus' about page: which explains the technology stack and choices for this site. Learn why each component was chosen for this portfolio.",
-    alternates: {
-        canonical: "https://next-portfolio-delta-snowy.vercel.app/about/",
-      },
-      openGraph: {
-        type: "website",
-        siteName: "Ortheyus | Software Developer | Web Enthusiast",
-        locale: "en_UK",
-        url: "https://next-portfolio-delta-snowy.vercel.app/about",
-        title: "Ortheyus | Software Developer | About",
-        description: "Discover Ortheyus' about page: which explains the technology stack and choices for this site. Learn why each component was chosen for this portfolio.",
-        images: [
-            {
-              url: mainImage.src,
-              width: 800,
-              height: 600,
-              alt: "Ortheyus | Software Developer | Web Enthusiast",
-            },
-          ]
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: 'Ortheyus | Software Developer | About',
-        description: "Discover Ortheyus' about page: which explains the technology stack and choices for this site. Learn why each component was chosen for this portfolio.",
-        images: [mainImage.src],
-      },
-}
 
 export default async function About() {
-
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Ortheyus",
-        "url": "https://next-portfolio-delta-snowy.vercel.app/about",
-        "sameAs": [
-            "https://www.linkedin.com/in/davidwhalleyprofile",
-            "https://github.com/dwhalley15",
-            "https://www.instagram.com/ortheyus/",
-            "https://www.youtube.com/channel/UCWikZ6mdoqSzCTOvy8MjsLQ"
-        ],
-        "jobTitle": "Software Developer",
-        "worksFor": {
-            "@type": "Organization",
-            "name": "the human tech agency"
-        },
-        "image": {
-            "@type": "ImageObject",
-            "url": mainImage,
-            "width": 800,
-            "height": 600
-        },
-        "description": "Discover Ortheyus' about page: which explains the technology stack and choices for this site. Learn why each component was chosen for this portfolio."
-    };
 
     return (
         <>
@@ -106,10 +48,6 @@ export default async function About() {
                 <p>{"Thank you for visiting my portfolio! If you have any questions or would like to know more, feel free to reach out."}</p>
                 <Link href="/projects" className="btn">Projects</Link>
             </section>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
         </>
     );
 }
