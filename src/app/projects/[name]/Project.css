@@ -1,5 +1,9 @@
 .project-page{
     background: var(--second-bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .project-page-container{
