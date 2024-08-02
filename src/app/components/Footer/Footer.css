@@ -118,10 +118,10 @@
 
 .footer-lists{
     display: flex;
-    justify-content: space-evenly;
+    width: 50%;
+    justify-content: space-between;
     align-items: flex-start;
     flex-direction: row;
-    gap: 4rem;
     padding: 0 4rem;
 }
 
@@ -146,6 +146,8 @@
 
     .footer-lists{
         padding: 0;
+        width: 100%;
+        justify-content: space-evenly;
     }
 
     .footer-nav{
