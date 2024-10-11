@@ -42,7 +42,7 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
           <p>{firstItem.description}</p>
           <div className="icons">
             {socialLinks.map((link: SocialLinkItem) => (
-              <Link key={link.id} href={link.social_url} target="_blank" rel="noopener noreferrer">
+              <Link key={link.id} href={link.social_url} target="_blank" rel="noopener noreferrer" aria-label={`Link to ${link.social_name}`}>
                 <FontAwesomeIcon icon={getFontAwesomeIcon(link.social_name)} size="1x" />
               </Link>
             ))}
