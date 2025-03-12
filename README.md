@@ -15,7 +15,7 @@ Explore my software engineering journey through this eye-catching and responsive
 
 ## Live Demo
 
-Check out the live demo: [David's Next.js Portfolio](https://next-portfolio-delta-snowy.vercel.app)
+Check out the live demo: [David's Next.js Portfolio](https://ortheyus-portfolio.vercel.app/)
 
 ## Technologies Used
 
