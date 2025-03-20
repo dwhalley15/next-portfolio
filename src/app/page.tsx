@@ -15,7 +15,7 @@ export default async function Home() {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Ortheyus",
-    "url": "https://next-portfolio-delta-snowy.vercel.app/",
+    "url": "https://ortheyus-portfolio.vercel.app/",
     "sameAs": [
       "https://www.linkedin.com/in/davidwhalleyprofile",
       "https://github.com/dwhalley15",

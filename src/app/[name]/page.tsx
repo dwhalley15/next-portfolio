@@ -16,13 +16,13 @@ export async function generateMetadata({params}:  {params: {name: string} }): Pr
             title: `Ortheyus | Software Developer | ${capitalizedParamName}`,
             description: description,
             alternates: {
-                canonical: "https://next-portfolio-delta-snowy.vercel.app/" + params.name,
+                canonical: "https://ortheyus-portfolio.vercel.app/" + params.name,
               },
               openGraph: {
                 type: "website",
                 siteName: `Ortheyus | Software Developer | ${capitalizedParamName}`,
                 locale: "en_UK",
-                url: "https://next-portfolio-delta-snowy.vercel.app/" + params.name,
+                url: "https://ortheyus-portfolio.vercel.app/" + params.name,
                 title: `Ortheyus | Software Developer | ${capitalizedParamName}`,
                 description: description,
                 images: [
@@ -66,7 +66,7 @@ export default async function DynamicPage({ params }: { params: { name: string }
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Ortheyus",
-        "url": `https://next-portfolio-delta-snowy.vercel.app/${params.name}`,
+        "url": `https://ortheyus-portfolio.vercel.app/${params.name}`,
         "sameAs": [
           "https://www.linkedin.com/in/davidwhalleyprofile",
           "https://github.com/dwhalley15",
