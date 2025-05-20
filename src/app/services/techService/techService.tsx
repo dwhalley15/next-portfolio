@@ -24,6 +24,14 @@ export default function getTechLink( technology: string){
             return 'https://kotlinlang.org/';
         case 'android studio':
             return 'https://developer.android.com/studio';
+        case 'react native':
+            return 'https://reactnative.dev/';
+        case 'nextjs':
+            return 'https://nextjs.org/';
+        case 'typescript':
+            return 'https://www.typescriptlang.org/';
+        case 'expo':
+            return 'https://expo.dev/'; 
         default:
             return '/';
     }
