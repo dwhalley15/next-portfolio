@@ -3,7 +3,7 @@ import inspirationalQuotesImage from "../../../../public/inspirational-quotes-ho
 import rightTrackImage from "../../../../public/right-track-image.png";
 import dailyGrindImage from "../../../../public/daily-grind-account.png";
 import battleshipsImage from "../../../../public/battleships-home.png";
-import instaTranslateImage from "../../../../public/insta-translate-home.png";
+import instaTranslateImage from "../../../../public/insta-translate.png";
 import imageNotFound from "../../../../public/image-not-found.jpg";
 import Image, { StaticImageData } from "next/image";
 
