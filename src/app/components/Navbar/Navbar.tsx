@@ -13,6 +13,8 @@ export interface NavbarItem {
   link_name: string;
 }
 
+//this is the new design
+
 export interface NavbarProps {
   navLinks: NavbarItem[];
   projects: ProjectProps[];
