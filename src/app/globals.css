@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,45 +10,50 @@
   user-select: none;
 }
 
-:root{
+:root {
   --bg-color: #000000;
   --second-bg-color: #161616;
   --text-color: #fff;
-  --main-color: #ff0000;
+  --main-color: hsl(0, 84%, 60%);
+  --main-glow: hsl(0, 84%, 70%);
+  --gradient-primary: linear-gradient(135deg, var(--main-color) 0%, var(--main-glow) 100%);
+  --glass-bg: hsla(220, 13%, 15%, 0.7);
+  --glass-border: hsla(210, 40%, 98%, 0.1);
+  --glass-shadow: 0 20px 25px -5px hsl(220, 13%, 5% / .3);
 }
 
-html{
+html {
   font-size: 62.5%;
   overflow-x: hidden;
 }
 
-html::webkit-scrollbar{
+html::webkit-scrollbar {
   width: 0.8rem;
 }
 
-html::webkit-scrollbar-track{
+html::webkit-scrollbar-track {
   background: var(bg-color);
 }
 
-html::webkit-scrollbar-thumb{
+html::webkit-scrollbar-thumb {
   background: var(--main-color);
 }
 
-body{
+body {
   background: var(--bg-color);
   color: var(--text-color);
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
 
-a:visited{
+a:visited {
   color: inherit;
 }
 
@@ -57,7 +62,35 @@ section {
   padding: 120px 9% 5rem;
 }
 
-.not-found{
+.btn {
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  background: var(--bg-color);
+  border-radius: 0.75rem;
+  font-size: 1.6rem;
+  color: var(--text-color) !important;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  background: var(--gradient-primary);
+  transition: all 0.3s ease;
+  justify-content: center;
+}
+
+.btn:hover {
+  box-shadow: 0 0 25px var(--main-color);
+}
+
+@media (max-width: 995px) {
+  .btn {
+    text-align: center;
+  }
+}
+
+.not-found {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -66,13 +99,13 @@ section {
   text-align: center;
 }
 
-.not-found .text-container{
+.not-found .text-container {
   font-size: 6rem;
   font-weight: 700;
   line-height: 1.3;
 }
 
-.not-found .text-container h1{
+.not-found .text-container h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
   font-weight: 700;
@@ -91,7 +124,7 @@ section {
   border-bottom: 2px solid var(--main-color);
 }
 
-.not-found .image-container{
+.not-found .image-container {
   border-radius: 50%;
   position: relative !important;
   width: 32vw;
@@ -101,14 +134,14 @@ section {
   aspect-ratio: 1/1;
 }
 
-.not-found .main-image{
+.not-found .main-image {
   border-radius: 50%;
   box-shadow: 0 0 25px var(--main-color);
   cursor: pointer;
   object-fit: cover;
 }
 
-.not-found .main-image:hover{
+.not-found .main-image:hover {
   transform: scale(1.01);
   filter: drop-shadow(0 0 25px var(--main-color));
 }
@@ -120,10 +153,7 @@ section {
     height: 70vw;
   }
 
-  .not-found .text-container h1{
+  .not-found .text-container h1 {
     font-size: 2.5rem;
   }
 }
-
-
-
