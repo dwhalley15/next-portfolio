@@ -139,7 +139,7 @@ export default async function DynamicPage({ params }: { params: { name: string }
             <main>
                 {componentToRender}
             </main>
-            <components.Footer socialLinks={socialLinks as components.SocialLinkItem[]} navLinks={navLinks as components.NavbarItem[]} projects={projects as components.ProjectProps[]}/>
+            <components.Footer socialLinks={socialLinks as components.SocialLinkItem[]}/>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

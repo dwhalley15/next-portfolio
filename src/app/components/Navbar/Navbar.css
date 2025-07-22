@@ -121,6 +121,10 @@ nav ul {
   align-items: center;
 }
 
+.hire-me {
+  margin: 0;
+}
+
 @keyframes slideDown {
   0% {
     opacity: 0;
@@ -155,7 +159,7 @@ nav ul {
 
 @media (max-width: 995px) {
 
-  .hire-me{
+  .hire-me {
     display: none;
   }
 
