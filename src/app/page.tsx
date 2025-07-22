@@ -42,7 +42,7 @@ export default async function Home() {
     <main>
       <components.Header headerInfo={ headerInfo as components.HeaderItem[]} socialLinks={socialLinks as components.SocialLinkItem[]} />
     </main>
-    <components.Footer socialLinks={ socialLinks as components.SocialLinkItem[]} navLinks={navLinks as components.NavbarItem[]} projects={projects as components.ProjectProps[]}/>
+    <components.Footer socialLinks={ socialLinks as components.SocialLinkItem[]}/>
     <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
