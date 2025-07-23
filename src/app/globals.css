@@ -120,6 +120,7 @@ section {
 
 .btn-secondary:hover {
   background: var(--gradient-accent);
+  border: 1px solid var(--glass-border);
 }
 
 .not-found {

@@ -157,4 +157,12 @@
     .about-site-section p {
         font-size: 1.3rem;
     }
+
+    .about-site-header p {
+        width: 100%;
+    }
+
+    .about-site-content {
+        grid-template-columns: 1fr;
+    }
 }
