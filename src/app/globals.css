@@ -22,6 +22,10 @@
   --glass-border: hsla(210, 40%, 98%, 0.1);
   --glass-shadow: 0 20px 25px -5px hsl(220, 13%, 5% / .3);
   --gradient-bg: linear-gradient(180deg, hsl(220, 30%, 9%) 0%, hsl(220, 13%, 7%) 100%);
+  --accent-blue: hsl(217, 91%, 60%);
+  --accent-purple: hsl(271, 81%, 56%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+  --gradient-accent-secondary: linear-gradient(135deg, var(--main-color) 0%, var(--accent-blue) 50%, var(--accent-purple) 100%);
 }
 
 html {
@@ -67,7 +71,6 @@ section {
 .btn {
   display: inline-flex;
   padding: 0.5rem 1rem;
-  background: var(--bg-color);
   border-radius: 0.75rem;
   font-size: 1.6rem;
   color: var(--text-color) !important;
@@ -91,6 +94,32 @@ section {
   .btn {
     text-align: center;
   }
+}
+
+.btn-secondary {
+  display: inline-flex;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 1.6rem;
+  color: var(--text-color) !important;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--accent-blue);
+  transition: all 0.3s ease;
+  justify-content: center;
+  line-height: 3rem;
+  text-align: center;
+}
+
+.btn-secondary:hover {
+  background: var(--gradient-accent);
 }
 
 .not-found {

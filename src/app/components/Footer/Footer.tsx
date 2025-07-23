@@ -40,7 +40,7 @@ export default function Footer({
               >
                 <FontAwesomeIcon
                   icon={getFontAwesomeIcon(link.social_name)}
-                  size="1x"
+                  size="xs"
                 />
               </Link>
             ))}
