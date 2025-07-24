@@ -33,7 +33,7 @@ export interface NavbarProps {
  */
 export default function Navbar({ navLinks, projects }: NavbarProps) {
   const [menuActive, setMenuActive] = useState(false);
-  const [projectsDropdownActive, setProjectsDropdownActive] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const timeoutRef = useRef<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -79,22 +79,19 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
   /**
    * Activates the project dropdown on hover (desktop only).
    */
-  const handleMouseEnter = () => {
+  const handleDropdownEnter = (linkName: string) => {
     if (isMobile) return;
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-    setProjectsDropdownActive(true);
+    clearTimeout(timeoutRef.current!);
+    setActiveDropdown(linkName);
   };
 
-   /**
+  /**
    * Deactivates the project dropdown with a delay (desktop only).
    */
-  const handleMouseLeave = () => {
+  const handleDropdownLeave = () => {
     if (isMobile) return;
     timeoutRef.current = window.setTimeout(() => {
-      setProjectsDropdownActive(false);
+      setActiveDropdown(null);
     }, 300);
   };
 
@@ -115,29 +112,39 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
               const linkHref =
                 link.link_name === "home" ? "/" : `/${link.link_name}`;
               const isLinkActive = pathname === linkHref;
+              const hasDropdown =
+                link.link_name === "projects" || link.link_name === "about";
+              const isDropdownActive = activeDropdown === link.link_name;
 
               return (
-                <li key={link.id} className="nav-item">
-                  {link.link_name === "projects" ? (
-                    <div
-                      className="nav-link-wrapper"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
+                <li
+                  key={link.id}
+                  className={`nav-item ${hasDropdown ? "has-dropdown" : ""}`}
+                  onMouseEnter={() => handleDropdownEnter(link.link_name)}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  <div className="nav-link-wrapper">
+                    <Link
+                      className={`nav-link ${isLinkActive ? "active" : ""}`}
+                      href={linkHref}
+                      onClick={() => {
+                        setMenuActive(false);
+                      }}
                     >
-                      <Link
-                        className={`nav-link ${isLinkActive ? "active" : ""}`}
-                        href="/projects"
-                        onClick={() => setMenuActive(false)}
+                      {link.link_name.charAt(0).toUpperCase() +
+                        link.link_name.slice(1)}
+                    </Link>
+
+                    {hasDropdown && (
+                      <ul
+                        className={`nav-dropdown ${
+                          isDropdownActive ? "visible" : ""
+                        }`}
                       >
-                        {link.link_name.charAt(0).toUpperCase() +
-                          link.link_name.slice(1)}
-                      </Link>
-                      {projectsDropdownActive && (
-                        <ul className="nav-dropdown">
-                          {projects.map((project: ProjectProps) => {
+                        {link.link_name === "projects" &&
+                          projects.map((project: ProjectProps) => {
                             const projectLink = `/projects/${project.url}`;
                             const isProjectActive = pathname === projectLink;
-
                             return (
                               <li key={project.url}>
                                 <Link
@@ -152,19 +159,38 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
                               </li>
                             );
                           })}
-                        </ul>
-                      )}
-                    </div>
-                  ) : (
-                    <Link
-                      className={`nav-link ${isLinkActive ? "active" : ""}`}
-                      href={linkHref}
-                      onClick={() => setMenuActive(false)}
-                    >
-                      {link.link_name.charAt(0).toUpperCase() +
-                        link.link_name.slice(1)}
-                    </Link>
-                  )}
+
+                        {link.link_name === "about" && (
+                          <>
+                            <li>
+                              <Link
+                                href="/services"
+                                onClick={() => setMenuActive(false)}
+                              >
+                                Services
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/skills"
+                                onClick={() => setMenuActive(false)}
+                              >
+                                Skills
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/education"
+                                onClick={() => setMenuActive(false)}
+                              >
+                                Education
+                              </Link>
+                            </li>
+                          </>
+                        )}
+                      </ul>
+                    )}
+                  </div>
                 </li>
               );
             })}

@@ -61,8 +61,7 @@ nav.scrolled {
   position: relative;
 }
 
-.nav-link:hover .nav-dropdown,
-.nav-dropdown {
+.nav-dropdown.visible {
   display: flex;
   opacity: 1;
   visibility: visible;
