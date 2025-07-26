@@ -70,6 +70,9 @@ section {
 
 .btn {
   display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
   font-size: 1.6rem;
@@ -98,6 +101,9 @@ section {
 
 .btn-secondary {
   display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
   font-size: 1.6rem;
@@ -119,6 +125,30 @@ section {
 }
 
 .btn-secondary:hover {
+  background: var(--gradient-accent);
+  border-color: transparent;
+}
+
+.btn-tertiary{
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap : 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 1.6rem;
+  color: var(--text-color) !important;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.btn-tertiary:hover {
   background: var(--gradient-accent);
   border-color: transparent;
 }
