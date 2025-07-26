@@ -1,44 +1,30 @@
 .project-container{
-    background: var(--bg-color);
-    color: var(--text-color);
+    background: var(--gradient-bg);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 4rem;
+    text-align: center;
 
 }
-
 .project-container h1{
     font-size: 4rem;
     font-weight: 700;
 }
 
 .project-container p{
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
-.sticky-link {
-    position: fixed;
-    top: 10px;
-    right: 15px;
-    background-color: var(--second-bg-color);
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    color: var(--main-color) !important;
     font-size: 1.8rem;
     font-weight: 500;
-    z-index: 1000;
-    transition: 0.3s ease;
+    width : 60%;
+    color: var(--text-color-secondary);
 }
 
-.sticky-link:hover {
-    background-color: var(--main-color);
-    color: white !important;
-    box-shadow: 0 0 25px var(--main-color);
-    transform: scale(1.1);
+.project-list{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 2rem;
+    width: 100%;
 }
 
 
@@ -49,5 +35,10 @@
     
     .project-container p{
         font-size: 1.3rem;
+        width: 100%;
+    }
+
+    .project-list{
+        grid-template-columns: 1fr;
     }
 }
