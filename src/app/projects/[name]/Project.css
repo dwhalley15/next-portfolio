@@ -63,6 +63,8 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 1rem;
+    min-width: 0;
+    width: 100%;
 }
 
 .project-page-section h2{
@@ -169,17 +171,32 @@
 
 @media (max-width: 995px) {
     .project-page-columns{
+        grid-template-columns: 1fr;
+    }
+
+    .project-page-btns{
         flex-direction: column;
-        gap: 2rem;
+        width: 100%;
+    }
+
+    .project-page-btns a{
+        width: 100%;
     }
 
     .project-page h1{
         font-size: 2.5rem;
     }
 
-    .project-page-media{
-        width: 100%;
-        order: 1;
+    .project-page-media-items{
+        grid-template-columns: 1fr;
+    }
+
+    .project-page-section p{
+        font-size: 1.3rem;
+    }
+
+    .project-page-features li{
+        font-size: 1.3rem;
     }
 
 }
