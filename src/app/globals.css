@@ -199,8 +199,6 @@ section {
 
 .not-found .main-image {
   border-radius: 50%;
-  box-shadow: 0 0 25px var(--main-color);
-  cursor: pointer;
   object-fit: cover;
 }
 
@@ -212,8 +210,8 @@ section {
 @media (max-width: 995px) {
   .not-found .image-container {
     margin-top: 2rem;
-    width: 70vw;
-    height: 70vw;
+    width: 80vw;
+    height: 80vw;
   }
 
   .not-found .text-container h1 {
