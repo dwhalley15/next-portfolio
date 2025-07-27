@@ -1,6 +1,7 @@
 import * as components from "./services/importService/importService"; 
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { getNavLinks, getHeaderInfo, getSocialLinks, getProjectData } from "./services/dbServices/dbService";
+import mainImage from "../../public/light-bulb.png";
 
 
 export default async function Home() {
@@ -29,7 +30,7 @@ export default async function Home() {
     },
     "image": {
       "@type": "ImageObject",
-      "url": headerInfo[0].image,
+      "url": mainImage.src,
       "width": 800,
       "height": 600
     },
