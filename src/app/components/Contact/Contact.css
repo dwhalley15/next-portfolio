@@ -2,8 +2,52 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 4rem;
+    background: var(--gradient-bg);
+}
+
+.contact-container{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    gap: 4rem;
+    text-align: left;
+}
+
+.contact-info p {
+    width: 100% !important;
+    color: var(--text-color-secondary);
+}
+
+.contact-details{
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(4px);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+    font-size: 1.6rem;
+}
+
+.contact-details svg{
+    color: var(--main-color);
+    font-size: 2.5rem;
+}
+
+.contact-details a{
+    color: var(--text-color-secondary);
+    text-decoration: none;
+}
+
+.contact-text{
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -24,28 +68,40 @@ input[type=number] {
 }
 
 .contact h2{
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: var(--main-color)
+    color: transparent !important;
+    background-clip: text;
+    background-image: var(--gradient-accent);
+    margin-bottom: 2rem;
 }
 
 .contact p{
     font-size: 1.8rem;
     font-weight: 500;
+    color: var(--text-color-secondary);
+    width: 60%;
 }
 
 .contact form{
     max-width: 70rem;
-    margin: 1rem auto;
-    margin-bottom: 3rem;
-    text-align: center;
-
+    text-align: left;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(4px);
+    padding: 2rem;
+    border-radius: 1rem;
 }
 
 .input-box{
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+}
+
+.input-box label{
+    font-size: 1.6rem;
+    color: var(--text-color);
 }
 
 .input-box input,
@@ -54,24 +110,29 @@ input[type=number] {
     padding: 1.5rem;
     font-size: 1.6rem;
     color: var(--text-color);
-    background: var(--bg-color);
-    border-radius: 0.8rem;
-    border: 2px solid var(--main-color);
+    background: var(--gradient-bg);
+    border-radius: 1rem;
     margin: 1rem 0;
     resize: none;
     transition: 0.3s ease;
     outline: none;
+    margin-bottom: 2rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .input-box input:focus,
 .input-box textarea:focus{
-    box-shadow: 0 0 25px var(--main-color);
+    border-color:  var(--main-color);
+    outline: 2px solid var(--main-color) !important;
+    outline-offset: 2px;
 }
 
 .contact .btn{
     margin-top: 2rem;
     text-align: center;
     outline: none;
+    width: 100%;
 }
 
 .contact-message{
@@ -87,14 +148,13 @@ input[type=number] {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 5rem;
+    padding: 2rem;
     align-self: center;
-}
-
-.contact-form-submission h3{
-    color: var(--main-color);
-    font-size: 2.5rem;
-    font-weight: 700;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(4px);
+    border-radius: 1rem;
 }
 
 .contact-form-submission p{
@@ -114,21 +174,20 @@ input[type=number] {
     }
 
     .contact h2{
-        font-size: 3rem;
-        font-weight: 700;
-        color: var(--main-color)
+        font-size: 2.5rem;
     }
 
     .contact p{
         font-size: 1.5rem;
-    }
-
-    .contact-form-submission h3{
-        font-size: 2rem;
+        width: 100%;
     }
 
     .contact-form-submission p{
         font-size: 1.4rem;
     }    
+
+    .contact-container{
+        grid-template-columns: 1fr;
+    }
 
 }
