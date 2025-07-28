@@ -7,6 +7,7 @@ export interface ServicesItem{
     id: number;
     title: string;
     description: string;
+    points: string[];
 }
 
 export interface ServicesProps {
@@ -23,13 +24,23 @@ export default function Services({ servicesInfo, servicesDescription }: Services
         <div className="services-container">
             {servicesInfo.map((item: ServicesItem) => (
                 <div key={item.id} className="service-container">
+                  <FontAwesomeIcon className="service-icon" icon={getFontAwesomeIcon(item.title.toLowerCase().replace(/\s+/g, ''))} size="3x"/>
                     <div className="service-text">
-                        <FontAwesomeIcon icon={getFontAwesomeIcon(item.title.toLowerCase().replace(/\s+/g, ''))} size="8x"/>
                         <h2>{item.title}</h2>
                         <p>{item.description}</p>
                     </div>
+                    <ul>
+                        {item.points.map((point, index) => (
+                            <li key={index}>{point}</li>
+                        ))}
+                    </ul>
                 </div>
             ))}
+        </div>
+        <div className="services-link">
+          <h2>{"Ready to Get Started?"}</h2>
+          <p>{"Let's discuss how I can help bring your vision to life with professional web development services."}</p>
+          <Link className="btn" href="/contact">{"Get in Touch"}</Link>
         </div>
       </section>
     </>

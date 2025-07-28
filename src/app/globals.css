@@ -26,6 +26,7 @@
   --accent-purple: hsl(271, 81%, 56%);
   --gradient-accent: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
   --gradient-accent-secondary: linear-gradient(135deg, var(--main-color) 0%, var(--accent-blue) 50%, var(--accent-purple) 100%);
+  --gradient-main-secondary: linear-gradient(135deg, hsla(0, 84%, 60%, 0.4) 0%, var(--bg-color) 100%);
 }
 
 html {

@@ -1,7 +1,7 @@
 
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faGithub, faLinkedinIn, faDiscord, faInstagram, faYoutube, faReact, faJava, faUmbraco, faJs, faHtml5, faCss3Alt, faPhp, faGit, faSass, faPython, faWordpress, faVuejs, faBootstrap, faAngular, faNpm, faJira, faAndroid, faGulp } from "@fortawesome/free-brands-svg-icons";
-import { faCircleExclamation, faLaptopCode, faFont, faCode, faDatabase, faMagnifyingGlass, faUsersRectangle, faGlobe, faMobileScreen } from "@fortawesome/free-solid-svg-icons"
+import { faCircleExclamation, faLaptopCode, faFont, faCode, faDatabase, faMagnifyingGlass, faUsersRectangle, faGlobe, faMobileScreen, faPalette, faBarsProgress } from "@fortawesome/free-solid-svg-icons"
 
 export default function getFontAwesomeIcon(iconName: string): IconProp {
     switch (iconName.toLowerCase()) {
@@ -36,11 +36,11 @@ export default function getFontAwesomeIcon(iconName: string): IconProp {
         case 'python':
             return faPython;
         case 'webdesign':
-            return faLaptopCode;
+            return faPalette;
         case 'frontenddevelopment':
-            return faFont;
-        case 'backenddevelopment':
             return faCode;
+        case 'backenddevelopment':
+            return faBarsProgress;
         case 'databasedesign':
             return faDatabase;
         case 'seooptimization':

@@ -1,20 +1,26 @@
 .services{
-    background: var(--second-bg-color);
+    background: var(--gradient-bg);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 4rem;
 }
 
 .services p{
     font-size: 1.8rem;
     font-weight: 500;
+    color: var(--text-color-secondary);
+    width: 60%;
 }
 
 .services h1{
     font-size: 4rem;
     font-weight: 700;
+    color: transparent !important;
+    background-clip: text;
+    background-image: var(--gradient-primary);
 }
 
 .services-container{
@@ -26,19 +32,66 @@
 }
 
 .service-container{
-    background-color: var(--main-color);
-    height: 300px;
-    border-radius: 3rem;
-    cursor: pointer;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(4px);
+    color: var(--text-color-secondary);
+    border-radius: 2rem;
     transition: 0.3s ease;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    min-height: 360px;
+}
+
+.service-container h2{
+    color: transparent !important;
+    background-clip: text;
+    background-image: var(--gradient-primary);
+}
+
+.service-icon{
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+    background: var(--gradient-main-secondary);
+    backdrop-filter: blur(4px);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.service-container p{
+    width: 100% !important
 }
 
 .service-container:hover{
-    background: transparent;
+    transform: translateY(-10px);
+}
+
+.service-container:hover .service-icon {
+    transform: scale(1.1);
+}
+
+.service-container ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.service-container li{
+    font-size: 1.2rem;
+    font-weight: 400;
     color: var(--main-color);
-    transform: scale(1.03);
     border: 1px solid var(--main-color);
+    background: var(--glass-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(4px);
 }
 
 .service-text{
@@ -46,9 +99,8 @@
     flex-direction: column;
     text-align: left;
     max-height: 300px;
-    justify-content: flex-end;
-    align-items: center;
-    align-content: flex-end;
+    justify-content: center;
+    align-items: flex-start;
     gap: 1.5rem;
 }
 
@@ -63,38 +115,33 @@
     max-height: 100px;
 }
 
-.services-btn{
-    margin-top: 2rem;
-    display: inline-block;
-    padding: 1rem 2.8rem;
-    background: var(--second-bg-color);
-    border-radius: 4rem;
-    font-size: 1.6rem;
-    color: var(--main-color) !important;
-    border: 2px solid var(--main-color);
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-    transition: 0.3s ease;
-    cursor: pointer;
-    outline: none;
-    user-select: none;
+.services-link{
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(4px);
+    border-radius: 2rem;
+    padding: 2rem;
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-  
-  .services-btn:hover{
-    transform: scale(1.03);
-    background-color: var(--main-color);
-    color: black !important;
-    box-shadow: 0 0 25px var(--main-color);
-  }
+
+.services-link h2{
+    color: transparent !important;
+    background-clip: text;
+    background-image: var(--gradient-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
 
 @media (max-width: 995px) {
 
-    .services{
-        padding-bottom: 7rem;
-    }
-
     .services p{
         font-size: 1.5rem;
+        width: 100%;
     }
 
     .services h1{
