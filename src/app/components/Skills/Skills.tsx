@@ -21,19 +21,6 @@ export interface SkillsProps {
 
 export default function Skills({ skillsInfo, skillsDescription }: SkillsProps) {
 
-    const [showDesc, setShowDesc] = useState(false);
-    const [selectedSkill, setSelectedSkill] = useState<SkillsItem | null>(null);
-
-    const handleClick = (skill: SkillsItem) => {
-        if (selectedSkill && selectedSkill.id === skill.id) {
-            setSelectedSkill(null);
-            setShowDesc(false);
-        } else {
-            setSelectedSkill(skill);
-            setShowDesc(true);
-        }
-    };
-
     const categoryIconMap: Record<string, string> = {
         frontend: "frontenddevelopment",
         backend: "databasedesign",
@@ -83,10 +70,10 @@ export default function Skills({ skillsInfo, skillsDescription }: SkillsProps) {
                                         <div key={item.id} className="skills-item">
                                             <div className="skills-item-row">
                                                 <h3>{item.name}</h3>
-                                                <span>{item.percentage}%</span>
+                                                <span>{item.percentage ? `${item.percentage}%` : '0%'}</span>
                                             </div>
                                             <div className="skills-progress-bar">
-                                                <div className="skills-progress-bar-fill" style={{ width: `${item.percentage}%` }}></div>
+                                                <div className="skills-progress-bar-fill" style={{ width: `${item.percentage ? `${item.percentage}%` : '0%'}` }}></div>
                                             </div>
                                             <p>{item.description}</p>
                                         </div>
