@@ -8,7 +8,7 @@ export interface SkillsItem {
     name: string;
     description: string;
     category: string;
-    percentage: string;
+    percentage: number;
 }
 
 export interface SkillsProps {
@@ -47,10 +47,6 @@ export default function Skills({ skillsInfo, skillsDescription }: SkillsProps) {
     const sortedCategories = allCategories.sort(
         (a, b) => categoryMap[a].localeCompare(categoryMap[b])
     );
-
-    const allPercentages = skillsInfo.map(item => item.percentage);
-
-    console.log("All Percentages:", allPercentages);
 
     return (
         <>
