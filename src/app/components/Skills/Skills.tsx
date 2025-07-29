@@ -1,9 +1,6 @@
-"use client"
-
 import "./Skills.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import getFontAwesomeIcon from "../../services/iconService/iconService";
-import { useState } from "react";
 import Link from "next/link";
 
 export interface SkillsItem {
