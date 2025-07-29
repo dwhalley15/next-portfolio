@@ -48,6 +48,10 @@ export default function Skills({ skillsInfo, skillsDescription }: SkillsProps) {
         (a, b) => categoryMap[a].localeCompare(categoryMap[b])
     );
 
+    const allPercentages = skillsInfo.map(item => item.percentage);
+
+    console.log("All Percentages:", allPercentages);
+
     return (
         <>
             <section className="skills" id="skills">
