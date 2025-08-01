@@ -2,7 +2,7 @@ import * as components from "../services/importService/importService";
 import { getAllData, getPageDescriptions, getProjectData } from "../services/dbServices/dbService";
 import NotFound from "../not-found";
 import type { Metadata } from "next";
-import mainImage from "../../../public/main-image.jpg";
+import mainImage from "../../../public/light-bulb.png";
 
 export async function generateMetadata({params}:  {params: {name: string} }): Promise<Metadata> {
 
@@ -80,7 +80,7 @@ export default async function DynamicPage({ params }: { params: { name: string }
         },
         "image": {
           "@type": "ImageObject",
-          "url": headerInfo[0].image,
+          "url": mainImage.src,
           "width": 800,
           "height": 600
         },
@@ -139,7 +139,7 @@ export default async function DynamicPage({ params }: { params: { name: string }
             <main>
                 {componentToRender}
             </main>
-            <components.Footer socialLinks={socialLinks as components.SocialLinkItem[]} navLinks={navLinks as components.NavbarItem[]} projects={projects as components.ProjectProps[]}/>
+            <components.Footer socialLinks={socialLinks as components.SocialLinkItem[]}/>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

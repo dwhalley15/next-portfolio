@@ -1,14 +1,14 @@
 
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faGithub, faLinkedin, faDiscord, faInstagram, faYoutube, faReact, faJava, faUmbraco, faJs, faHtml5, faCss3Alt, faPhp, faGit, faSass, faPython, faWordpress, faVuejs, faBootstrap, faAngular, faNpm, faJira, faAndroid, faGulp } from "@fortawesome/free-brands-svg-icons";
-import { faCircleExclamation, faLaptopCode, faFont, faCode, faDatabase, faMagnifyingGlass, faUsersRectangle } from "@fortawesome/free-solid-svg-icons"
+import { faGithub, faLinkedinIn, faDiscord, faInstagram, faYoutube, faReact, faJava, faUmbraco, faJs, faHtml5, faCss3Alt, faPhp, faGit, faSass, faPython, faWordpress, faVuejs, faBootstrap, faAngular, faNpm, faJira, faAndroid, faGulp } from "@fortawesome/free-brands-svg-icons";
+import { faCircleExclamation, faLaptopCode, faFont, faCode, faDatabase, faMagnifyingGlass, faUsersRectangle, faGlobe, faMobileScreen, faPalette, faBarsProgress, faGear } from "@fortawesome/free-solid-svg-icons"
 
 export default function getFontAwesomeIcon(iconName: string): IconProp {
     switch (iconName.toLowerCase()) {
         case 'github':
             return faGithub;
         case 'linkedin':
-            return faLinkedin;
+            return faLinkedinIn;
         case 'discord':
             return faDiscord;
         case 'instagram':
@@ -36,11 +36,11 @@ export default function getFontAwesomeIcon(iconName: string): IconProp {
         case 'python':
             return faPython;
         case 'webdesign':
-            return faLaptopCode;
+            return faPalette;
         case 'frontenddevelopment':
-            return faFont;
-        case 'backenddevelopment':
             return faCode;
+        case 'backenddevelopment':
+            return faBarsProgress;
         case 'databasedesign':
             return faDatabase;
         case 'seooptimization':
@@ -63,6 +63,12 @@ export default function getFontAwesomeIcon(iconName: string): IconProp {
             return faAndroid;
         case 'gulp':
             return faGulp;
+        case 'globe':
+            return faGlobe;
+        case 'mobiledesign':
+            return faMobileScreen;
+        case 'tools':
+            return faGear;
         default:
             return faCircleExclamation;
     }

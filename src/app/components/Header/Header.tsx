@@ -2,7 +2,7 @@ import "./Header.css";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import mainImage from "../../../../public/main-image.jpg";
+import lightBulbImage from "../../../../public/light-bulb.png";
 import getFontAwesomeIcon from "@/app/services/iconService/iconService";
 
 export interface HeaderItem {
@@ -33,9 +33,8 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
   return (
     <>
       <section className="header" id="home">
-        <div className="image-container">
-          <Image className="main-image" src={mainImage} alt={firstItem.image_alt} width={400} height={400} />
-        </div>
+        <div className="red-orb"></div>
+        <div className="blue-orb"></div>
         <div className="text-container">
           <h1>{firstItem.intro_text} <span>{firstItem.name.charAt(0).toUpperCase() + firstItem.name.slice(1)}</span></h1>
           <h2 className="typing-text">{firstItem.typing_text} <span></span></h2>
@@ -43,14 +42,18 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
           <div className="icons">
             {socialLinks.map((link: SocialLinkItem) => (
               <Link key={link.id} href={link.social_url} target="_blank" rel="noopener noreferrer" aria-label={`Link to ${link.social_name}`}>
-                <FontAwesomeIcon icon={getFontAwesomeIcon(link.social_name)} size="1x" />
+                <FontAwesomeIcon icon={getFontAwesomeIcon(link.social_name)} size="xs" />
               </Link>
             ))}
           </div>
           <div className="btn-container">
             <Link href="/contact" className="btn">{firstItem.button_text}</Link>
-            <Link className="btn" href="/projects">Projects</Link>
+            <Link className="btn-secondary" href="/projects">{"View Projects"}</Link>
           </div>
+        </div>
+        <div className="image-container">
+          <div className="purple-orb"></div>
+          <Image className="main-image" src={lightBulbImage} alt={firstItem.image_alt} width={256} height={256} />
         </div>
       </section>
     </>

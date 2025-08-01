@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from 'next/font/google';
-import openGraphImage from "../../public/main-image.jpg";
+import openGraphImage from "../../public/light-bulb.png";
 
 const poppins = Poppins({
   subsets: ['latin'],
