@@ -10,6 +10,8 @@ import battleshipsListingImage from "../../../../public/battleships-listing.jpg"
 import inspirationalQuotesListingImage from "../../../../public/inspirational-quotes-listing.jpg";
 import theGuitarShopListingImage from "../../../../public/the-guitar-shop-listing.jpg";
 import rightTrackListingImage from "../../../../public/right-track-listing.jpg";
+import appleGameImage from "../../../../public/apple-catcher-game.jpg";
+import appleGameListingImage from "../../../../public/apple-game-listing.jpg";
 import imageNotFound from "../../../../public/image-not-found.jpg";
 import Image, { StaticImageData } from "next/image";
 
@@ -28,6 +30,8 @@ const imageMap: ImageMap = {
     inspirationalquoteslisting: inspirationalQuotesListingImage,
     theguitarshoplisting: theGuitarShopListingImage,
     righttracklisting: rightTrackListingImage,
+    applegame: appleGameImage,
+    applegamelisting: appleGameListingImage,
     default: imageNotFound,
   };
 
