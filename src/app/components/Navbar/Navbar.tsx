@@ -137,63 +137,78 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
 
                     {hasDropdown && (
                       <ul
-                        className={`nav-dropdown ${isDropdownActive ? "visible" : ""
-                          }`}
+                        className={`nav-dropdown ${
+                          isDropdownActive ? "visible" : ""
+                        }`}
                       >
                         {link.link_name === "projects" &&
-                          projects.map((project: ProjectProps) => {
-                            const projectLink = `/projects/${project.url}`;
-                            const isProjectActive = pathname === projectLink;
-                            return (
-                              <li key={project.url}>
-                                <Link
-                                  className={`nav-link ${isProjectActive ? "active" : ""
+                          [...projects]
+                            .sort(
+                              (a, b) =>
+                                new Date(b.date).getTime() -
+                                new Date(a.date).getTime()
+                            )
+                            .map((project: ProjectProps) => {
+                              const projectLink = `/projects/${project.url}`;
+                              const isProjectActive = pathname === projectLink;
+                              return (
+                                <li key={project.url}>
+                                  <Link
+                                    className={`nav-link ${
+                                      isProjectActive ? "active" : ""
                                     }`}
-                                  href={projectLink}
-                                  onClick={() => setMenuActive(false)}
-                                >
-                                  {project.title}
-                                </Link>
-                              </li>
-                            );
-                          })}
+                                    href={projectLink}
+                                    onClick={() => setMenuActive(false)}
+                                  >
+                                    {project.title}
+                                  </Link>
+                                </li>
+                              );
+                            })}
 
-                        {link.link_name === "about" && (() => {
-                          const isServicesActive = pathname === "/services";
-                          const isSkillsActive = pathname === "/skills";
-                          const isEducationActive = pathname === "/education";
-                          return (
-                            <>
-                              <li>
-                                <Link
-                                  href="/services"
-                                  className={`nav-link ${isServicesActive ? "active" : ""}`}
-                                  onClick={() => setMenuActive(false)}
-                                >
-                                  Services
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  href="/skills"
-                                  className={`nav-link ${isSkillsActive ? "active" : ""}`}
-                                  onClick={() => setMenuActive(false)}
-                                >
-                                  Skills
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  href="/education"
-                                  className={`nav-link ${isEducationActive ? "active" : ""}`}
-                                  onClick={() => setMenuActive(false)}
-                                >
-                                  Education
-                                </Link>
-                              </li>
-                            </>
-                          );
-                        })()}
+                        {link.link_name === "about" &&
+                          (() => {
+                            const isServicesActive = pathname === "/services";
+                            const isSkillsActive = pathname === "/skills";
+                            const isEducationActive = pathname === "/education";
+                            return (
+                              <>
+                                <li>
+                                  <Link
+                                    href="/services"
+                                    className={`nav-link ${
+                                      isServicesActive ? "active" : ""
+                                    }`}
+                                    onClick={() => setMenuActive(false)}
+                                  >
+                                    Services
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/skills"
+                                    className={`nav-link ${
+                                      isSkillsActive ? "active" : ""
+                                    }`}
+                                    onClick={() => setMenuActive(false)}
+                                  >
+                                    Skills
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/education"
+                                    className={`nav-link ${
+                                      isEducationActive ? "active" : ""
+                                    }`}
+                                    onClick={() => setMenuActive(false)}
+                                  >
+                                    Education
+                                  </Link>
+                                </li>
+                              </>
+                            );
+                          })()}
                       </ul>
                     )}
                   </div>

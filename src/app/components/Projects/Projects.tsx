@@ -9,6 +9,8 @@ export default async function Projects() {
 
   const projects = projectsResults.projects as ProjectProps[];
 
+  projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   return (
     <>
       <section className="project-container">

@@ -10,6 +10,7 @@ export interface ProjectProps {
   listingimage: any;
   url: string;
   technologies: string[];
+  date: Date;
 }
 
 export default function Project({
