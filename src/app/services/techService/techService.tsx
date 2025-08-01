@@ -32,6 +32,8 @@ export default function getTechLink( technology: string){
             return 'https://www.typescriptlang.org/';
         case 'expo':
             return 'https://expo.dev/'; 
+        case 'phaser':
+            return 'https://phaser.io/';
         default:
             return '/';
     }
