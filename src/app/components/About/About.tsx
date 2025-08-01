@@ -2,21 +2,56 @@ import "./About.css";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import getFontAwesomeIcon from "@/app/services/iconService/iconService";
+import { getAboutInfo } from "@/app/services/dbServices/dbService";
+import NotFound from "@/app/not-found";
+import { QueryResultRow } from "@vercel/postgres";
+
+export interface AboutInfo {
+    description: string;
+    journey: string[];
+    frontend: number;
+    backend: number;
+    web: number;
+    mobile: number;
+}
+
 
 export default async function About() {
+
+    const MapAboutData = (row: QueryResultRow): AboutInfo => {
+        return{
+            description: row.description,
+            journey: row.journey,
+            frontend: row.frontend,
+            backend: row.backend,
+            web: row.web,
+            mobile: row.mobile,
+        }
+    }
+
+    const aboutInfo = await getAboutInfo();
+
+    const mappedAboutInfo = aboutInfo.map(MapAboutData);
+
+    if (!mappedAboutInfo || mappedAboutInfo.length === 0) {
+        return <NotFound />;
+    }
+
+    const about = mappedAboutInfo[0];
 
     return (
         <>
             <section className="about-site-section">
                 <div className="about-site-header">
                     <h1>About <span>Me</span></h1>
-                    <p>{"I'm a passionate software engineer who loves turning complex problems into simple, beautiful solutions. With a strong foundation in modern web technologies and a keen eye for detail, I create applications that are both functional and delightful."}</p>
+                    <p>{about.description}</p>
                 </div>
                 <div className="about-site-content">
                     <div className="about-site-content-container">
                         <h2>My Journey</h2>
-                        <p>{"I graduated with First Class Honours in Software Engineering, where I discovered my passion for creating digital solutions that make a real impact. My journey has been driven by curiosity and a constant desire to learn and improve."}</p>
-                        <p>{"When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community through my YouTube channel and social platforms."}</p>
+                        {about.journey.map((paragraph: string, index: number) => (
+                            <p key={index}>{paragraph}</p>
+                        ))}
                         <Link href="/services" className="btn">{"View My Services"}</Link>
                     </div>
                     <div className="about-site-content-skills-container">
@@ -28,9 +63,9 @@ export default async function About() {
                                     <h3>Frontend Development</h3>
                                     <p>{"React, TypeScript, Next.js, Vue"}</p>
                                     <div className="progress-bar">
-                                        <div className="progress-bar-fill" style={{ width: "80%" }}></div>
+                                        <div className="progress-bar-fill" style={{ width: `${about.frontend}%` }}></div>
                                     </div>
-                                    <p>{'80%'}</p>
+                                    <p>{about.frontend}%</p>
                                 </div>
                             </div>
                             <div className="about-site-content-skill">
@@ -39,9 +74,9 @@ export default async function About() {
                                     <h3>Backend Development</h3>
                                     <p>{"C#, ASP.NET Core, SQL Server"}</p>
                                     <div className="progress-bar">
-                                        <div className="progress-bar-fill" style={{ width: "70%" }}></div>
+                                        <div className="progress-bar-fill" style={{ width: `${about.backend}%` }}></div>
                                     </div>
-                                    <p>{'70%'}</p>
+                                    <p>{about.backend}%</p>
                                 </div>
                             </div>
                             <div className="about-site-content-skill">
@@ -50,9 +85,9 @@ export default async function About() {
                                     <h3>Web Technologies</h3>
                                     <p>{"HTML5, CSS3, JavaScript, REST APIs"}</p>
                                     <div className="progress-bar">
-                                        <div className="progress-bar-fill" style={{ width: "90%" }}></div>
+                                        <div className="progress-bar-fill" style={{ width: `${about.web}%` }}></div>
                                     </div>
-                                    <p>{'90%'}</p>
+                                    <p>{about.web}%</p>
                                 </div>
                             </div>
                             <div className="about-site-content-skill">
@@ -61,9 +96,9 @@ export default async function About() {
                                     <h3>Mobile Development</h3>
                                     <p>{"React Native, Expo, Kotlin"}</p>
                                     <div className="progress-bar">
-                                        <div className="progress-bar-fill" style={{ width: "70%" }}></div>
+                                        <div className="progress-bar-fill" style={{ width: `${about.mobile}%` }}></div>
                                     </div>
-                                    <p>{'70%'}</p>
+                                    <p>{about.mobile}%</p>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +106,7 @@ export default async function About() {
                     </div>
                     <div className="about-site-content-container">
                         <h2>Education</h2>
-                        <p><strong>{'Software Engineering'}</strong><br />{'First Class Honours'}<br />{'University Degree'}</p>
+                        <p><strong>{'BSc, Computer Software Engineering'}</strong><br />{'First Class Honours'}<br />{'Bournemouth University'}</p>
                         <Link href="/education" className="btn">{"View More Education"}</Link>
                     </div>
                 </div>

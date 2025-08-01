@@ -12,6 +12,8 @@ import theGuitarShopListingImage from "../../../../public/the-guitar-shop-listin
 import rightTrackListingImage from "../../../../public/right-track-listing.jpg";
 import appleGameImage from "../../../../public/apple-catcher-game.jpg";
 import appleGameListingImage from "../../../../public/apple-game-listing.jpg";
+import portfolioImage from "../../../../public/portfolio-home.png";
+import portfolioListingImage from "../../../../public/portfolio-listing.jpg";
 import imageNotFound from "../../../../public/image-not-found.jpg";
 import Image, { StaticImageData } from "next/image";
 
@@ -31,6 +33,8 @@ const imageMap: ImageMap = {
     theguitarshoplisting: theGuitarShopListingImage,
     righttracklisting: rightTrackListingImage,
     applegame: appleGameImage,
+    portfolio: portfolioImage,
+    portfoliolisting: portfolioListingImage,
     applegamelisting: appleGameListingImage,
     default: imageNotFound,
   };

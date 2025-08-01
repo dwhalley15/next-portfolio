@@ -52,3 +52,8 @@ export async function getProjectByName( projectName: string ) {
   const row = await sql`SELECT * FROM projects WHERE url = ${projectName}`;
   return row;
 }
+
+export async function getAboutInfo() {
+  const about_info = await sql`SELECT * FROM about_info`;
+  return about_info.rows;
+}
