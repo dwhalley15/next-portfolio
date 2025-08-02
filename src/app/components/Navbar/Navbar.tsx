@@ -10,7 +10,7 @@ import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX, faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { ProjectProps } from "../Project/Project";
 import { usePathname } from "next/navigation";
 
@@ -37,6 +37,9 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
   const timeoutRef = useRef<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeFullScreenDropdown, setActiveFullScreenDropdown] = useState<
+    string | null
+  >(null);
 
   const pathname = usePathname();
 
@@ -95,6 +98,14 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
     }, 300);
   };
 
+  const openFullScreenDropdown = (linkName: string) => {
+    setActiveFullScreenDropdown(linkName);
+  };
+
+  const closeFullScreenDropdown = () => {
+    setActiveFullScreenDropdown(null);
+  };
+
   return (
     <>
       <header>
@@ -102,12 +113,18 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
           <Link className="header_logo" href="/">
             {"Ortheyus"}
           </Link>
+
           <FontAwesomeIcon
             icon={menuActive ? faX : faBars}
             size="2x"
             onClick={toggleMenu}
           />
-          <ul className={menuActive ? "active" : ""}>
+
+          <ul
+            className={`${menuActive ? "active" : ""} ${
+              activeFullScreenDropdown ? "hidden" : ""
+            }`}
+          >
             {navLinks.map((link: NavbarItem) => {
               const linkHref =
                 link.link_name === "home" ? "/" : `/${link.link_name}`;
@@ -129,13 +146,28 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
                       href={linkHref}
                       onClick={() => {
                         setMenuActive(false);
+                        if (isMobile && hasDropdown) {
+                          openFullScreenDropdown(link.link_name);
+                        }
                       }}
                     >
                       {link.link_name.charAt(0).toUpperCase() +
                         link.link_name.slice(1)}
                     </Link>
 
-                    {hasDropdown && (
+                    {hasDropdown && isMobile && (
+                      <button
+                        className="dropdown-toggle"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          openFullScreenDropdown(link.link_name);
+                        }}
+                      >
+                        <FontAwesomeIcon icon={faArrowRight} size="2x"/>
+                      </button>
+                    )}
+
+                    {hasDropdown && !isMobile && (
                       <ul
                         className={`nav-dropdown ${
                           isDropdownActive ? "visible" : ""
@@ -148,67 +180,41 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
                                 new Date(b.date).getTime() -
                                 new Date(a.date).getTime()
                             )
-                            .map((project: ProjectProps) => {
-                              const projectLink = `/projects/${project.url}`;
-                              const isProjectActive = pathname === projectLink;
-                              return (
-                                <li key={project.url}>
-                                  <Link
-                                    className={`nav-link ${
-                                      isProjectActive ? "active" : ""
-                                    }`}
-                                    href={projectLink}
-                                    onClick={() => setMenuActive(false)}
-                                  >
-                                    {project.title}
-                                  </Link>
-                                </li>
-                              );
-                            })}
+                            .map((project) => (
+                              <li key={project.url}>
+                                <Link
+                                  className={`nav-link ${
+                                    pathname === `/projects/${project.url}`
+                                      ? "active"
+                                      : ""
+                                  }`}
+                                  href={`/projects/${project.url}`}
+                                  onClick={() => setMenuActive(false)}
+                                >
+                                  {project.title}
+                                </Link>
+                              </li>
+                            ))}
 
-                        {link.link_name === "about" &&
-                          (() => {
-                            const isServicesActive = pathname === "/services";
-                            const isSkillsActive = pathname === "/skills";
-                            const isEducationActive = pathname === "/education";
-                            return (
-                              <>
-                                <li>
-                                  <Link
-                                    href="/services"
-                                    className={`nav-link ${
-                                      isServicesActive ? "active" : ""
-                                    }`}
-                                    onClick={() => setMenuActive(false)}
-                                  >
-                                    Services
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    href="/skills"
-                                    className={`nav-link ${
-                                      isSkillsActive ? "active" : ""
-                                    }`}
-                                    onClick={() => setMenuActive(false)}
-                                  >
-                                    Skills
-                                  </Link>
-                                </li>
-                                <li>
-                                  <Link
-                                    href="/education"
-                                    className={`nav-link ${
-                                      isEducationActive ? "active" : ""
-                                    }`}
-                                    onClick={() => setMenuActive(false)}
-                                  >
-                                    Education
-                                  </Link>
-                                </li>
-                              </>
-                            );
-                          })()}
+                        {link.link_name === "about" && (
+                          <>
+                            <li>
+                              <Link href="/services" className="nav-link">
+                                Services
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/skills" className="nav-link">
+                                Skills
+                              </Link>
+                            </li>
+                            <li>
+                              <Link href="/education" className="nav-link">
+                                Education
+                              </Link>
+                            </li>
+                          </>
+                        )}
                       </ul>
                     )}
                   </div>
@@ -216,9 +222,82 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
               );
             })}
           </ul>
+
           <Link href="/contact" className="btn hire-me">
-            {"Hire Me"}
+            Hire Me
           </Link>
+
+          {/* Full-screen mobile dropdown */}
+          {isMobile && activeFullScreenDropdown && (
+            <div className="fullscreen-dropdown">
+              <button className="back-button" onClick={closeFullScreenDropdown}>
+                <FontAwesomeIcon icon={faArrowLeft} size="1x"/> Back
+              </button>
+              <ul className="fullscreen-ul">
+                {activeFullScreenDropdown === "projects" &&
+                  [...projects]
+                    .sort(
+                      (a, b) =>
+                        new Date(b.date).getTime() - new Date(a.date).getTime()
+                    )
+                    .map((project) => (
+                      <li key={project.url}>
+                        <Link
+                          href={`/projects/${project.url}`}
+                          className="nav-link"
+                          onClick={() => {
+                            setMenuActive(false);
+                            closeFullScreenDropdown();
+                          }}
+                        >
+                          {project.title}
+                        </Link>
+                      </li>
+                    ))}
+
+                {activeFullScreenDropdown === "about" && (
+                  <>
+                    <li>
+                      <Link
+                        href="/services"
+                        className="nav-link"
+                        onClick={() => {
+                          setMenuActive(false);
+                          closeFullScreenDropdown();
+                        }}
+                      >
+                        Services
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/skills"
+                        className="nav-link"
+                        onClick={() => {
+                          setMenuActive(false);
+                          closeFullScreenDropdown();
+                        }}
+                      >
+                        Skills
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/education"
+                        className="nav-link"
+                        onClick={() => {
+                          setMenuActive(false);
+                          closeFullScreenDropdown();
+                        }}
+                      >
+                        Education
+                      </Link>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          )}
         </nav>
       </header>
     </>
