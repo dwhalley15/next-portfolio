@@ -70,12 +70,19 @@ export async function generateMetadata({
     params.name
   );
 
+  if (projectData.rows.length === 0) {
+    return {
+      title: "Project Not Found",
+      description: "This project could not be found",
+    };
+  }
+
   const mappedProjectData: ProjectData = mapProjectData(projectData.rows[0]);
 
   const renderredListingImage = ImageService(
-      mappedProjectData.listingimage,
-      mappedProjectData.title + " Heading Image"
-    );
+    mappedProjectData.listingimage,
+    mappedProjectData.title + " Heading Image"
+  );
 
   const imageSrc = (renderredListingImage.props as any).src as string;
 
