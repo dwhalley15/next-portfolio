@@ -33,7 +33,7 @@ export interface ProjectData {
   title: string;
   descriptionLong: string;
   description: string;
-  image: any;
+  images: any[];
   technologies: string[];
   video?: string;
   url: string;
@@ -54,7 +54,7 @@ export async function generateMetadata({
       title: row.title,
       description: row.description,
       descriptionLong: row.descriptionlong,
-      image: row.image,
+      images: Array.isArray(row.images) ? row.images : [],
       technologies: row.technologies,
       video: row.video,
       url: row.url,
@@ -70,14 +70,21 @@ export async function generateMetadata({
     params.name
   );
 
+  if (projectData.rows.length === 0) {
+    return {
+      title: "Project Not Found",
+      description: "This project could not be found",
+    };
+  }
+
   const mappedProjectData: ProjectData = mapProjectData(projectData.rows[0]);
 
-  const renderredImage = ImageService(
+  const renderredListingImage = ImageService(
     mappedProjectData.listingimage,
-    mappedProjectData.title
+    mappedProjectData.title + " Heading Image"
   );
 
-  const imageSrc = (renderredImage.props as any).src as string;
+  const imageSrc = (renderredListingImage.props as any).src as string;
 
   return {
     title: `Ortheyus | Projects | ${mappedProjectData.title}`,
@@ -124,7 +131,7 @@ export default async function Project({
       title: row.title,
       description: row.description,
       descriptionLong: row.descriptionlong,
-      image: row.image,
+      images: row.images,
       technologies: row.technologies,
       video: row.video,
       url: row.url,
@@ -153,9 +160,8 @@ export default async function Project({
 
     const { projects } = await getProjectData();
 
-     const renderredImage = ImageService(
-      mappedProjectData.image,
-      mappedProjectData.title + " Showcase Image"
+    const renderedImages = mappedProjectData.images?.map(img =>
+      ImageService(img, mappedProjectData.title)
     );
 
     const renderredListingImage = ImageService(
@@ -291,9 +297,11 @@ export default async function Project({
                           referrerPolicy="strict-origin-when-cross-origin"
                         ></iframe>
                       )}
-                      <div className="project-page-media-image">
-                        {renderredImage}
-                      </div>
+                      {renderedImages?.map((image, idx) => (
+                        <div key={idx} className="project-page-media-image">
+                          {image}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>

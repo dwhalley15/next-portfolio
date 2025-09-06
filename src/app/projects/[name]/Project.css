@@ -82,7 +82,7 @@
 }
 
 .project-page-media-image{
-    width: 100%;
+    width: auto;
     height: 100%;
     position: relative;
     border-radius: 1rem;
@@ -92,7 +92,7 @@
 
 
 .project-page-media-image img{
-    height: 100%;
+    height: auto;
     width: 100%;
     object-fit: contain;
     aspect-ratio: 16/9;
@@ -105,7 +105,7 @@
 }
 
 .project-page-media iframe{
-    height: 100%;
+    height: auto;
     width: 100%;
     aspect-ratio: 16/9;
     border-radius: 1rem;

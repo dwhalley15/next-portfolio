@@ -1,5 +1,6 @@
 import Image from "next/image";
 import lightBulbImage from "../../public/light-bulb.png";
+import Link from "next/link";
 
 export default async function NotFound() {
   return (
@@ -12,6 +13,9 @@ export default async function NotFound() {
         <div className="text-container">
           <h1>Page <span>Not Found</span></h1>
           <p>This page is not supported by this site.</p>
+          <Link href="/" className="btn">
+            {"Go back to Home Page"}
+          </Link>
         </div>
       </section>
     </>
