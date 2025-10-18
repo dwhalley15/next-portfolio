@@ -53,7 +53,7 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
         </div>
         <div className="image-container">
           <div className="purple-orb"></div>
-          <Image className="main-image" src={lightBulbImage} alt={firstItem.image_alt} width={256} height={256} />
+          <Image className="main-image" priority src={lightBulbImage} alt={firstItem.image_alt} width={256} height={256} />
         </div>
       </section>
     </>

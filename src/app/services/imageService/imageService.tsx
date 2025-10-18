@@ -77,5 +77,5 @@ const imageMap: ImageMap = {
   export default function ImageService(imageName: string, altText: string): JSX.Element {
     const imageSrc = getImageSource(imageName);
   
-    return <Image src={imageSrc.src} alt={altText} width={10000} height={10000} className="project-img" />;
+    return <Image src={imageSrc.src} alt={altText} width={10000} height={10000} className="project-img" loading="lazy" />;
   }

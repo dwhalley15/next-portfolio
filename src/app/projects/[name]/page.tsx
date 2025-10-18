@@ -91,7 +91,7 @@ export async function generateMetadata({
     description: mappedProjectData.description,
     alternates: {
       canonical:
-        "https://ortheyus-portfolio.vercel.app/projects/" +
+        "https://portfolio.ortheyus.uk/projects/" +
         mappedProjectData.url,
     },
     openGraph: {
@@ -99,7 +99,7 @@ export async function generateMetadata({
       siteName: `Ortheyus | Projects | ${mappedProjectData.title}`,
       locale: "en_UK",
       url:
-        "https://ortheyus-portfolio.vercel.app/projects/" +
+        "https://portfolio.ortheyus.uk/projects/" +
         mappedProjectData.url,
       title: `Ortheyus | Projects | ${mappedProjectData.title}`,
       description: mappedProjectData.description,
@@ -175,7 +175,7 @@ export default async function Project({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       name: mappedProjectData.title,
-      url: `https://ortheyus-portfolio.vercel.app/projects/${mappedProjectData.url}`,
+      url: `https://portfolio.ortheyus.uk/projects/${mappedProjectData.url}`,
       sameAs: [
         "https://www.linkedin.com/in/davidwhalleyprofile",
         "https://github.com/dwhalley15",

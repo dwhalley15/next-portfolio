@@ -182,7 +182,7 @@ section {
   font-size: 1.8rem;
   font-weight: 500;
   border-bottom: 2px solid transparent;
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 

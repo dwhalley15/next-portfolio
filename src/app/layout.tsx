@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://ortheyus-portfolio.vercel.app'),
+  metadataBase: new URL('https://portfolio.ortheyus.uk/'),
   title: "Ortheyus | Software Developer | Web Enthusiast",
   description: "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise.",
   keywords: "ortheyus, software developer, web developer, web enthusiast, portfolio, skills, web development, programming, software development, web design, html, css, javascript, react, nextjs",
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
   publisher: 'Ortheyus',
   applicationName: "Ortheyus Portfolio",
   alternates: {
-    canonical: "https://ortheyus-portfolio.vercel.app/",
+    canonical: "https://portfolio.ortheyus.uk/",
   },
   openGraph: {
     type: "website",
     siteName: "Ortheyus | Software Developer | Web Enthusiast",
     locale: "en_UK",
-    url: "https://ortheyus-portfolio.vercel.app/",
+    url: "https://portfolio.ortheyus.uk/",
     title: "Ortheyus | Software Developer | Web Enthusiast",
     description: "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise.",
     images: [

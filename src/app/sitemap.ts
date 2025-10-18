@@ -3,7 +3,7 @@ import { getNavLinks, getProjectData } from "./services/dbServices/dbService";
 import { NavbarItem } from "./components/Navbar/Navbar";
 import { url } from "inspector";
 
-const BASE_URL = "https://ortheyus-portfolio.vercel.app";
+const BASE_URL = "https://portfolio.ortheyus.uk";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
