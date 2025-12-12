@@ -48,12 +48,24 @@
   font-size: 25px;
   border-radius: 50%;
   margin: 3rem 1.5rem 3rem 0;
-  transition: all 0.3s ease;
+  transition: transform 0.15s ease, filter 0.3s ease;
+  touch-action: manipulation;
+  cursor: pointer;
 }
 
 .icons a:hover {
   transform: scale(1.1);
   filter: drop-shadow(0 0 10px var(--main-color));
+}
+
+.icons a:active {
+  transform: scale(0.94);
+}
+
+@media(hover: none){
+  .icons a:active {
+    transform: scale(0.97);
+  }
 }
 
 span {
@@ -92,29 +104,35 @@ span {
   font-size: 34px;
   font-weight: 600;
   min-width: 280px;
-}
-
-.typing-text span {
+  line-height: 1.1;
+  display: inline-block;
   position: relative;
 }
 
-.typing-text span::before {
-  content: "Software Developer";
-  color: transparent !important;
+.typing-text span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: bottom;
+  color: transparent;
   background-clip: text;
   background-image: var(--gradient-accent);
-  animation: words 20s infinite;
+  -webkit-background-clip: text;
 }
 
-.typing-text span::after {
-  content: "";
-  background: var(--gradient-bg);
-  position: absolute;
-  width: calc(100% + 8px);
-  height: 100%;
-  border-left: 3px solid var(--gradient-bg);
-  right: -8px;
-  animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+.pulse{
+  animation-name: pulsingCursor;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  color: var(--text-color) !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
 }
 
 .btn-container {
@@ -205,65 +223,12 @@ span {
   }
 }
 
-@keyframes cursor {
-  to {
-    border-left: 3px solid var(--text-color);
+@keyframes pulsingCursor {
+  0%, 100% {
+    opacity: 1;
   }
-}
-
-@keyframes words {
-
-  0%,
-  20% {
-    content: "Web Developer";
-  }
-
-  21%,
-  40% {
-    content: "Software Engineer";
-  }
-
-  41%,
-  60% {
-    content: "Problem Solver";
-  }
-
-  61%,
-  80% {
-    content: "Code Enthusiast";
-  }
-
-  81%,
-  100% {
-    content: "Software Developer";
-  }
-}
-
-@keyframes typing {
-
-  10%,
-  15%,
-  30%,
-  35%,
-  50%,
-  55%,
-  70%,
-  75%,
-  90%,
-  95% {
-    width: 0;
-  }
-
-  5%,
-  20%,
-  25%,
-  40%,
-  45%,
-  60%,
-  65%,
-  80%,
-  85% {
-    width: calc(100% + 8px);
+  50% {
+    opacity: .5;
   }
 }
 

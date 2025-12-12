@@ -80,7 +80,8 @@ nav.scrolled {
   background-image: var(--gradient-primary);
   font-weight: 700;
   cursor: pointer;
-  transition: 0.5s ease;
+  touch-action: manipulation;
+  transition: transform 0.15s ease, border-bottom 0.3s ease;
   margin: 0;
   border-bottom: none !important;
 }
@@ -88,6 +89,16 @@ nav.scrolled {
 .header_logo:hover {
   transform: scale(1.1);
   border-bottom: none !important;
+}
+
+.header_logo:active {
+  transform: scale(0.94);
+}
+
+@media(hover: none){
+  .header_logo:active {
+    transform: scale(0.97);
+  }
 }
 
 nav a {

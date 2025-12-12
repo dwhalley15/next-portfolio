@@ -4,6 +4,7 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import lightBulbImage from "../../../../public/light-bulb.png";
 import getFontAwesomeIcon from "@/app/services/iconService/iconService";
+import TypingText from "./TypingText";
 
 export interface HeaderItem {
   id: number;
@@ -37,7 +38,7 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
         <div className="blue-orb"></div>
         <div className="text-container">
           <h1>{firstItem.intro_text} <span>{firstItem.name.charAt(0).toUpperCase() + firstItem.name.slice(1)}</span></h1>
-          <h2 className="typing-text">{firstItem.typing_text} <span></span></h2>
+          <h2 className="typing-text">{firstItem.typing_text} <span><TypingText /></span></h2>
           <p>{firstItem.description}</p>
           <div className="icons">
             {socialLinks.map((link: SocialLinkItem) => (

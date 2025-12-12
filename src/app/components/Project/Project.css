@@ -4,7 +4,8 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    touch-action: manipulation;
+    transition: transform 0.15s ease, box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     border: 1px solid var(--glass-border);
     background: var(--glass-bg);
     box-shadow: var(--glass-shadow);
@@ -16,6 +17,16 @@
     transform: scale(1.02);
     box-shadow: 0 0 25px var(--main-color);
     border-color: var(--main-color);
+}
+
+.project:active{
+    transform: scale(0.94);
+}
+
+@media(hover: none){
+    .project:active{
+        transform: scale(0.97);
+    }
 }
 
 .project-text h2{
