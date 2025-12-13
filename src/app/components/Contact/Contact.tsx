@@ -7,6 +7,7 @@ import { useFormStatus } from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import TextContainer from "../Motion/TextContainer/TextContainer";
 
 export interface ContactItem {
   id: number;
@@ -43,8 +44,10 @@ export default function Contact({ contactInfo, contactDescription }: ContactProp
   return (
     <>
       <section className="contact" id="contact">
-        <h1>Get In <span>Touch</span></h1>
-        <p>{contactDescription}</p>
+        <TextContainer className="contact">
+          <h1>Get In <span>Touch</span></h1>
+          <p>{contactDescription}</p>
+        </TextContainer>
         <div className="contact-container">
           <div className="contact-info">
             <h2>{"Let's Connect"}</h2>

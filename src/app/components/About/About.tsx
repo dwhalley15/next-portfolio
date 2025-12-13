@@ -5,6 +5,7 @@ import getFontAwesomeIcon from "@/app/services/iconService/iconService";
 import { getAboutInfo } from "@/app/services/dbServices/dbService";
 import NotFound from "@/app/not-found";
 import { QueryResultRow } from "@vercel/postgres";
+import TextContainer from "../Motion/TextContainer/TextContainer";
 
 export interface AboutInfo {
     description: string;
@@ -42,10 +43,10 @@ export default async function About() {
     return (
         <>
             <section className="about-site-section">
-                <div className="about-site-header">
+                <TextContainer className="about-site-header">
                     <h1>About <span>Me</span></h1>
                     <p>{about.description}</p>
-                </div>
+                </TextContainer>
                 <div className="about-site-content">
                     <div className="about-site-content-container">
                         <h2>My Journey</h2>

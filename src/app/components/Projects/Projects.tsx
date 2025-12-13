@@ -3,6 +3,7 @@ import { ProjectProps } from "../Project/Project";
 import "./Projects.css";
 import { getProjectData } from "../../services/dbServices/dbService";
 import Link from "next/link";
+import TextContainer from "../Motion/TextContainer/TextContainer";
 
 export default async function Projects() {
   const projectsResults = await getProjectData();
@@ -14,6 +15,7 @@ export default async function Projects() {
   return (
     <>
       <section className="project-container">
+        <TextContainer className="project-container">
         <h1>
           Featured <span>Projects</span>
         </h1>
@@ -22,6 +24,7 @@ export default async function Projects() {
             "Here are some of my recent projects that showcase my skills and passion for creating meaningful digital experiences."
           }
         </p>
+        </TextContainer>
         <div className="project-list">
           {projects.length > 0 ? (
             <>

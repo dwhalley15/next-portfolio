@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import lightBulbImage from "../../../../public/light-bulb.png";
 import getFontAwesomeIcon from "@/app/services/iconService/iconService";
 import TypingText from "./TypingText";
+import TextContainer from "../Motion/TextContainer/TextContainer";
 
 export interface HeaderItem {
   id: number;
@@ -36,7 +37,7 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
       <section className="header" id="home">
         <div className="red-orb"></div>
         <div className="blue-orb"></div>
-        <div className="text-container">
+        <TextContainer className="text-container">
           <h1>{firstItem.intro_text} <span>{firstItem.name.charAt(0).toUpperCase() + firstItem.name.slice(1)}</span></h1>
           <h2 className="typing-text">{firstItem.typing_text} <span><TypingText /></span></h2>
           <p>{firstItem.description}</p>
@@ -51,7 +52,7 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
             <Link href="/contact" className="btn">{firstItem.button_text}</Link>
             <Link className="btn-secondary" href="/projects">{"View Projects"}</Link>
           </div>
-        </div>
+        </TextContainer>
         <div className="image-container">
           <div className="purple-orb"></div>
           <Image className="main-image" priority src={lightBulbImage} alt={firstItem.image_alt} width={256} height={256} />

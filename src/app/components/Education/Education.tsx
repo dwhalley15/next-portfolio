@@ -1,7 +1,7 @@
 import "./Education.css";
 import { faGraduationCap, faAward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import TextContainer from "../Motion/TextContainer/TextContainer";
 
 export interface EducationItem {
   id: number;
@@ -29,8 +29,10 @@ export default function Education({ educationInfo, educationDescription }: Educa
   return (
     <>
       <section className="education" id="education">
-        <h1>Education</h1>
-        <p>{educationDescription}</p>
+        <TextContainer className="education">
+          <h1>Education</h1>
+          <p>{educationDescription}</p>
+        </TextContainer>
         <div className="timeline">
           {sortedEducationInfo.map((item: EducationItem, index: number) => (
             <div key={item.id} className="education-container">
