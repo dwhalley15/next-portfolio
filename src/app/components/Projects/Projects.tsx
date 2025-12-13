@@ -15,7 +15,7 @@ export default async function Projects() {
   return (
     <>
       <section className="project-container">
-        <TextContainer className="project-container">
+        <TextContainer className="animated-text-container">
         <h1>
           Featured <span>Projects</span>
         </h1>

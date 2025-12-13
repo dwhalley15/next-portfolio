@@ -23,7 +23,7 @@ export default function Services({
   return (
     <>
       <section className="services" id="services">
-        <TextContainer className="services">
+        <TextContainer className="animated-text-container">
           <h1>Services</h1>
           <p>{servicesDescription}</p>
         </TextContainer>

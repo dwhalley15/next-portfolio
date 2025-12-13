@@ -51,7 +51,7 @@ export default function Skills({ skillsInfo, skillsDescription }: SkillsProps) {
   return (
     <>
       <section className="skills" id="skills">
-        <TextContainer className="skills">
+        <TextContainer className="animated-text-container">
           <h1>Skills & Expertise</h1>
           <p>{skillsDescription}</p>
         </TextContainer>

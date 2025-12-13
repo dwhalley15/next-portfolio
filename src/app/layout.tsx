@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from 'next/font/google';
-import openGraphImage from "../../public/light-bulb.png";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
     description: "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise.",
     images: [
       {
-        url: openGraphImage.src,
+        url: "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
         width: 800,
         height: 600,
         alt: "Ortheyus | Software Developer | Web Enthusiast",
@@ -57,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Ortheyus | Software Developer | Web Enthusiast',
     description: "Discover Ortheyus' portfolio: a passionate software developer showcasing innovative web development projects, skills, and programming expertise.",
-    images: [openGraphImage.src],
+    images: ["https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png"],
   },
 };
 

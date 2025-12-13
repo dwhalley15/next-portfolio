@@ -2,7 +2,6 @@ import * as components from "../services/importService/importService";
 import { getAllData, getPageDescriptions, getProjectData } from "../services/dbServices/dbService";
 import NotFound from "../not-found";
 import type { Metadata } from "next";
-import mainImage from "../../../public/light-bulb.png";
 
 export async function generateMetadata({params}:  {params: {name: string} }): Promise<Metadata> {
 
@@ -27,7 +26,7 @@ export async function generateMetadata({params}:  {params: {name: string} }): Pr
                 description: description,
                 images: [
                   {
-                    url: mainImage.src,
+                    url: "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
                     width: 800,
                     height: 600,
                     alt: `Ortheyus | Software Developer | ${capitalizedParamName}`,
@@ -38,7 +37,7 @@ export async function generateMetadata({params}:  {params: {name: string} }): Pr
                 card: 'summary_large_image',
                 title: `Ortheyus | Software Developer | ${capitalizedParamName}`,
                 description: description,
-                images: [mainImage.src],
+                images: ["https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png"],
               },
         };
 };
@@ -80,7 +79,7 @@ export default async function DynamicPage({ params }: { params: { name: string }
         },
         "image": {
           "@type": "ImageObject",
-          "url": mainImage.src,
+          "url": "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
           "width": 800,
           "height": 600
         },

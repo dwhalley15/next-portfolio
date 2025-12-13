@@ -44,7 +44,7 @@ export default function Contact({ contactInfo, contactDescription }: ContactProp
   return (
     <>
       <section className="contact" id="contact">
-        <TextContainer className="contact">
+        <TextContainer className="animated-text-container">
           <h1>Get In <span>Touch</span></h1>
           <p>{contactDescription}</p>
         </TextContainer>

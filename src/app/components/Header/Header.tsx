@@ -2,7 +2,6 @@ import "./Header.css";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import lightBulbImage from "../../../../public/light-bulb.png";
 import getFontAwesomeIcon from "@/app/services/iconService/iconService";
 import TypingText from "./TypingText";
 import TextContainer from "../Motion/TextContainer/TextContainer";
@@ -55,7 +54,7 @@ export default function Header({ headerInfo, socialLinks }: HeaderProps) {
         </TextContainer>
         <div className="image-container">
           <div className="purple-orb"></div>
-          <Image className="main-image" priority src={lightBulbImage} alt={firstItem.image_alt} width={256} height={256} />
+          <Image className="main-image" priority src="https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png" alt={firstItem.image_alt} width={256} height={256} />
         </div>
       </section>
     </>

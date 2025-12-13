@@ -1,7 +1,6 @@
 import * as components from "./services/importService/importService"; 
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { getNavLinks, getHeaderInfo, getSocialLinks, getProjectData } from "./services/dbServices/dbService";
-import mainImage from "../../public/light-bulb.png";
 
 
 export default async function Home() {
@@ -30,7 +29,7 @@ export default async function Home() {
     },
     "image": {
       "@type": "ImageObject",
-      "url": mainImage.src,
+      "url": "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
       "width": 800,
       "height": 600
     },

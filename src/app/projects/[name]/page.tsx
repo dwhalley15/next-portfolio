@@ -15,7 +15,6 @@ import {
 import NotFound from "../../not-found";
 import { QueryResult, QueryResultRow } from "@vercel/postgres";
 import Link from "next/link";
-import ImageService from "../../services/imageService/imageService";
 import getTechLink from "../../services/techService/techService";
 import getTimeAgo from "@/app/services/timeService/getTimeAgo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,6 +27,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import "./Project.css";
+import Image from "next/image";
 
 export interface ProjectData {
   title: string;
@@ -79,33 +79,23 @@ export async function generateMetadata({
 
   const mappedProjectData: ProjectData = mapProjectData(projectData.rows[0]);
 
-  const renderredListingImage = ImageService(
-    mappedProjectData.listingimage,
-    mappedProjectData.title + " Heading Image"
-  );
-
-  const imageSrc = (renderredListingImage.props as any).src as string;
-
   return {
     title: `Ortheyus | Projects | ${mappedProjectData.title}`,
     description: mappedProjectData.description,
     alternates: {
       canonical:
-        "https://portfolio.ortheyus.uk/projects/" +
-        mappedProjectData.url,
+        "https://portfolio.ortheyus.uk/projects/" + mappedProjectData.url,
     },
     openGraph: {
       type: "website",
       siteName: `Ortheyus | Projects | ${mappedProjectData.title}`,
       locale: "en_UK",
-      url:
-        "https://portfolio.ortheyus.uk/projects/" +
-        mappedProjectData.url,
+      url: "https://portfolio.ortheyus.uk/projects/" + mappedProjectData.url,
       title: `Ortheyus | Projects | ${mappedProjectData.title}`,
       description: mappedProjectData.description,
       images: [
         {
-          url: imageSrc,
+          url: mappedProjectData.listingimage,
           width: 800,
           height: 600,
           alt: `Ortheyus | Projects | ${mappedProjectData.title}`,
@@ -116,7 +106,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `Ortheyus | Projects | ${mappedProjectData.title}`,
       description: mappedProjectData.description,
-      images: [imageSrc],
+      images: [mappedProjectData.listingimage],
     },
   };
 }
@@ -160,17 +150,6 @@ export default async function Project({
 
     const { projects } = await getProjectData();
 
-    const renderedImages = mappedProjectData.images?.map(img =>
-      ImageService(img, mappedProjectData.title)
-    );
-
-    const renderredListingImage = ImageService(
-      mappedProjectData.listingimage,
-      mappedProjectData.title + " Heading Image"
-    );
-
-    const imageSrc = (renderredListingImage.props as any).src as string;
-
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
@@ -189,12 +168,26 @@ export default async function Project({
       },
       image: {
         "@type": "ImageObject",
-        url: imageSrc,
+        url: mappedProjectData.listingimage,
         width: 800,
         height: 600,
       },
       description: mappedProjectData.description,
     };
+
+    const FALLBACK_IMAGE =
+      "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/image-not-found.jpg";
+
+    const renderedListingImage =
+      typeof mappedProjectData.listingimage === "string" &&
+      mappedProjectData.listingimage.trim().length > 0
+        ? mappedProjectData.listingimage
+        : FALLBACK_IMAGE;
+
+    const renderedImages =
+      mappedProjectData.images?.map((img) =>
+        typeof img === "string" && img.trim().length > 0 ? img : FALLBACK_IMAGE
+      ) ?? [];
 
     return (
       <>
@@ -244,7 +237,14 @@ export default async function Project({
               <div className="project-page-columns">
                 <div className="project-page-section">
                   <div className="project-listing-image">
-                    {renderredListingImage}
+                    <Image
+                      src={renderedListingImage}
+                      alt={mappedProjectData.title + " Heading Image"}
+                      width={1000}
+                      height={350}
+                      className="project-img"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
                 <div className="project-page-section">
@@ -299,7 +299,16 @@ export default async function Project({
                       )}
                       {renderedImages?.map((image, idx) => (
                         <div key={idx} className="project-page-media-image">
-                          {image}
+                          <Image
+                            src={image}
+                            alt={`${mappedProjectData.title} screenshot ${
+                              idx + 1
+                            }`}
+                            width={1000}
+                            height={500}
+                            className="project-img"
+                            loading="lazy"
+                          />
                         </div>
                       ))}
                     </div>
