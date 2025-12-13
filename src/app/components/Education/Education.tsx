@@ -29,7 +29,7 @@ export default function Education({ educationInfo, educationDescription }: Educa
   return (
     <>
       <section className="education" id="education">
-        <TextContainer className="education">
+        <TextContainer className="animated-text-container">
           <h1>Education</h1>
           <p>{educationDescription}</p>
         </TextContainer>
