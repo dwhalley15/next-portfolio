@@ -16,7 +16,6 @@ import TextContainer from "../Motion/TextContainer/TextContainer";
 
 export interface ContactItem {
   id: number;
-  email: string;
   button_text: string;
   submission_text: string;
 }
