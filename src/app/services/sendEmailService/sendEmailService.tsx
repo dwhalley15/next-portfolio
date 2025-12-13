@@ -1,25 +1,56 @@
-'use server'
+"use server";
 
-import { Resend } from 'resend';
-import { revalidatePath } from 'next/cache';
+import { Resend } from "resend";
+import { revalidatePath } from "next/cache";
+import { validateContactForm, FormErrors } from "./validation";
+import { checkRateLimit, getClientIp } from "./rateLimit";
 
-export async function sendEmail(formData: FormData) {
+interface SendEmailResult {
+  success: boolean;
+  errors?: FormErrors;
+}
 
-    const API_KEY = process.env.RESEND_API_KEY;
+export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
+  // Honeypot field check
+  if (formData.get("company")) {
+    return { success: true };
+  }
 
-    const resend = new Resend(API_KEY);
+  // Rate limiting
+  const ip = getClientIp();
+  const allowed = checkRateLimit(ip);
+  if (!allowed) {
+    return {
+      success: false,
+      errors: {
+        message: "Too many messages sent. Please try again later.",
+      },
+    };
+  }
 
-    try {
-        const senderName = formData.get('senderName') as string;
-        const senderEmail = formData.get('senderEmail') as string;
-        const senderNumber = formData.get('senderNumber') as string;
-        const subject = formData.get('subject') as string;
-        const message = formData.get('message') as string;
-        const receiverEmail = formData.get('receiverEmail') as string;
+  const rawData = {
+    senderName: (formData.get("senderName") as string)?.trim(),
+    senderEmail: (formData.get("senderEmail") as string)?.trim(),
+    senderNumber: (formData.get("senderNumber") as string)?.trim(),
+    subject: (formData.get("subject") as string)?.trim(),
+    message: (formData.get("message") as string)?.trim(),
+  };
 
-        const emailBody = `
-          Name: ${senderName || 'N/A'}
-          Email: ${senderEmail}
+  // Validate form data
+  const validation = validateContactForm(rawData);
+
+  if (!validation.success) {
+    return { success: false, errors: validation.errors };
+  }
+
+  const { senderName, senderEmail, senderNumber, subject, message } =
+    validation.data;
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
+  const emailBody = `
+          Name: ${senderName || "N/A"}
+          Email: ${senderEmail || "N/A"}
           Phone Number: ${senderNumber || "N/A"}
           Subject: ${subject || "N/A"}
   
@@ -27,20 +58,31 @@ export async function sendEmail(formData: FormData) {
           ${message}
       `;
 
-        const { data } = await resend.emails.send({
-            from: 'onboarding@resend.dev',
-            to: receiverEmail,
-            subject: "Message from Contact Form",
-            reply_to: senderEmail,
-            text: emailBody,
-        });
+  await resend.emails.send({
+    from: "Portfolio Form Submission <contact@ortheyus.uk>",
+    to: "david.whalley.dev@proton.me",
+    subject: "Message from Contact Form",
+    reply_to: senderEmail,
+    text: emailBody,
+  });
 
-        console.log(data);
+  await resend.emails.send({
+    from: "Ortheyus <no-reply@ortheyus.uk>",
+    to: senderEmail,
+    subject: "Thank you for contacting me",
+    text: `Hi ${senderName},
 
-        revalidatePath('/');
-    }
-    catch (error) {
-        console.log(error);
-    }
+Thanks for reaching out through my portfolio site.
+
+I've received your message and will review it shortly. If your enquiry requires a response, I'll get back to you as soon as possible.
+
+Best regards,
+David Whalley
+Ortheyus
+https://ortheyus.uk`,
+  });
+
+  revalidatePath("/");
+
+  return { success: true };
 }
-

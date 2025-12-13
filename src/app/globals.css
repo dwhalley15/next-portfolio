@@ -29,7 +29,7 @@
   --gradient-main-secondary: linear-gradient(135deg, hsla(0, 84%, 60%, 0.4) 0%, var(--bg-color) 100%);
   --gradient-accent-tertiary: linear-gradient(135deg, hsla(217, 91%, 60%, 0.4) 0%, var(--bg-color) 100%);
   --line-gradient: linear-gradient(to bottom, var(--main-color), var(--accent-blue));
-
+  --error-color: hsl(0, 84%, 60%);
 }
 
 html {
