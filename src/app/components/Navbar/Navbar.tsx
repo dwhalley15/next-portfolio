@@ -10,7 +10,7 @@ import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import "./Navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faX, faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX, faArrowLeft, faArrowRight, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { ProjectProps } from "../Project/Project";
 import { usePathname } from "next/navigation";
 
@@ -152,7 +152,7 @@ export default function Navbar({ navLinks, projects }: NavbarProps) {
                       }}
                     >
                       {link.link_name.charAt(0).toUpperCase() +
-                        link.link_name.slice(1)}
+                        link.link_name.slice(1)}{hasDropdown && !isMobile && (<FontAwesomeIcon icon={faChevronDown} size="1x" />)}
                     </Link>
 
                     {hasDropdown && isMobile && (

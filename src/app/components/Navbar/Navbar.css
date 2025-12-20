@@ -59,6 +59,9 @@ nav.scrolled {
 
 .nav-link {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-dropdown.visible {
