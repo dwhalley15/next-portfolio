@@ -17,7 +17,7 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
   }
 
   // Rate limiting
-  const ip = getClientIp();
+  const ip = await getClientIp();
   const allowed = checkRateLimit(ip);
   if (!allowed) {
     return {

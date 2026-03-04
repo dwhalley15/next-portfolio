@@ -44,11 +44,11 @@ export interface ProjectData {
   livelink: string;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { name: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: Promise<{ name: string }> }
+): Promise<Metadata> {
+
+  const { name } = await params;
   const mapProjectData = (row: QueryResultRow): ProjectData => {
     return {
       title: row.title,
@@ -67,7 +67,7 @@ export async function generateMetadata({
   };
 
   const projectData: QueryResult<QueryResultRow> = await getProjectByName(
-    params.name
+    name
   );
 
   if (projectData.rows.length === 0) {
@@ -114,8 +114,10 @@ export async function generateMetadata({
 export default async function Project({
   params,
 }: {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 }) {
+  const { name } = await params;
+
   const mapProjectData = (row: QueryResultRow): ProjectData => {
     return {
       title: row.title,
@@ -135,7 +137,7 @@ export default async function Project({
 
   try {
     const projectData: QueryResult<QueryResultRow> = await getProjectByName(
-      params.name
+      name
     );
 
     if (projectData.rows.length === 0) {

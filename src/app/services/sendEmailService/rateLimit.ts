@@ -4,8 +4,11 @@ const rateLimitMap = new Map<string, { count: number; expires: number }>();
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW = 60 * 1000;
 
-export function getClientIp(): string {
-  const xForwardedFor = headers().get("x-forwarded-for");
+export async function getClientIp(): Promise<string> {
+
+  const headerList = await headers();
+
+  const xForwardedFor = headerList.get("x-forwarded-for");
   
   if (xForwardedFor) {
     return xForwardedFor.split(",")[0].trim();
