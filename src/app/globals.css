@@ -37,15 +37,15 @@ html {
   overflow-x: hidden;
 }
 
-html::webkit-scrollbar {
+html::-webkit-scrollbar {
   width: 0.8rem;
 }
 
-html::webkit-scrollbar-track {
-  background: var(bg-color);
+html::-webkit-scrollbar-track {
+  background: var(--bg-color);
 }
 
-html::webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb {
   background: var(--main-color);
 }
 
