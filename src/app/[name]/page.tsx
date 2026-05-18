@@ -6,6 +6,7 @@ import {
 } from "../services/dbServices/dbService";
 import NotFound from "../not-found";
 import type { Metadata } from "next";
+import type { ReactElement } from "react";
 
 export async function generateMetadata({
   params,
@@ -103,7 +104,7 @@ export default async function DynamicPage(props: {
     description: description,
   };
 
-  let componentToRender: JSX.Element | null = null;
+  let componentToRender: ReactElement | null = null;
 
   switch (name) {
     case "home":
