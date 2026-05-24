@@ -1,59 +1,77 @@
-import { sql } from "@vercel/postgres";
+import { sql } from "./db";
 
 export async function getAllData() {
-  const navLinks = await sql`SELECT * FROM nav_links`;
-  const headerInfo = await sql`SELECT * FROM header_info`;
-  const socialLinks = await sql`SELECT * FROM social_links`;
-  const servicesInfo = await sql`SELECT * FROM services_info`;
-  const skillsInfo = await sql`SELECT * FROM skills_info`;
-  const educationInfo = await sql`SELECT * FROM education_info`;
-  const contactInfo = await sql`SELECT * FROM contact_info`;
+  const [
+    navLinks,
+    headerInfo,
+    socialLinks,
+    servicesInfo,
+    skillsInfo,
+    educationInfo,
+    contactInfo,
+  ] = await Promise.all([
+    sql`SELECT * FROM nav_links`,
+    sql`SELECT * FROM header_info`,
+    sql`SELECT * FROM social_links`,
+    sql`SELECT * FROM services_info`,
+    sql`SELECT * FROM skills_info`,
+    sql`SELECT * FROM education_info`,
+    sql`SELECT * FROM contact_info`,
+  ]);
 
   return {
-    navLinks: navLinks.rows,
-    headerInfo: headerInfo.rows,
-    socialLinks: socialLinks.rows,
-    servicesInfo: servicesInfo.rows,
-    skillsInfo: skillsInfo.rows,
-    educationInfo: educationInfo.rows,
-    contactInfo: contactInfo.rows,
+    navLinks,
+    headerInfo,
+    socialLinks,
+    servicesInfo,
+    skillsInfo,
+    educationInfo,
+    contactInfo,
   };
 }
 
 export async function getNavLinks() {
-  const navLinks = await sql`SELECT * FROM nav_links`;
-  return navLinks.rows;
+  return await sql`SELECT * FROM nav_links`;
 }
 
 export async function getHeaderInfo() {
-  const headerInfo = await sql`SELECT * FROM header_info`;
-  return headerInfo.rows;
+  return await sql`SELECT * FROM header_info`;
 }
 
 export async function getSocialLinks() {
-  const socialLinks = await sql`SELECT * FROM social_links`;
-  return socialLinks.rows;
+  return await sql`SELECT * FROM social_links`;
 }
 
 export async function getPageDescriptions(){
-  const pageDescriptions = await sql`SELECT * FROM page_descriptions`;
-  return pageDescriptions.rows;
+  return await sql`SELECT * FROM page_descriptions`;
 }
 
 export async function getProjectData() {
   const projects = await sql`SELECT * FROM projects ORDER BY id DESC`;
 
   return {
-    projects: projects.rows,
+    projects,
   };
 }
 
-export async function getProjectByName( projectName: string ) {
-  const row = await sql`SELECT * FROM projects WHERE url = ${projectName}`;
-  return row;
+export async function getProjectByName(projectName: string) {
+  const rows = await sql`
+    SELECT *
+    FROM projects
+    WHERE url = ${projectName}
+  `;
+
+  return rows[0] ?? null;
 }
 
 export async function getAboutInfo() {
-  const about_info = await sql`SELECT * FROM about_info`;
-  return about_info.rows;
+  return await sql`SELECT * FROM about_info`;
+}
+
+export async function getHomePageInfo() {
+  return await sql`SELECT * FROM home_page`;
+}
+
+export async function getSkillsInfo() {
+  return await sql`SELECT * FROM skills_info`;
 }

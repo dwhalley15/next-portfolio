@@ -1,0 +1,144 @@
+.selected-work {
+  padding: 5rem 0;
+}
+
+/* HEADER */
+.selected-work-header {
+  margin-bottom: 2.5rem;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.selected-work-kicker {
+  font-size: 0.75rem;
+  color: var(--dim);
+}
+
+.selected-work-title {
+  margin-top: 0.5rem;
+
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .selected-work-title {
+    font-size: 2.25rem;
+  }
+}
+
+.selected-work-all {
+  font-size: 0.75rem;
+  color: var(--terminal);
+}
+
+.selected-work-all:hover {
+  text-decoration: underline;
+}
+
+/* LIST WRAPPER */
+.selected-work-list {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ITEM */
+.selected-work-item {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+
+  align-items: center;
+
+  padding: 1.5rem 0.5rem;
+
+  border-bottom: 1px solid var(--border);
+
+  transition: background-color 150ms ease;
+}
+
+.selected-work-item:hover {
+  background-color: var(--card);
+}
+
+/* INDEX */
+.selected-work-index {
+  grid-column: span 1;
+
+  font-size: 0.75rem;
+  color: var(--dim);
+}
+
+/* MAIN BLOCK */
+.selected-work-main {
+  grid-column: span 11;
+}
+
+@media (min-width: 768px) {
+  .selected-work-main {
+    grid-column: span 4;
+  }
+}
+
+/* TITLE */
+.selected-work-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .selected-work-name {
+    font-size: 1.125rem;
+  }
+}
+
+.selected-work-item:hover .selected-work-name {
+  color: var(--terminal);
+}
+
+/* DATE */
+.selected-work-date {
+  font-size: 0.75rem;
+  color: var(--dim);
+}
+
+/* DESCRIPTION */
+.selected-work-description {
+  grid-column: span 12;
+
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (min-width: 768px) {
+  .selected-work-description {
+    grid-column: span 5;
+  }
+}
+
+/* TAGS */
+.selected-work-tags {
+  grid-column: span 12;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+
+  font-size: 10px;
+  color: var(--dim);
+}
+
+@media (min-width: 768px) {
+  .selected-work-tags {
+    grid-column: span 2;
+    justify-content: flex-end;
+  }
+}
+
+.selected-work-tag {
+  border: 1px solid var(--border);
+  padding: 0.125rem 0.375rem;
+}

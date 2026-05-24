@@ -107,14 +107,6 @@ export default async function DynamicPage(props: {
   let componentToRender: ReactElement | null = null;
 
   switch (name) {
-    case "home":
-      componentToRender = (
-        <components.Header
-          headerInfo={headerInfo as components.HeaderItem[]}
-          socialLinks={socialLinks as components.SocialLinkItem[]}
-        />
-      );
-      break;
     case "services":
       componentToRender = (
         <components.Services
@@ -164,9 +156,6 @@ export default async function DynamicPage(props: {
         projects={projects as components.ProjectProps[]}
       />
       <main>{componentToRender}</main>
-      <components.Footer
-        socialLinks={socialLinks as components.SocialLinkItem[]}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
