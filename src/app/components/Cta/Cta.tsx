@@ -1,21 +1,28 @@
 import "./Cta.css";
 import Link from "next/link";
 
-export default function Cta() {
+export interface CtaProps {
+  title_first: string | null;
+  title_second: string | null;
+  subtitle: string | null;
+  btn_text: string | null;
+  btn_url: string | null;
+}
+
+export default function Cta({ title_first, title_second, subtitle, btn_text, btn_url }: CtaProps) {
   return (
     <section className="cta">
       <div className="cta-content">
         <div>
-          <div className="cta-kicker">// next</div>
+          <div className="cta-kicker">// {subtitle}</div>
 
           <h2 className="cta-title">
-            Got a project that needs{" "}
-            <span className="cta-accent">shipping</span>?
+            {title_first}{" "} <span className="cta-accent">{title_second}</span>
           </h2>
         </div>
 
-        <Link href="/contact" className="cta-button">
-          $ ./start-conversation
+        <Link href={btn_url || "#"} className="cta-button">
+          {btn_text || ""}
         </Link>
       </div>
     </section>

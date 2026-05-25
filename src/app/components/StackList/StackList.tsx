@@ -1,32 +1,30 @@
 import "./StackList.css";
 
-export interface StackItem {
-  id: number;
-  name: string;
-}
-
 export interface StackListProps {
-  stackItems: StackItem[];
+  title: string | null;
+  subtitle: string | null;
+  text: string | null;
+  stackItems: string[];
 }
 
-export default function StackList({ stackItems }: StackListProps) {
+export default function StackList({ title, subtitle, text,stackItems }: StackListProps) {
   return (
     <section className="stacklist">
       <div className="stacklist-grid">
         <div className="stacklist-content">
-          <div className="stacklist-kicker">// stack</div>
+          <div className="stacklist-kicker">// {subtitle}</div>
 
-          <h2 className="stacklist-title">Tools of the trade.</h2>
+          <h2 className="stacklist-title">{title}</h2>
 
           <p className="stacklist-description">
-            I pick boring, proven tech and use it well. Then I write tests.
+            {text}
           </p>
         </div>
 
         <div className="stacklist-items">
-          {stackItems.map((s) => (
-            <span key={s.id} className="stacklist-item">
-              {s.name}
+          {stackItems.map((s, i) => (
+            <span key={i} className="stacklist-item">
+              {s}
             </span>
           ))}
         </div>

@@ -1,23 +1,11 @@
-import * as components from "./services/importService/importService";
 import {
-  getProjectData,
   getHomePageInfo,
-  getSkillsInfo,
 } from "./services/dbServices/dbService";
+import { renderComponent } from "./services/componentServices/componentRenderer";
+import type { PageData } from "./interfaces/interfaces";
 
 export default async function Home() {
-  const homePageInfo = await getHomePageInfo();
-  const { projects } = await getProjectData();
-  const typedProjects = projects as components.ProjectProps[];
-
-  const sortedProjects = typedProjects.sort(
-    (a: components.ProjectProps, b: components.ProjectProps) =>
-      new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-
-  const getFirstThreeProjects = sortedProjects.slice(0, 3);
-
-  const skillsInfo = await getSkillsInfo();
+  const page = (await getHomePageInfo()) as PageData | null;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -47,12 +35,7 @@ export default async function Home() {
 
   return (
     <div className="container">
-      <components.Header
-        homePageInfo={homePageInfo as components.HomePageInfoItem[]}
-      />
-      <components.SelectedWork projects={getFirstThreeProjects as components.SelectedWorkProps['projects']} />
-      <components.StackList stackItems={skillsInfo as components.StackListProps['stackItems']} />
-      <components.Cta />
+      {page?.components.map(renderComponent)}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

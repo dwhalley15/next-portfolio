@@ -42,7 +42,7 @@ export async function getSocialLinks() {
   return await sql`SELECT * FROM social_links`;
 }
 
-export async function getPageDescriptions(){
+export async function getPageDescriptions() {
   return await sql`SELECT * FROM page_descriptions`;
 }
 
@@ -68,8 +68,82 @@ export async function getAboutInfo() {
   return await sql`SELECT * FROM about_info`;
 }
 
+// Page and component data fetching
+export async function getLayoutInfo() {
+  const [page] = await sql`
+    SELECT 
+      p.*,
+      m.meta_title,
+      m.meta_description,
+      m.meta_image_url,
+      m.canonical_url
+    FROM page_info p
+    LEFT JOIN meta_info m ON p.meta_data = m.id
+    WHERE p.name = 'layout'
+  `;
+
+  if (!page) return null;
+
+  const components = await sql`
+    SELECT *
+    FROM page_components
+    WHERE page_id = ${page.id}
+    ORDER BY sort_order
+  `;
+
+  const populatedComponents = await Promise.all(
+    components.map(async (component) => ({
+      ...component,
+      data: await getComponentData(
+        component.component_type,
+        component.component_id,
+      ),
+    })),
+  );
+
+  return {
+    ...page,
+    components: populatedComponents,
+  };
+}
+
+// Reusable function to fetch page data by path
 export async function getHomePageInfo() {
-  return await sql`SELECT * FROM home_page`;
+  const [page] = await sql`
+    SELECT 
+      p.*,
+      m.meta_title,
+      m.meta_description,
+      m.meta_image_url,
+      m.canonical_url
+    FROM page_info p
+    LEFT JOIN meta_info m ON p.meta_data = m.id
+    WHERE p.name = 'home'
+  `;
+
+  if (!page) return null;
+
+  const components = await sql`
+    SELECT *
+    FROM page_components
+    WHERE page_id = ${page.id}
+    ORDER BY sort_order
+  `;
+
+  const populatedComponents = await Promise.all(
+    components.map(async (component) => ({
+      ...component,
+      data: await getComponentData(
+        component.component_type,
+        component.component_id,
+      ),
+    })),
+  );
+
+  return {
+    ...page,
+    components: populatedComponents,
+  };
 }
 
 export async function getSkillsInfo() {
@@ -80,11 +154,17 @@ export async function getAboutPageData() {
   return await sql`SELECT * FROM about_page_info`;
 }
 
-async function getComponentData(
-  type: string,
-  id: string
-) {
+// Helper function to fetch component data based on type and ID
+async function getComponentData(type: string, id: string) {
   switch (type) {
+    case "large_header_info":
+      return (
+        await sql`
+          SELECT *
+          FROM large_header_info
+          WHERE id = ${id}
+        `
+      )[0];
 
     case "timeline_info":
       return (
@@ -95,20 +175,66 @@ async function getComponentData(
         `
       )[0];
 
-      case "small_header_info":
-        return (
-          await sql`
+    case "small_header_info":
+      return (
+        await sql`
             SELECT *
             FROM small_header_info
             WHERE id = ${id}
           `
-        )[0];
+      )[0];
+
+    case "work_list_info":
+      return (
+        await sql`
+              SELECT *
+              FROM work_list_info
+              WHERE id = ${id}
+            `
+      )[0];
+
+    case "stack_list_info":
+      return (
+        await sql`
+                SELECT *
+                FROM stack_list_info
+                WHERE id = ${id}
+              `
+      )[0];
+
+    case "cta_info":
+      return (
+        await sql`
+                    SELECT *
+                    FROM cta_info
+                    WHERE id = ${id}
+                  `
+      )[0];
+
+    case "navigation_info":
+      return (
+        await sql`
+                      SELECT *
+                      FROM navigation_info
+                      WHERE id = ${id}
+                    `
+      )[0];
+
+    case "footer_info":
+      return (
+        await sql`
+                      SELECT *
+                      FROM footer_info
+                      WHERE id = ${id}
+                    `
+      )[0];
 
     default:
       return null;
   }
 }
 
+// Generic function to fetch page data by path
 export async function getPage(path: string) {
   const [page] = await sql`
     SELECT 
@@ -136,9 +262,9 @@ export async function getPage(path: string) {
       ...component,
       data: await getComponentData(
         component.component_type,
-        component.component_id
+        component.component_id,
       ),
-    }))
+    })),
   );
 
   return {
