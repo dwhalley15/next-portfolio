@@ -115,7 +115,7 @@ body::selection {
 }
 
 
-ul {
+ul, ol {
   list-style: none;
 }
 

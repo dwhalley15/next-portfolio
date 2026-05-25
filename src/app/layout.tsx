@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { JetBrains_Mono } from "next/font/google";
 import { getNavLinks, getSocialLinks } from "./services/dbServices/dbService";
-import Navigation from "./components/Navigation/Navigation";
 import * as components from "./services/importService/importService";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],

@@ -1,13 +1,9 @@
 import "./Header.css";
 import Link from "next/link";
-import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import getFontAwesomeIcon from "@/app/services/iconService/iconService";
-import TypingText from "./TypingText";
-import TextContainer from "../Motion/TextContainer/TextContainer";
 
 export interface HomePageInfoItem {
   id: number;
+  subtitle: string | null;
   title_first: string | null;
   title_second: string | null;
   title_text: string | null;
@@ -30,12 +26,12 @@ export default function Header({ homePageInfo }: HeaderProps) {
   const firstItem = homePageInfo[0];
 
   return (
-    <section className="hero">
+    <header className="hero">
       <div className="hero-grid">
         <div className="hero-main">
           <div className="hero-status">
             <span className="hero-dot">●</span>
-            <span>online · UK · open to roles</span>
+            <span>{firstItem?.subtitle}</span>
           </div>
 
           <h1 className="hero-title">
@@ -94,6 +90,6 @@ ${firstItem?.available}`}
           </div>
         </div>
       </div>
-    </section>
+    </header>
   );
 }

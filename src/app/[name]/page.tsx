@@ -1,12 +1,9 @@
-import * as components from "../services/importService/importService";
 import {
-  getAllData,
-  getPageDescriptions,
-  getProjectData,
+  getPage,
 } from "../services/dbServices/dbService";
-import NotFound from "../not-found";
 import type { Metadata } from "next";
-import type { ReactElement } from "react";
+import { renderComponent } from "../services/componentServices/componentRenderer";
+import type { PageData } from "../interfaces/interfaces";
 
 export async function generateMetadata({
   params,
@@ -15,40 +12,36 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { name } = await params;
 
-  const pageDescriptions = await getPageDescriptions();
-
-  const description = pageDescriptions.find(
-    (page: any) => page.name === name
-  )?.description;
-
-  const capitalizedParamName = name.charAt(0).toUpperCase() + name.slice(1);
+  const page = (await getPage(name)) as PageData | null;
 
   return {
-    title: `Ortheyus | Software Developer | ${capitalizedParamName}`,
-    description,
+    title: page?.meta_title || "",
+    description: page?.meta_description || "",
     alternates: {
-      canonical: `https://portfolio.ortheyus.uk/${name}`,
+      canonical: page?.canonical_url
+        ? `https://portfolio.ortheyus.uk/${page.canonical_url}`
+        : `https://portfolio.ortheyus.uk/${name}`,
     },
     openGraph: {
       type: "website",
-      siteName: `Ortheyus | Software Developer | ${capitalizedParamName}`,
+      siteName: page?.meta_title || "",
       locale: "en_UK",
-      url: `https://portfolio.ortheyus.uk/${name}`,
-      title: `Ortheyus | Software Developer | ${capitalizedParamName}`,
-      description,
+      url: `https://portfolio.ortheyus.uk/${page?.path || name}`,
+      title: page?.meta_title || "",
+      description: page?.meta_description || "",
       images: [
         {
           url: "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
           width: 800,
           height: 600,
-          alt: `Ortheyus | Software Developer | ${capitalizedParamName}`,
+          alt: page?.meta_title || "",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `Ortheyus | Software Developer | ${capitalizedParamName}`,
-      description,
+      title: page?.meta_title || "",
+      description: page?.meta_description || "",
       images: [
         "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
       ],
@@ -61,29 +54,13 @@ export default async function DynamicPage(props: {
 }) {
   const { name } = await props.params;
 
-  const {
-    navLinks,
-    headerInfo,
-    socialLinks,
-    servicesInfo,
-    skillsInfo,
-    educationInfo,
-    contactInfo,
-  } = await getAllData();
-
-  const pageDescriptions: any = await getPageDescriptions();
-
-  let description = pageDescriptions.find(
-    (page: any) => page.name === name
-  )?.description;
-
-  const { projects } = await getProjectData();
+  const page = (await getPage(name)) as PageData | null;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Ortheyus",
-    url: `https://portfolio.ortheyus.uk/${name}`,
+    url: `https://portfolio.ortheyus.uk/${page?.path || name}`,
     sameAs: [
       "https://www.linkedin.com/in/davidwhalleyprofile",
       "https://github.com/dwhalley15",
@@ -101,65 +78,17 @@ export default async function DynamicPage(props: {
       width: 800,
       height: 600,
     },
-    description: description,
+    description: page?.meta_description || "",
   };
 
-  let componentToRender: ReactElement | null = null;
-
-  switch (name) {
-    case "services":
-      componentToRender = (
-        <components.Services
-          servicesInfo={servicesInfo as components.ServicesItem[]}
-          servicesDescription={description}
-        />
-      );
-      break;
-    case "skills":
-      componentToRender = (
-        <components.Skills
-          skillsInfo={skillsInfo as components.SkillsItem[]}
-          skillsDescription={description}
-        />
-      );
-      break;
-    case "education":
-      componentToRender = (
-        <components.Education
-          educationInfo={educationInfo as components.EducationItem[]}
-          educationDescription={description}
-        />
-      );
-      break;
-    case "contact":
-      componentToRender = (
-        <components.Contact
-          contactInfo={contactInfo as components.ContactItem[]}
-          contactDescription={description}
-        />
-      );
-      break;
-    case "about":
-      componentToRender = <components.About />;
-      break;
-    case "projects":
-      componentToRender = <components.Projects />;
-      break;
-    default:
-      componentToRender = <NotFound />;
-  }
 
   return (
-    <>
-      <components.Navbar
-        navLinks={navLinks as components.NavbarItem[]}
-        projects={projects as components.ProjectProps[]}
-      />
-      <main>{componentToRender}</main>
+    <div className="container">
+      {page?.components.map(renderComponent)}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-    </>
+    </div>
   );
 }

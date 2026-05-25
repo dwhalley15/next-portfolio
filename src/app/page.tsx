@@ -1,5 +1,4 @@
 import * as components from "./services/importService/importService";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 import {
   getProjectData,
   getHomePageInfo,

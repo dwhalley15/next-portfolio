@@ -11,6 +11,8 @@ export { default as Project } from "../../components/Project/Project";
 export { default as SelectedWork } from "../../components/Selected Work/SelectedWork";
 export { default as StackList } from "../../components/StackList/StackList";
 export { default as Cta } from "../../components/Cta/Cta";
+export { default as SmallHeader } from "../../components/Small Header/SmallHeader";
+export { default as Timeline } from "../../components/Timeline/TimelIne";
 
 
 export type { NavbarItem } from "../../components/Navigation/Navigation";
@@ -23,3 +25,5 @@ export type { HomePageInfoItem } from "../../components/Header/Header";
 export type { SelectedWorkProps } from "../../components/Selected Work/SelectedWork";
 export type { FooterProps } from "../../components/Footer/Footer";
 export type { StackListProps } from "../../components/StackList/StackList";
+export type { SmallHeaderProps } from "../../components/Small Header/SmallHeader";
+export type { TimelineProps } from "../../components/Timeline/TimelIne";
