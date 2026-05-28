@@ -157,77 +157,104 @@ export async function getAboutPageData() {
 // Helper function to fetch component data based on type and ID
 async function getComponentData(type: string, id: string) {
   switch (type) {
-    case "large_header_info":
+    case "large_header_content":
       return (
         await sql`
           SELECT *
-          FROM large_header_info
+          FROM large_header_content
           WHERE id = ${id}
         `
       )[0];
 
-    case "timeline_info":
+    case "timeline_content":
       return (
         await sql`
           SELECT *
-          FROM timeline_info
+          FROM timeline_content
           WHERE id = ${id}
         `
       )[0];
 
-    case "small_header_info":
+    case "small_header_content":
       return (
         await sql`
             SELECT *
-            FROM small_header_info
+            FROM small_header_content
             WHERE id = ${id}
           `
       )[0];
 
-    case "work_list_info":
+    case "work_list_content":
       return (
         await sql`
               SELECT *
-              FROM work_list_info
+              FROM work_list_content
               WHERE id = ${id}
             `
       )[0];
 
-    case "stack_list_info":
+    case "stack_list_content":
       return (
         await sql`
                 SELECT *
-                FROM stack_list_info
+                FROM stack_list_content
                 WHERE id = ${id}
               `
       )[0];
 
-    case "cta_info":
+    case "cta_content":
       return (
         await sql`
                     SELECT *
-                    FROM cta_info
+                    FROM cta_content
                     WHERE id = ${id}
                   `
       )[0];
 
-    case "navigation_info":
+    case "navigation_content":
       return (
         await sql`
                       SELECT *
-                      FROM navigation_info
+                      FROM navigation_content
                       WHERE id = ${id}
                     `
       )[0];
 
-    case "footer_info":
+    case "footer_content":
       return (
         await sql`
                       SELECT *
-                      FROM footer_info
+                      FROM footer_content
                       WHERE id = ${id}
                     `
       )[0];
+
+      case "services_content":
+        return (
+          await sql`
+                        SELECT *
+                        FROM services_content
+                        WHERE id = ${id}
+                      `
+        )[0];
+
+        case "skills_content":
+          return (
+            await sql`
+                          SELECT *
+                          FROM skills_content
+                          WHERE id = ${id}
+                        `
+          )[0];
+
+        case "education_content":
+          return (
+            await sql`
+                          SELECT *
+                          FROM education_content
+                          WHERE id = ${id}
+                        `
+          )[0];
 
     default:
       return null;

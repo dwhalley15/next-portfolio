@@ -1,111 +1,40 @@
 import "./Skills.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import getFontAwesomeIcon from "../../services/iconService/iconService";
-import Link from "next/link";
-import TextContainer from "../Motion/TextContainer/TextContainer";
-
-export interface SkillsItem {
-  id: number;
-  name: string;
-  description: string;
-  category: string;
-  percentage: number;
-}
 
 export interface SkillsProps {
-  skillsInfo: SkillsItem[];
-  skillsDescription: string;
+  title: string | null;
+  items:
+    | {
+        title: string | null;
+        skills: string[] | null;
+      }[]
+    | null;
 }
 
-export default function Skills({ skillsInfo, skillsDescription }: SkillsProps) {
-  const categoryIconMap: Record<string, string> = {
-    frontend: "frontenddevelopment",
-    backend: "databasedesign",
-    content: "globe",
-    styling: "webdesign",
-    mobile: "mobiledesign",
-    tools: "tools",
-  };
-
-  const categoryMap: Record<string, string> = {
-    frontend: "Frontend Development",
-    backend: "Backend Development",
-    content: "Content Management",
-    styling: "Styling & Design",
-    mobile: "Mobile Development",
-    tools: "Development Tools",
-  };
-
-  const allCategories = Array.from(
-    new Set(
-      skillsInfo
-        .map((item) => item.category)
-        .filter((category) => categoryMap.hasOwnProperty(category))
-    )
-  );
-
-  const sortedCategories = allCategories.sort((a, b) =>
-    categoryMap[a].localeCompare(categoryMap[b])
-  );
-
+export default function Skills({ title, items }: SkillsProps) {
   return (
-    <>
-      <section className="skills" id="skills">
-        <TextContainer className="animated-text-container">
-          <h1>Skills & Expertise</h1>
-          <p>{skillsDescription}</p>
-        </TextContainer>
-        <div className="skills-container">
-          {sortedCategories.map((category, index) => (
-            <div className="skills-category" key={index}>
-              <div className="skills-category-header">
-                <FontAwesomeIcon
-                  icon={getFontAwesomeIcon(categoryIconMap[category])}
-                  size="3x"
-                />
-                <h2>{categoryMap[category]}</h2>
-              </div>
-              <div className="skills-list">
-                {skillsInfo
-                  .filter((item) => item.category === category)
-                  .map((item) => (
-                    <div key={item.id} className="skills-item">
-                      <div className="skills-item-row">
-                        <h3>{item.name}</h3>
-                        <span>
-                          {item.percentage ? `${item.percentage}%` : "0%"}
-                        </span>
-                      </div>
-                      <div className="skills-progress-bar">
-                        <div
-                          className="skills-progress-bar-fill"
-                          style={{
-                            width: `${
-                              item.percentage ? `${item.percentage}%` : "0%"
-                            }`,
-                          }}
-                        ></div>
-                      </div>
-                      <p>{item.description}</p>
-                    </div>
-                  ))}
-              </div>
+    <section className="skills">
+      <h2 className="skills-title">
+        {"// "}
+        {title}
+      </h2>
+
+      <div className="skills-grid">
+        {items?.map((group, i) => (
+          <div key={i} className="skills-group">
+            <div className="skills-group-title">
+              {group.title?.toLowerCase()}/
             </div>
-          ))}
-        </div>
-        <div className="skills-link">
-          <h2>{"Ready to Collaborate?"}</h2>
-          <p>{"Let's discuss how my skills can bring your project to life."}</p>
-          <div className="skills-buttons">
-            <Link className="btn" href="/contact">
-              {"Get in Touch"}
-            </Link>
-            <Link className="btn-secondary" href="/projects">
-              {"View My Work"}
-            </Link>
+
+            <div className="skills-tags">
+              {group.skills?.map((s, j) => (
+                <span key={j} className="skills-tag">
+                  {s}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </>
+        ))}
+      </div>
+    </section>
   );
 }

@@ -5,7 +5,6 @@ export { default as Skills } from "../../components/Skills/Skills";
 export { default as Education } from "../../components/Education/Education";
 export { default as Footer } from "../../components/Footer/Footer";
 export { default as Contact } from "../../components/Contact/Contact";
-export { default as About } from "../../components/About/About";
 export { default as Projects } from "../../components/Projects/Projects";
 export { default as Project } from "../../components/Project/Project";
 export { default as WorkList } from "../../components/WorkList/WorkList";
@@ -16,14 +15,13 @@ export { default as Timeline } from "../../components/Timeline/TimelIne";
 
 
 export type { NavbarItem } from "../../components/Navigation/Navigation";
-export type { ServicesItem } from "../../components/Services/Services";
-export type { SkillsItem } from "../../components/Skills/Skills";
 export type { EducationItem } from "../../components/Education/Education";
 export type { ContactItem } from "../../components/Contact/Contact";
 export type { ProjectProps } from "../../components/Project/Project";
 export type { HeaderProps } from "../../components/Header/Header";
 export type { WorkListProps } from "../../components/WorkList/WorkList";
 export type { FooterProps } from "../../components/Footer/Footer";
+export type { SocialLinkItem } from "../../components/Footer/Footer";
 export type { StackListProps } from "../../components/StackList/StackList";
 export type { SmallHeaderProps } from "../../components/Small Header/SmallHeader";
 export type { TimelineProps } from "../../components/Timeline/TimelIne";

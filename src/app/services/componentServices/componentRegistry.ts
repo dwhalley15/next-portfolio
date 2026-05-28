@@ -1,19 +1,25 @@
-import { SmallHeader } from "../importService/importService";
-import { Timeline } from "../importService/importService";
-import { Header } from "../importService/importService";
-import { WorkList } from "../importService/importService";
-import { StackList } from "../importService/importService";
-import { Cta } from "../importService/importService";
-import { Navbar } from "../importService/importService";
-import { Footer } from "../importService/importService";
+import SmallHeader  from "../../components/Small Header/SmallHeader";
+import  Timeline  from "../../components/Timeline/TimelIne";
+import  Header  from "../../components/Header/Header";
+import  WorkList  from "../../components/WorkList/WorkList";
+import  StackList  from "../../components/StackList/StackList";
+import  Cta  from "../../components/Cta/Cta";
+import  Navbar  from "../../components/Navigation/Navigation";
+import  Footer  from "../../components/Footer/Footer";
+import Services from "../../components/Services/Services";
+import Skills from "../../components/Skills/Skills";
+import Education from "../../components/Education/Education";
 
 export const componentRegistry = {
-    small_header_info: SmallHeader,
-    timeline_info: Timeline,
-    large_header_info: Header,
-    work_list_info: WorkList,
-    stack_list_info: StackList,
-    cta_info: Cta,
-    navigation_info: Navbar,
-    footer_info: Footer,
+    small_header_content: SmallHeader,
+    timeline_content: Timeline,
+    large_header_content: Header,
+    work_list_content: WorkList,
+    stack_list_content: StackList,
+    cta_content: Cta,
+    navigation_content: Navbar,
+    footer_content: Footer,
+    services_content: Services,
+    skills_content: Skills,
+    education_content: Education,
 } as const;

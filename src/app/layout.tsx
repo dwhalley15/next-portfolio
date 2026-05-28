@@ -92,12 +92,12 @@ export default async function RootLayout({
       <body>
         {page &&
           renderComponent(
-            page.components.find((c) => c.component_type === "navigation_info"),
+            page.components.find((c) => c.component_type === "navigation_content"),
           )}
         <main>{children}</main>
         {page &&
           renderComponent(
-            page.components.find((c) => c.component_type === "footer_info"),
+            page.components.find((c) => c.component_type === "footer_content"),
           )}
       </body>
     </html>
