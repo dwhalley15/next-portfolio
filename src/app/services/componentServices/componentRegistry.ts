@@ -9,6 +9,7 @@ import  Footer  from "../../components/Footer/Footer";
 import Services from "../../components/Services/Services";
 import Skills from "../../components/Skills/Skills";
 import Education from "../../components/Education/Education";
+import List from "../../components/List/List";
 
 export const componentRegistry = {
     small_header_content: SmallHeader,
@@ -22,4 +23,5 @@ export const componentRegistry = {
     services_content: Services,
     skills_content: Skills,
     education_content: Education,
+    list_content: List,
 } as const;

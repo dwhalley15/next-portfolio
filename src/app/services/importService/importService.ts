@@ -15,7 +15,6 @@ export { default as Timeline } from "../../components/Timeline/TimelIne";
 
 
 export type { NavbarItem } from "../../components/Navigation/Navigation";
-export type { EducationItem } from "../../components/Education/Education";
 export type { ContactItem } from "../../components/Contact/Contact";
 export type { ProjectProps } from "../../components/Project/Project";
 export type { HeaderProps } from "../../components/Header/Header";
