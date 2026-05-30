@@ -1,0 +1,104 @@
+.contact-form-container {
+  width: 100%;
+  margin-top: 3.5rem;
+}
+
+.contact-form-title {
+  color: var(--color-dim);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-form-submission-title{
+    color: var(--color-dim);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.contact-form-submission-message{
+    color: var(--color-foreground);
+    font-size: 0.875rem;
+}
+
+.contact-form-submit-button {
+  margin-top: 1.5rem;
+  border: 1px solid var(--terminal);
+  background-color: var(--terminal);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-foreground);
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.contact-form-submit-button:hover {
+  filter: brightness(1.1);
+}
+
+.contact-form-submit-button.disabled,
+.contact-form-submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.contact-form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .contact-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--color-dim);
+}
+
+.contact-form-input,
+.contact-form-textarea {
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--color-foreground);
+}
+
+.contact-form-input:focus,
+.contact-form-textarea:focus {
+  border-color: var(--terminal);
+}
+
+
+.contact-form-message-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+  color: var(--color-dim);
+}
+
+.contact-form-company-label {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+.contact-form-error{
+    display: block;
+    color: var(--color-destructive);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}

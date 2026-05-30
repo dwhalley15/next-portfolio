@@ -10,6 +10,8 @@ import Services from "../../components/Services/Services";
 import Skills from "../../components/Skills/Skills";
 import Education from "../../components/Education/Education";
 import List from "../../components/List/List";
+import ContactForm from "../../components/ContactForm/ContactForm";
+import ContactDetails from "../../components/ContactDetails/ContactDetails";
 
 export const componentRegistry = {
     small_header_content: SmallHeader,
@@ -24,4 +26,6 @@ export const componentRegistry = {
     skills_content: Skills,
     education_content: Education,
     list_content: List,
+    contact_form_content: ContactForm,
+    contact_details_content: ContactDetails,
 } as const;
