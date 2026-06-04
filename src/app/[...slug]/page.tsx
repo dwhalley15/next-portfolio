@@ -1,18 +1,23 @@
-import {
-  getPage,
-} from "../services/dbServices/dbService";
+import { getPage } from "../services/dbServices/dbService";
 import type { Metadata } from "next";
 import { renderComponent } from "../services/componentServices/componentRenderer";
 import type { PageData } from "../interfaces/interfaces";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ name: string }>;
+  params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
-  const { name } = await params;
+  const { slug } = await params;
 
-  const page = (await getPage(name)) as PageData | null;
+  const path = slug.join("/");
+
+  const page = (await getPage(path)) as PageData | null;
+
+  if (!page) {
+    notFound();
+  }
 
   return {
     title: page?.meta_title || "",
@@ -20,13 +25,13 @@ export async function generateMetadata({
     alternates: {
       canonical: page?.canonical_url
         ? `https://portfolio.ortheyus.uk/${page.canonical_url}`
-        : `https://portfolio.ortheyus.uk/${name}`,
+        : `https://portfolio.ortheyus.uk/${path}`,
     },
     openGraph: {
       type: "website",
       siteName: page?.meta_title || "",
       locale: "en_UK",
-      url: `https://portfolio.ortheyus.uk/${page?.path || name}`,
+      url: `https://portfolio.ortheyus.uk/${page?.path || path}`,
       title: page?.meta_title || "",
       description: page?.meta_description || "",
       images: [
@@ -49,18 +54,26 @@ export async function generateMetadata({
   };
 }
 
-export default async function DynamicPage(props: {
-  params: Promise<{ name: string }>;
+export default async function DynamicPage({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
 }) {
-  const { name } = await props.params;
+  const { slug } = await params;
 
-  const page = (await getPage(name)) as PageData | null;
+  const path = slug.join("/");
+
+  const page = (await getPage(path)) as PageData | null;
+
+  if (!page) {
+    notFound();
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Ortheyus",
-    url: `https://portfolio.ortheyus.uk/${page?.path || name}`,
+    url: `https://portfolio.ortheyus.uk/${page?.path || path}`,
     sameAs: [
       "https://www.linkedin.com/in/davidwhalleyprofile",
       "https://github.com/dwhalley15",
@@ -80,7 +93,6 @@ export default async function DynamicPage(props: {
     },
     description: page?.meta_description || "",
   };
-
 
   return (
     <div className="container">
