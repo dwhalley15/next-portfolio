@@ -1,0 +1,148 @@
+/* Header row */
+.dynamic-work-list .work-header {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .dynamic-work-list .work-header {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--dim);
+  }
+}
+
+/* Work list */
+.dynamic-work-list .work-items > * + * {
+  border-top: 1px solid var(--border);
+}
+
+/* Work item link */
+.dynamic-work-list .work-item {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+}
+
+.dynamic-work-list .work-item:hover {
+  background-color: var(--card);
+}
+
+/* Columns */
+.dynamic-work-list .col-1 {
+  grid-column: span 1;
+}
+
+.dynamic-work-list .col-2 {
+  grid-column: span 2;
+}
+
+.dynamic-work-list .col-3 {
+  grid-column: span 3;
+}
+
+.dynamic-work-list .col-4 {
+  grid-column: span 4;
+}
+
+.dynamic-work-list .col-8 {
+  grid-column: span 8;
+}
+
+.dynamic-work-list .col-11 {
+  grid-column: span 11;
+}
+
+.dynamic-work-list .col-12 {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .dynamic-work-list .md-col-1 {
+    grid-column: span 1;
+  }
+
+  .dynamic-work-list .md-col-2 {
+    grid-column: span 2;
+  }
+
+  .dynamic-work-list .md-col-3 {
+    grid-column: span 3;
+  }
+
+  .dynamic-work-list .md-col-4 {
+    grid-column: span 4;
+  }
+}
+
+/* Typography */
+.dynamic-work-list .text-xs {
+  font-size: 0.75rem;
+}
+
+.dynamic-work-list .text-sm {
+  font-size: 0.875rem;
+}
+
+.dynamic-work-list .text-base {
+  font-size: 1rem;
+}
+
+.dynamic-work-list .text-10 {
+  font-size: 10px;
+}
+
+.dynamic-work-list .font-bold {
+  font-weight: 700;
+}
+
+.dynamic-work-list .text-dim {
+  color: var(--dim);
+}
+
+.dynamic-work-list .text-foreground-muted {
+  color: rgb(var(--foreground) / 0.8);
+}
+
+.dynamic-work-list .text-right {
+  text-align: right;
+}
+
+/* Title hover */
+.dynamic-work-list .project-title {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.dynamic-work-list .work-item:hover .project-title {
+  color: var(--terminal);
+}
+
+/* Stack */
+.dynamic-work-list .stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  font-size: 10px;
+  color: var(--dim);
+}
+
+@media (min-width: 768px) {
+  .dynamic-work-list .stack {
+    justify-content: flex-end;
+  }
+}
+
+.dynamic-work-list .stack-tag {
+  border: 1px solid var(--border);
+  padding: 0.125rem 0.375rem;
+}

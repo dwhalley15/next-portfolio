@@ -12,6 +12,7 @@ import Education from "../../components/Education/Education";
 import List from "../../components/List/List";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactDetails from "../../components/ContactDetails/ContactDetails";
+import DynamicWorkList from "../../components/DynamicWorkList/DynamicWorkList";
 
 export const componentRegistry = {
     small_header_content: SmallHeader,
@@ -28,4 +29,5 @@ export const componentRegistry = {
     list_content: List,
     contact_form_content: ContactForm,
     contact_details_content: ContactDetails,
+    dynamic_work_list_content: DynamicWorkList,
 } as const;

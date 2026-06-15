@@ -229,59 +229,81 @@ async function getComponentData(type: string, id: string) {
                     `
       )[0];
 
-      case "services_content":
-        return (
-          await sql`
+    case "services_content":
+      return (
+        await sql`
                         SELECT *
                         FROM services_content
                         WHERE id = ${id}
                       `
-        )[0];
+      )[0];
 
-        case "skills_content":
-          return (
-            await sql`
+    case "skills_content":
+      return (
+        await sql`
                           SELECT *
                           FROM skills_content
                           WHERE id = ${id}
                         `
-          )[0];
+      )[0];
 
-        case "education_content":
-          return (
-            await sql`
+    case "education_content":
+      return (
+        await sql`
                           SELECT *
                           FROM education_content
                           WHERE id = ${id}
                         `
-          )[0];
+      )[0];
 
-          case "list_content":
-            return (
-              await sql`
+    case "list_content":
+      return (
+        await sql`
                             SELECT *
                             FROM list_content
                             WHERE id = ${id}
                           `
-            )[0];
+      )[0];
 
-            case "contact_form_content":
-              return (
-                await sql`
+    case "contact_form_content":
+      return (
+        await sql`
                               SELECT *
                               FROM contact_form_content
                               WHERE id = ${id}
                             `
-              )[0];
+      )[0];
 
-              case "contact_details_content":
-                return (
-                  await sql`
+    case "contact_details_content":
+      return (
+        await sql`
                                 SELECT *
                                 FROM contact_details_content
                                 WHERE id = ${id}
                               `
-                )[0];
+      )[0];
+
+    case "dynamic_work_list_content": {
+      const list = (
+        await sql`
+      SELECT *
+      FROM dynamic_work_list_content
+      WHERE id = ${id}
+    `
+      )[0];
+
+      const workItems = await sql`
+    SELECT *
+    FROM dynamic_work_list_items
+    WHERE list_id = ${id}
+    ORDER BY sort_order
+  `;
+
+      return {
+        ...list,
+        workItems,
+      };
+    }
 
     default:
       return null;
