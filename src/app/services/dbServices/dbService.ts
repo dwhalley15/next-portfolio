@@ -305,6 +305,60 @@ async function getComponentData(type: string, id: string) {
       };
     }
 
+    case "work_header_content":
+      return (
+        await sql`
+                      SELECT *
+                      FROM work_header_content
+                      WHERE id = ${id}
+                    `
+      )[0];
+
+    case "links_content":
+      return (
+        await sql`
+                      SELECT *
+                      FROM links_content
+                      WHERE id = ${id}
+                    `
+      )[0];
+
+    case "text_content":
+      return (
+        await sql`
+                      SELECT * 
+                      FROM text_content
+                      WHERE id = ${id}
+                    `
+      )[0];
+
+    case "number_list_content":
+      return (
+        await sql`
+                      SELECT *
+                      FROM number_list_content
+                      WHERE id = ${id}
+                    `
+      )[0];
+
+    case "media_content":
+      return (
+        await sql`
+                      SELECT *
+                      FROM media_content
+                      WHERE id = ${id}
+                    `
+      )[0];
+
+    case "arrow_list_content":
+      return (
+        await sql`
+                      SELECT *
+                      FROM arrow_list_content
+                      WHERE id = ${id}
+                    `
+      )[0];
+
     default:
       return null;
   }

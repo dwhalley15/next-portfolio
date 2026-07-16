@@ -1,0 +1,29 @@
+.arrow-list {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.arrow-list-title {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dim);
+}
+
+.arrow-list-items {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    span {
+        color: var(--terminal);
+    }
+}
+
+.arrow-list-item {
+    gap: 0.5rem;
+    display: flex;
+}

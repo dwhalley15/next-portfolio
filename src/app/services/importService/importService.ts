@@ -10,7 +10,7 @@ export { default as Project } from "../../components/Project/Project";
 export { default as WorkList } from "../../components/WorkList/WorkList";
 export { default as StackList } from "../../components/StackList/StackList";
 export { default as Cta } from "../../components/Cta/Cta";
-export { default as SmallHeader } from "../../components/Small Header/SmallHeader";
+export { default as SmallHeader } from "../../components/SmallHeader/SmallHeader";
 export { default as Timeline } from "../../components/Timeline/TimelIne";
 
 
@@ -22,5 +22,5 @@ export type { WorkListProps } from "../../components/WorkList/WorkList";
 export type { FooterProps } from "../../components/Footer/Footer";
 export type { SocialLinkItem } from "../../components/Footer/Footer";
 export type { StackListProps } from "../../components/StackList/StackList";
-export type { SmallHeaderProps } from "../../components/Small Header/SmallHeader";
+export type { SmallHeaderProps } from "../../components/SmallHeader/SmallHeader";
 export type { TimelineProps } from "../../components/Timeline/TimelIne";

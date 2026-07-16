@@ -36,7 +36,7 @@ export async function generateMetadata({
       description: page?.meta_description || "",
       images: [
         {
-          url: "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
+          url: page?.meta_image_url || "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
           width: 800,
           height: 600,
           alt: page?.meta_title || "",
@@ -48,7 +48,7 @@ export async function generateMetadata({
       title: page?.meta_title || "",
       description: page?.meta_description || "",
       images: [
-        "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
+        page?.meta_image_url || "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
       ],
     },
   };

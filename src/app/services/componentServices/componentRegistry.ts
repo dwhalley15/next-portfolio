@@ -1,4 +1,4 @@
-import SmallHeader  from "../../components/Small Header/SmallHeader";
+import SmallHeader  from "../../components/SmallHeader/SmallHeader";
 import  Timeline  from "../../components/Timeline/TimelIne";
 import  Header  from "../../components/Header/Header";
 import  WorkList  from "../../components/WorkList/WorkList";
@@ -13,6 +13,12 @@ import List from "../../components/List/List";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactDetails from "../../components/ContactDetails/ContactDetails";
 import DynamicWorkList from "../../components/DynamicWorkList/DynamicWorkList";
+import WorkHeader from "../../components/WorkHeader/WorkHeader";
+import Links from "../../components/Links/Links";
+import Text from "../../components/Text/Text";
+import NumberList from "../../components/NumberList/NumberList";
+import Media from "../../components/Media/Media";
+import ArrowList from "../../components/ArrowList/ArrowList";
 
 export const componentRegistry = {
     small_header_content: SmallHeader,
@@ -30,4 +36,10 @@ export const componentRegistry = {
     contact_form_content: ContactForm,
     contact_details_content: ContactDetails,
     dynamic_work_list_content: DynamicWorkList,
+    work_header_content: WorkHeader,
+    links_content: Links,
+    text_content: Text,
+    number_list_content: NumberList,
+    media_content: Media,
+    arrow_list_content: ArrowList,
 } as const;
