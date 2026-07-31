@@ -16,6 +16,7 @@ const SubmitButton = ({ label }: { label: string }) => {
   return (
     <button
       type="submit"
+      aria-label={label}
       className={`contact-form-submit-button ${pending ? "disabled" : ""}`}
       disabled={pending}
     >

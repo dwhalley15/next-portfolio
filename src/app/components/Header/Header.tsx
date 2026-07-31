@@ -39,6 +39,7 @@ export default function Header({ subtitle, title_first, title_second, title_text
             <Link
               href={first_btn_url || "#"}
               className="hero-btn-primary"
+              aria-label={first_btn_text || "$ ls ./work"}
             >
               {first_btn_text || "$ ls ./work"}
             </Link>
@@ -46,6 +47,7 @@ export default function Header({ subtitle, title_first, title_second, title_text
             <Link
               href={second_btn_url || "#"}
               className="hero-btn-secondary"
+              aria-label={second_btn_text || "$ mail david"}
             >
               {second_btn_text || "$ mail david"}
             </Link>

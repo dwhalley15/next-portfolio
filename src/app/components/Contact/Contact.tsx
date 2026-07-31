@@ -72,7 +72,7 @@ export default function Contact({
               <FontAwesomeIcon icon={faEnvelope} size="sm" />
               <div className="contact-text">
                 <h3>Email</h3>
-                <Link href={"mailto:david.whalley.dev@proton.me"}>
+                <Link href={"mailto:david.whalley.dev@proton.me"} aria-label={"Email david.whalley.dev@proton.me"}>
                   {"david.whalley.dev@proton.me"}
                 </Link>
               </div>

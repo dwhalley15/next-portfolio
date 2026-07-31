@@ -21,7 +21,7 @@ export default function Cta({ title_first, title_second, subtitle, btn_text, btn
           </h2>
         </div>
 
-        <Link href={btn_url || "#"} className="cta-button">
+        <Link href={btn_url || "#"} className="cta-button" aria-label={btn_text || "Call to Action"}>
           {btn_text || ""}
         </Link>
       </div>

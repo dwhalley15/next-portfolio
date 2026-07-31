@@ -14,7 +14,7 @@ export default function WorkHeader({
 }: WorkHeaderProps) {
   return (
     <header className="workheader">
-      <Link href="/work" className="workheader-back">
+      <Link href="/work" className="workheader-back" aria-label="Back to Work Page">
         {"← ~/work"}
       </Link>
       <span className="workheader-subtitle">{subtitle}</span>

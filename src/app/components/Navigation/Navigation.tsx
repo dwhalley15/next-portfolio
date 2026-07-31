@@ -32,7 +32,7 @@ export default function Navigation({ navigationItems }: NavbarProps) {
     <header className="navigation">
       <div className="container">
         {main.map((item, index) => (
-          <Link key={index} href={item.path || "/"} className="logo">
+          <Link key={index} href={item.path || "/"} className="logo" aria-label={item.label || "Home"}>
             <span className="logo-terminal">▮</span>
             <span>{item.label}</span>
             <span className="logo-dim">:~$</span>
@@ -44,6 +44,7 @@ export default function Navigation({ navigationItems }: NavbarProps) {
               key={index}
               href={item.path || "#"}
               className={pathname === item.path ? "active" : ""}
+              aria-label={item.label || ""}
             >
               {"~/"}
               {item.label}
@@ -51,7 +52,7 @@ export default function Navigation({ navigationItems }: NavbarProps) {
           ))}
         </nav>
         {btns.map((item, index) => (
-          <Link key={index} href={item.path || "#"} className="hire-me">
+          <Link key={index} href={item.path || "#"} className="hire-me" aria-label={item.label || ""}>
             {item.label}
           </Link>
         ))}

@@ -25,7 +25,7 @@ export default function WorkLinks({ title, links }: WorkLinksProps) {
               <span className="work-links-item-title">{item.type}{":"}</span>
               <span className="work-links-item-label">{item.label}</span>
             </div>
-            <Link href={item.link || "#"} target="_blank" className="work-links-item-link">
+            <Link href={item.link || "#"} target="_blank" rel="noopener noreferrer" className="work-links-item-link" aria-label={`Open ${item.label} in a new tab`}>
               {"open "}
                 <FontAwesomeIcon icon={faArrowRight} size="sm" />
             </Link>

@@ -26,14 +26,14 @@ export default function WorkList({ title, subtitle, workItems }: WorkListProps) 
           <h2 className="selected-work-title">{title}</h2>
         </div>
 
-        <Link href="/work" className="selected-work-all">
+        <Link href="/work" className="selected-work-all" aria-label="View all work">
           view all <FontAwesomeIcon icon={faArrowRight} size="xs" />
         </Link>
       </div>
 
       <div className="selected-work-list">
         {workItems?.map((item: WorkItemProps, i: number) => (
-          <Link key={i} href={item.path || "#"} className="selected-work-item">
+          <Link key={i} href={item.path || "#"} className="selected-work-item" aria-label={`View project ${item.title}`}>
             <div className="selected-work-index">0{i + 1}</div>
 
             <div className="selected-work-main">

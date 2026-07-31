@@ -19,6 +19,7 @@ import Text from "../../components/Text/Text";
 import NumberList from "../../components/NumberList/NumberList";
 import Media from "../../components/Media/Media";
 import ArrowList from "../../components/ArrowList/ArrowList";
+import DynamicNotesList from "../../components/DynamicNotesList/DynamicNotesList";
 
 export const componentRegistry = {
     small_header_content: SmallHeader,
@@ -42,4 +43,5 @@ export const componentRegistry = {
     number_list_content: NumberList,
     media_content: Media,
     arrow_list_content: ArrowList,
+    dynamic_notes_list_content: DynamicNotesList,
 } as const;

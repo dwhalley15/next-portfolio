@@ -27,7 +27,7 @@ export default function DynamicWorkList({ workItems }: DynamicWorkListProps) {
       </div>
       <div className="work-items">
         {workItems.map((p, i) => (
-          <Link key={p.url} href={p.url || "#"} className="work-item">
+          <Link key={p.url} href={p.url || "#"} className="work-item" aria-label={`View project ${p.title}`}>
             <span className="col-1 text-xs text-dim">
               {String(i + 1).padStart(2, "0")}
             </span>

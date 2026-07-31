@@ -305,6 +305,28 @@ async function getComponentData(type: string, id: string) {
       };
     }
 
+    case "dynamic_notes_list_content": {
+      const list = (
+        await sql`
+      SELECT *
+      FROM dynamic_notes_list_content
+      WHERE id = ${id}
+    `
+      )[0];
+
+      const noteItems = await sql`
+    SELECT *
+    FROM dynamic_notes_list_items
+    WHERE list_id = ${id}
+    ORDER BY sort_order
+  `;
+
+      return {
+        ...list,
+        noteItems,
+      };
+    }
+
     case "work_header_content":
       return (
         await sql`

@@ -30,14 +30,17 @@ export default function Media({ title, items }: MediaProps) {
                   src={item.url || ""}
                   alt={item.caption || ""}
                   className="media-image"
+                  aria-label={item.caption || ""}
+                  loading="lazy"
                 />
               ) : (
                 <iframe
-                    src={`https://www.youtube.com/embed/${item?.url}`}
+                    src={`https://www.youtube.com/embed/${item?.url}?rel=0&modestbranding=1`}
                     className="media-video"
                     title={item.title || `video_${index + 1}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture web-share"
                     allowFullScreen
+                    loading="lazy"
                   />
               )}
             </div>

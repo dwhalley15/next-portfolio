@@ -37,7 +37,7 @@ export default function ContactDetails({
 
               <dd className="contact-details-value">
                 {c.link ? (
-                  <Link href={c.link} className="contact-details-link">
+                  <Link href={c.link} className="contact-details-link" target="_blank" rel="noopener noreferrer" aria-label={c.title ?? c.label ?? "Contact Link"}>
                     {c.label}
                   </Link>
                 ) : (

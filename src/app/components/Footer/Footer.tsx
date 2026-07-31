@@ -27,7 +27,7 @@ export default function Footer({ title, text, email, signal, copyright, socialLi
         <div className="footer-brand">
           <h2 className="footer-logo">
             <span className="footer-logo-terminal">▮</span>
-            <Link href="/">{title}</Link>
+            <Link href="/" aria-label={title ?? "Home"}>{title}</Link>
           </h2>
 
           <p className="footer-description">
@@ -41,7 +41,7 @@ export default function Footer({ title, text, email, signal, copyright, socialLi
           <ul className="footer-list">
             {socialLinks.map((link: SocialLinkItem, index: number) => (
               <li key={index}>
-                <Link href={link.social_url} className="footer-link">
+                <Link href={link.social_url} className="footer-link" target="_blank" rel="noopener noreferrer" aria-label={link.social_label}>
                   {link.social_label} <FontAwesomeIcon icon={faArrowRight} size="xs" />
                 </Link>
               </li>
@@ -54,12 +54,13 @@ export default function Footer({ title, text, email, signal, copyright, socialLi
 
           <ul className="footer-list">
             <li>
-              <a
+              <Link
                 href={`mailto:${email}`}
                 className="footer-link"
+                aria-label={`Email ${email}`}
               >
                 {email}
-              </a>
+              </Link>
             </li>
 
             <li className="footer-muted">{signal}</li>
