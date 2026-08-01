@@ -1,8 +1,13 @@
-import { getPage } from "../services/dbServices/dbService";
+import { getPage as getPageFromDb } from "../services/dbServices/dbService";
 import type { Metadata } from "next";
 import { renderComponent } from "../services/componentServices/componentRenderer";
 import type { PageData } from "../interfaces/interfaces";
 import { notFound } from "next/navigation";
+import { cache } from "react";
+
+export const getPage = cache(async (path: string) => {
+  return getPageFromDb(path);
+});
 
 export async function generateMetadata({
   params,
@@ -13,7 +18,13 @@ export async function generateMetadata({
 
   const path = slug.join("/");
 
-  const page = (await getPage(path)) as PageData | null;
+  let page: PageData | null;
+  try {
+    page = (await getPage(path)) as PageData | null;
+  } catch (err) {
+    console.error("getPage failed for path:", path, err);
+    throw notFound();
+  }
 
   if (!page) {
     notFound();
@@ -36,7 +47,9 @@ export async function generateMetadata({
       description: page?.meta_description || "",
       images: [
         {
-          url: page?.meta_image_url || "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
+          url:
+            page?.meta_image_url ||
+            "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
           width: 800,
           height: 600,
           alt: page?.meta_title || "",
@@ -48,7 +61,8 @@ export async function generateMetadata({
       title: page?.meta_title || "",
       description: page?.meta_description || "",
       images: [
-        page?.meta_image_url || "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
+        page?.meta_image_url ||
+          "https://frw6rziicw61rtm1.public.blob.vercel-storage.com/portfolio/light-bulb.png",
       ],
     },
   };
@@ -63,7 +77,13 @@ export default async function DynamicPage({
 
   const path = slug.join("/");
 
-  const page = (await getPage(path)) as PageData | null;
+  let page: PageData | null;
+  try {
+    page = (await getPage(path)) as PageData | null;
+  } catch (err) {
+    console.error("getPage failed for path:", path, err);
+    throw notFound();
+  }
 
   if (!page) {
     notFound();

@@ -1,0 +1,143 @@
+.error-page {
+  display: flex;
+  min-height: 80vh;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1.5rem;
+  padding-block: 5rem;
+}
+
+.error-box {
+  width: 100%;
+  max-width: 42rem; /* max-w-2xl */
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+}
+
+/* --- title bar --- */
+
+.error-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  background-color: color-mix(in oklch, var(--color-secondary) 40%, transparent);
+  padding: 0.5rem 1rem;
+  font-size: 10px;
+  color: var(--color-dim);
+}
+
+.titlebar-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+
+.dot-red {
+  background-color: var(--color-destructive);
+}
+
+.dot-dim {
+  background-color: color-mix(in oklch, var(--color-dim) 40%, transparent);
+}
+
+.titlebar-path {
+  margin-left: 0.75rem;
+}
+
+/* --- content --- */
+
+.error-content {
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+.log-line {
+  color: var(--color-dim);
+}
+
+.prompt-symbol {
+  color: var(--color-terminal);
+}
+
+.log-output {
+  margin-top: 0.75rem;
+  white-space: pre-wrap;
+  color: color-mix(in oklch, var(--color-foreground) 90%, transparent);
+}
+
+.error-code-row {
+  margin-top: 2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.error-code-label {
+  font-size: 0.75rem;
+  color: var(--color-dim);
+}
+
+.error-code-number {
+  /* .glow is your existing class, keep it applied separately if it has its own effect */
+  font-size: 3.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-terminal);
+}
+
+.error-title {
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.error-message {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-dim);
+}
+
+.error-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* --- buttons/links --- */
+
+.btn-primary {
+  border: 1px solid var(--color-terminal);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--color-terminal);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-terminal);
+  color: var(--color-background);
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: color-mix(in oklch, var(--color-foreground) 80%, transparent);
+  background: transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-terminal);
+  color: var(--color-terminal);
+}
