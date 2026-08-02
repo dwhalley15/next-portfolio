@@ -30,6 +30,11 @@
   letter-spacing: -0.025em;
 }
 
+.navigation .logo-image {
+  height: 1.25rem;
+  width: auto;
+}
+
 .navigation .logo-terminal {
   color: var(--color-terminal);
 }
@@ -38,7 +43,8 @@
   color: var(--color-dim);
 }
 
-.navigation nav {
+/* Desktop nav */
+.navigation nav.desktop-nav {
   display: none;
   align-items: center;
   gap: 0.25rem;
@@ -46,21 +52,25 @@
 }
 
 @media (min-width: 768px) {
-  .navigation nav {
+  .navigation nav.desktop-nav {
     display: flex;
+  }
+  .menu-toggle {
+    display: none;
   }
 }
 
-.navigation nav a {
+.navigation .desktop-nav a,
+.navigation .mobile-nav a {
   padding: 0.375rem 0.75rem;
   transition: color 150ms ease;
 }
 
-.navigation nav a.active {
+.navigation a.active {
   color: var(--color-terminal);
 }
 
-.navigation nav a:hover {
+.navigation a:hover {
   color: var(--color-foreground);
 }
 
@@ -73,4 +83,111 @@
 .navigation .hire-me:hover {
   background-color: var(--color-terminal);
   color: var(--color-primary-foreground);
+}
+
+.navigation .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: inline-flex;
+  }
+}
+
+/* Hamburger button */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  padding: 0.375rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 1.5px;
+  background-color: var(--color-foreground);
+  position: relative;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.hamburger::before {
+  position: absolute;
+  top: -5px;
+}
+
+.hamburger::after {
+  position: absolute;
+  top: 5px;
+}
+
+.hamburger.is-open {
+  background-color: transparent;
+}
+
+.hamburger.is-open::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.hamburger.is-open::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+/* Mobile panel */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-height: 0;
+  overflow: hidden;
+  border-top: 1px solid transparent;
+  transition: max-height 200ms ease;
+  padding-inline: 1.5rem;
+}
+
+.mobile-nav.is-open {
+  max-height: 20rem;
+  border-top-color: var(--border);
+  padding-block: 0.75rem;
+}
+
+.mobile-nav a {
+  color: var(--color-dim);
+}
+
+.mobile-nav a.active {
+  color: var(--color-terminal);
+}
+
+.mobile-nav .hire-me {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
 }
