@@ -17,7 +17,14 @@ export interface FooterProps {
   socialLinks: SocialLinkItem[];
 }
 
-export default function Footer({ title, text, email, signal, copyright, socialLinks }: FooterProps) {
+export default function Footer({
+  title,
+  text,
+  email,
+  signal,
+  copyright,
+  socialLinks,
+}: FooterProps) {
   const currentYear = new Date().getFullYear();
   const currentDate = new Date().toLocaleDateString();
 
@@ -26,13 +33,19 @@ export default function Footer({ title, text, email, signal, copyright, socialLi
       <div className="footer-main container">
         <div className="footer-brand">
           <h2 className="footer-logo">
-            <span className="footer-logo-terminal">▮</span>
-            <Link href="/" aria-label={title ?? "Home"}>{title}</Link>
+            <Link href="/" aria-label={title ?? "Home"} className="footer-logo-link">
+              <img
+                src="/favicon-32x32.png"
+                alt=""
+                width={20}
+                height={20}
+                className="logo-image"
+              />
+              {title}
+            </Link>
           </h2>
 
-          <p className="footer-description">
-            {text}
-          </p>
+          <p className="footer-description">{text}</p>
         </div>
 
         <div>
@@ -41,8 +54,15 @@ export default function Footer({ title, text, email, signal, copyright, socialLi
           <ul className="footer-list">
             {socialLinks.map((link: SocialLinkItem, index: number) => (
               <li key={index}>
-                <Link href={link.social_url} className="footer-link" target="_blank" rel="noopener noreferrer" aria-label={link.social_label}>
-                  {link.social_label} <FontAwesomeIcon icon={faArrowRight} size="xs" />
+                <Link
+                  href={link.social_url}
+                  className="footer-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.social_label}
+                >
+                  {link.social_label}{" "}
+                  <FontAwesomeIcon icon={faArrowRight} size="xs" />
                 </Link>
               </li>
             ))}
@@ -70,7 +90,9 @@ export default function Footer({ title, text, email, signal, copyright, socialLi
 
       <div className="footer-bottom">
         <div className="footer-bottom-content container">
-          <span>© {currentYear} {copyright}</span>
+          <span>
+            © {currentYear} {copyright}
+          </span>
 
           <span>$ uptime: {currentDate}</span>
         </div>

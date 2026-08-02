@@ -433,3 +433,12 @@ export async function getPage(path: string) {
     components: populatedComponents,
   };
 }
+
+export async function getAllPages() {
+  const pages = await sql`
+    SELECT *
+    FROM page_info
+    WHERE name NOT IN ('layout', 'home')
+  `;
+  return pages;
+}
