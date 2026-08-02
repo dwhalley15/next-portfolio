@@ -1,5 +1,6 @@
 .dynamic-notes-list {
   margin-top: 3.5rem;
+  padding-top: 1.5rem;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }

@@ -381,6 +381,15 @@ async function getComponentData(type: string, id: string) {
                     `
       )[0];
 
+    case "note_header_content":
+      return (
+        await sql`
+                      SELECT *
+                      FROM note_header_content
+                      WHERE id = ${id}
+                    `
+      )[0];
+
     default:
       return null;
   }
