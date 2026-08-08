@@ -22,6 +22,7 @@ import ArrowList from "../../components/ArrowList/ArrowList";
 import DynamicNotesList from "../../components/DynamicNotesList/DynamicNotesList";
 import NoteHeader from "../../components/NoteHeader/NoteHeader";
 import Quote from "../../components/Quote/Quote";
+import Terminal from "../../components/Terminal/Terminal";
 
 export const componentRegistry = {
     small_header_content: SmallHeader,
@@ -48,4 +49,5 @@ export const componentRegistry = {
     dynamic_notes_list_content: DynamicNotesList,
     note_header_content: NoteHeader,
     quote_content: Quote,
+    terminal_content: Terminal,
 } as const;

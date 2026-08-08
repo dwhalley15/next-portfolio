@@ -1,0 +1,45 @@
+.terminal {
+    padding-top: 2.5rem;
+    /* py-10 */
+    padding-bottom: 2.5rem;
+    color: color-mix(in srgb, var(--foreground) 90%, transparent);
+    font-size: 15px;
+    line-height: 1.625;
+    /* leading-relaxed */
+}
+
+.terminal-title {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dim);
+}
+
+.terminal pre {
+    margin: 0;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 1rem;
+    /* p-4 */
+    color: var(--terminal);
+    font-size: 0.75rem;
+    /* text-xs */
+    line-height: 1.625;
+    /* leading-relaxed */
+}
+
+.terminal-item {
+    display: flex;
+}
+
+.terminal-item-name {
+    display: inline-block;
+    min-width: 12rem;
+    color: inherit;
+}
+
+.terminal-item-description {
+    color: inherit;
+    margin-left: 1rem;
+}

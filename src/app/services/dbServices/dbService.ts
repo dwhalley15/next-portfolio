@@ -399,6 +399,15 @@ async function getComponentData(type: string, id: string) {
                     `
       )[0];
 
+    case "terminal_content":
+      return (
+        await sql`
+                      SELECT *
+                      FROM terminal_content
+                      WHERE id = ${id}
+                    `
+      )[0];
+
     default:
       return null;
   }
