@@ -13,7 +13,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: page.updated_at
         ? new Date(page.updated_at).toISOString()
         : new Date().toISOString(),
-      priority: page.path.startsWith("projects/") ? 0.5 : 0.8,
+      priority: ["projects/", "work/", "notes/"].some((prefix) =>
+        page.path.toLowerCase().startsWith(prefix),
+      )
+        ? 0.5
+        : 0.8,
       changeFrequency: "yearly" as const,
     }));
 

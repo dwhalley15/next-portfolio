@@ -21,6 +21,7 @@ import Media from "../../components/Media/Media";
 import ArrowList from "../../components/ArrowList/ArrowList";
 import DynamicNotesList from "../../components/DynamicNotesList/DynamicNotesList";
 import NoteHeader from "../../components/NoteHeader/NoteHeader";
+import Quote from "../../components/Quote/Quote";
 
 export const componentRegistry = {
     small_header_content: SmallHeader,
@@ -46,4 +47,5 @@ export const componentRegistry = {
     arrow_list_content: ArrowList,
     dynamic_notes_list_content: DynamicNotesList,
     note_header_content: NoteHeader,
+    quote_content: Quote,
 } as const;
