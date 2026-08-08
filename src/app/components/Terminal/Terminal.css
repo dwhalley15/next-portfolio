@@ -1,4 +1,4 @@
-.terminal {
+.terminal-block {
     padding-top: 2.5rem;
     /* py-10 */
     padding-bottom: 2.5rem;
@@ -8,14 +8,14 @@
     /* leading-relaxed */
 }
 
-.terminal-title {
+.terminal-block-title {
     margin-bottom: 1rem;
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--dim);
 }
 
-.terminal pre {
+.terminal-block pre {
     margin: 0;
     overflow-x: auto;
     border: 1px solid var(--border);
@@ -29,17 +29,17 @@
     /* leading-relaxed */
 }
 
-.terminal-item {
+.terminal-block-item {
     display: flex;
 }
 
-.terminal-item-name {
+.terminal-block-item-name {
     display: inline-block;
     min-width: 12rem;
     color: inherit;
 }
 
-.terminal-item-description {
+.terminal-block-item-description {
     color: inherit;
     margin-left: 1rem;
 }

@@ -17,17 +17,17 @@ export interface TerminalItem {
 
 export default function Terminal({ title, terminal }: TerminalProps) {
   return (
-    <section className="terminal">
+    <section className="terminal-block">
       {" "}
-      <h2 className="terminal-title">{title}</h2>{" "}
+      <h2 className="terminal-block-title">{title}</h2>{" "}
       <pre>
         {" "}
-        <div className="terminal-command"> {terminal.title} </div>{" "}
+        <div className="terminal-block-command"> {terminal.title} </div>{" "}
         {terminal.items.map((detail, detailIndex) => (
-          <div key={detailIndex} className="terminal-item">
+          <div key={detailIndex} className="terminal-block-item">
             {" "}
-            <span className="terminal-item-name"> {detail.name} </span>{" "}
-            <span className="terminal-item-description">
+            <span className="terminal-block-item-name"> {detail.name} </span>{" "}
+            <span className="terminal-block-item-description">
               {" "}
               # {detail.description}{" "}
             </span>{" "}
