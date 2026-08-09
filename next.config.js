@@ -31,7 +31,8 @@ const nextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+            value:
+              "camera=(), microphone=(), geolocation=(), interest-cohort=()",
           },
           {
             key: "Content-Security-Policy",
@@ -49,15 +50,43 @@ const nextConfig = {
       },
     ];
   },
-  async redirects(){
+  async redirects() {
     return [
       {
         source: "/sitemap",
         destination: "/sitemap.xml",
         permanent: true,
       },
+      // /projects -> /work (exact match)
+      {
+        source: "/projects",
+        destination: "/work",
+        permanent: true,
+      },
+      // /projects/something -> /work/something
+      {
+        source: "/projects/:path*",
+        destination: "/work/:path*",
+        permanent: true,
+      },
+      // old sections merged into /about
+      {
+        source: "/services",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/education",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/skills",
+        destination: "/about",
+        permanent: true,
+      },
     ];
-  }
+  },
 };
 
 module.exports = nextConfig;

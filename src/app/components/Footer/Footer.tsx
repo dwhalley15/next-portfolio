@@ -36,7 +36,7 @@ export default function Footer({
             <Link href="/" aria-label={title ?? "Home"} className="footer-logo-link">
               <img
                 src="/favicon-32x32.png"
-                alt=""
+                alt="Green code icon"
                 width={20}
                 height={20}
                 className="logo-image"

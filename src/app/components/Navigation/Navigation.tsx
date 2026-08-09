@@ -42,7 +42,7 @@ export default function Navigation({ navigationItems }: NavbarProps) {
           >
             <img
               src="/favicon-32x32.png"
-              alt=""
+              alt="Green code icon"
               width={20}
               height={20}
               className="logo-image"
