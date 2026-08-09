@@ -29,10 +29,8 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
   }
 
   const rawData = {
-    senderName: (formData.get("senderName") as string)?.trim(),
-    senderEmail: (formData.get("senderEmail") as string)?.trim(),
-    senderNumber: (formData.get("senderNumber") as string)?.trim(),
-    subject: (formData.get("subject") as string)?.trim(),
+    senderName: (formData.get("name") as string)?.trim(),
+    senderEmail: (formData.get("email") as string)?.trim(),
     message: (formData.get("message") as string)?.trim(),
   };
 
@@ -43,7 +41,7 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
     return { success: false, errors: validation.errors };
   }
 
-  const { senderName, senderEmail, senderNumber, subject, message } =
+  const { senderName, senderEmail, message } =
     validation.data;
 
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -51,8 +49,6 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
   const emailBody = `
           Name: ${senderName || "N/A"}
           Email: ${senderEmail || "N/A"}
-          Phone Number: ${senderNumber || "N/A"}
-          Subject: ${subject || "N/A"}
   
           Message:
           ${message}

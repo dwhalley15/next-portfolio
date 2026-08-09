@@ -6,8 +6,6 @@ export const ContactSchema = z.object({
     .string()
     .min(1, "Email is required")
     .pipe(z.email("Enter a valid email address")),
-  senderNumber: z.string().min(1, "Phone number is required"),
-  subject: z.string().min(1, "Subject is required"),
   message: z.string().min(1, "Message is required"),
 });
 

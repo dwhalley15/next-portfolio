@@ -1,0 +1,34 @@
+.timeline {
+  width: 100%;
+}
+
+.timeline-title {
+  color: var(--color-dim);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.timeline-year {
+  grid-column: span 2 / span 2;
+  color: var(--color-terminal);
+}
+
+.timeline-content {
+  grid-column: span 10 / span 10;
+  color: rgba(var(--foreground-rgb, 255, 255, 255), 0.9);
+}

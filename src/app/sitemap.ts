@@ -1,63 +1,33 @@
 import type { MetadataRoute } from "next";
-import { getNavLinks, getProjectData } from "./services/dbServices/dbService";
-import { NavbarItem } from "./components/Navbar/Navbar";
-import { url } from "inspector";
+import { getAllPages } from "./services/dbServices/dbService";
 
 const BASE_URL = "https://portfolio.ortheyus.uk";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const pages = await getAllPages(); // expects rows with { path, updated_at }
 
-    const navLinks = await getNavLinks();
-
-    const Pages: MetadataRoute.Sitemap = [
-        {
-            url: `${BASE_URL}/skills`,
-            lastModified: new Date().toISOString(),
-            priority: 0.8,
-            changeFrequency: "yearly" as const,
-        },
-        {
-            url: `${BASE_URL}/education`,
-            lastModified: new Date().toISOString(),
-            priority: 0.8,
-            changeFrequency: "yearly" as const,
-        },
-        {
-            url: `${BASE_URL}/services`,
-            lastModified: new Date().toISOString(),
-            priority: 0.8,
-            changeFrequency: "yearly" as const,
-        },
-    ];
-
-    const navItems: NavbarItem[] = navLinks.map(row => ({
-        id: row.id,
-        link_name: row.link_name,
+  const dynamicPages: MetadataRoute.Sitemap = pages
+    .filter((page) => page.path && page.path.toLowerCase() !== "home")
+    .map((page) => ({
+      url: `${BASE_URL}/${page.path}`,
+      lastModified: page.updated_at
+        ? new Date(page.updated_at).toISOString()
+        : new Date().toISOString(),
+      priority: ["projects/", "work/", "notes/"].some((prefix) =>
+        page.path.toLowerCase().startsWith(prefix),
+      )
+        ? 0.5
+        : 0.8,
+      changeFrequency: "yearly" as const,
     }));
 
-    const filteredNavItems = navItems.filter(item => item.link_name.toLowerCase() !== "home");
-
-    const staticPages: MetadataRoute.Sitemap = filteredNavItems.map(link => ({
-        url: `${BASE_URL}/${link.link_name}`,
-        lastModified: new Date().toISOString(),
-        priority: 0.8,
-        changeFrequency: 'yearly',
-    }));
-
-    const { projects } = await getProjectData();
-
-    const projectPages: MetadataRoute.Sitemap = projects.map(project => ({
-        url: `${BASE_URL}/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`,
-        lastModified: project.date?.toISOString() ?? new Date().toISOString(),
-        priority: 0.5,
-        changeFrequency: 'yearly',
-    }));
-
-    staticPages.unshift({ url: BASE_URL, lastModified: new Date().toISOString(), priority: 1.0, changeFrequency: 'yearly' });
-
-    staticPages.push(...Pages);
-
-    staticPages.push(...projectPages);
-
-    return staticPages;
+  return [
+    {
+      url: BASE_URL,
+      lastModified: new Date().toISOString(),
+      priority: 1.0,
+      changeFrequency: "yearly" as const,
+    },
+    ...dynamicPages,
+  ];
 }
