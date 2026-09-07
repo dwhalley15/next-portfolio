@@ -31,7 +31,7 @@ export default function NoteList({ title, subtitle, items }: NoteListProps) {
             </div>
             <div className="selected-notes-list">
                 {items?.map((item: NoteItemProps, i: number) => (
-                    <Link key={i} href={item.path || "#"} className="selected-notes-item" aria-label={`View project ${item.title}`}>
+                    <Link key={i} href={item.path || "#"} className="selected-notes-item" aria-label={`View note ${item.title}`}>
                         <div className="selected-notes-index">0{i + 1}</div>
                         <div className="selected-notes-main">
                             <h3 className="selected-notes-name">{item.title}</h3>
