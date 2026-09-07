@@ -23,6 +23,7 @@ import DynamicNotesList from "../../components/DynamicNotesList/DynamicNotesList
 import NoteHeader from "../../components/NoteHeader/NoteHeader";
 import Quote from "../../components/Quote/Quote";
 import Terminal from "../../components/Terminal/Terminal";
+import NoteList from "../../components/NoteList/NoteList";
 
 export const componentRegistry = {
     small_header_content: SmallHeader,
@@ -50,4 +51,5 @@ export const componentRegistry = {
     note_header_content: NoteHeader,
     quote_content: Quote,
     terminal_content: Terminal,
+    note_list_content: NoteList,
 } as const;
