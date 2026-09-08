@@ -3,6 +3,8 @@ import { getAllPages } from "./services/dbServices/dbService";
 
 const BASE_URL = "https://portfolio.ortheyus.uk";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = await getAllPages(); // expects rows with { path, updated_at }
 
