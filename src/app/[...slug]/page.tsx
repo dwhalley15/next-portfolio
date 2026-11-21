@@ -35,14 +35,14 @@ export async function generateMetadata({
     description: page?.meta_description || "",
     alternates: {
       canonical: page?.canonical_url
-        ? `https://portfolio.ortheyus.uk/${page.canonical_url}`
-        : `https://portfolio.ortheyus.uk/${path}`,
+        ? `https://ortheyus-portfolio.vercel.app/${page.canonical_url}`
+        : `https://ortheyus-portfolio.vercel.app/${path}`,
     },
     openGraph: {
       type: "website",
       siteName: page?.meta_title || "",
       locale: "en_UK",
-      url: `https://portfolio.ortheyus.uk/${page?.path || path}`,
+      url: `https://ortheyus-portfolio.vercel.app/${page?.path || path}`,
       title: page?.meta_title || "",
       description: page?.meta_description || "",
       images: [
@@ -93,7 +93,7 @@ export default async function DynamicPage({
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Ortheyus",
-    url: `https://portfolio.ortheyus.uk/${page?.path || path}`,
+    url: `https://ortheyus-portfolio.vercel.app/${page?.path || path}`,
     sameAs: [
       "https://www.linkedin.com/in/davidwhalleyprofile",
       "https://github.com/dwhalley15",

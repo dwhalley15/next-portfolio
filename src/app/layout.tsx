@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: page?.meta_title || "",
     description: page?.meta_description || "",
-    metadataBase: new URL("https://portfolio.ortheyus.uk/"),
+    metadataBase: new URL("https://ortheyus-portfolio.vercel.app/"),
     icons: {
       icon: [
         { url: "/favicon.ico", type: "image/x-icon" },
@@ -38,13 +38,13 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: "Ortheyus",
     applicationName: "Ortheyus Portfolio",
     alternates: {
-      canonical: "https://portfolio.ortheyus.uk/",
+      canonical: "https://ortheyus-portfolio.vercel.app/",
     },
     openGraph: {
       type: "website",
       siteName: page?.meta_title || "",
       locale: "en_UK",
-      url: "https://portfolio.ortheyus.uk/",
+      url: "https://ortheyus-portfolio.vercel.app/",
       title: page?.meta_title || "",
       description: page?.meta_description || "",
       images: [

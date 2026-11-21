@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPages } from "./services/dbServices/dbService";
 
-const BASE_URL = "https://portfolio.ortheyus.uk";
+const BASE_URL = "https://ortheyus-portfolio.vercel.app/";
 
 export const dynamic = "force-dynamic";
 
