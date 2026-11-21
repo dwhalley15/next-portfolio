@@ -58,7 +58,7 @@ export async function sendEmail(formData: FormData): Promise<SendEmailResult> {
     from: "Portfolio Form Submission <contact@ortheyus.uk>",
     to: "david.whalley.dev@proton.me",
     subject: "Message from Contact Form",
-    reply_to: senderEmail,
+    replyTo: senderEmail,
     text: emailBody,
   });
 
